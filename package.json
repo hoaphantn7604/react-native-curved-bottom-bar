@@ -1,0 +1,40 @@
+{
+  "name": "react-native-curved-bottom-bar",
+  "title": "React Native Curved Bottom Bar",
+  "version": "1.0.0",
+  "description": "React Native Curved Bottom Bar",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoaphantn7604/react-native-curved-bottom-bar.git",
+    "baseUrl": "https://github.com/hoaphantn7604/react-native-curved-bottom-bar"
+  },
+  "keywords": [
+    "react-native",
+    "navigation",
+    "curved",
+    "bottom-bar",
+    "curved-bottom"
+  ],
+  "author": {
+    "name": "Hoa Phan",
+    "email": "hoaphantn7604@gmail.com"
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
+  "peerDependencies": {
+    "react": ">=16.8.1",
+    "react-native": ">=0.60.0-rc.0 <1.0.x"
+  },
+  "devDependencies": {
+    "react": "^16.9.0",
+    "react-native": "^0.61.5"
+  },
+  "dependencies": {
+    "d3-shape": "^2.1.0"
+  }
+}
