@@ -1,8 +1,18 @@
-# react-native-curved-bottom-bar
-
+## react-native-curved-bottom-bar
+    A high performance, beautiful and fully customizable curved bottom navigation bar for React Native.
 ## Getting started
+```js
+    npm install react-native-curved-bottom-bar react-native-svg --save
+```
+or
+```js
+    yarn add react-native-curved-bottom-bar react-native-svg
+```
 
-`$ yarn add react-native-curved-bottom-bar react-native-svg`
+### IOS
+```js
+    cd ios && pod install
+```
 
 ### Demo
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/demo.gif)
@@ -10,28 +20,27 @@
 
 ### CurvedBottomBar.Navigator
 
-| Props              | Params               | isRequire | default          |
-| ------------------ | -------------------- | --------- | ---------------- |
-| type               | 'down' or 'up'       | Yes       | down             |
-| initialRouteName   | String               | Yes       |                  |
-| renderCircle       | () => JSX.Element    | Yes       |                  |
-| tabBar             | () => JSX.Element    | Yes       |                  |
-| style              | ViewStyle            | No        |                  |
-| width              | Number               | No        | Dimensions width |
-| height             | Number               | No        | 65               |
-| circleWidth        | Number               | No        | 50               |
-| borderTopLeftRight | Boolean              | No        | false            |
-| bgColor            | String               | No        | gray             |
-| strokeWidth        | Number               | No        | 0                |
-
+| Props              | Params               | isRequire | Description                                                             | 
+| ------------------ | -------------------- | --------- | ----------------------------------------------------------------------- |
+| type               | 'down' or 'up'       | Yes       | Type of the center tab item, downward curve or upward curve             |
+| initialRouteName   | String               | Yes       | The name of the route to render on first load of the navigator          |
+| tabBar             | () => JSX.Element    | Yes       | Function that returns a React element to display as the tab bar         |
+| renderCircle       | () => JSX.Element    | Yes       | Function that returns a React element to display as the center tab item |
+| circleWidth        | Number               | No        | Width of the center tab item                                            |
+| style              | ViewStyle            | No        |                                                                         |
+| width              | Number               | No        |                                                                         |
+| height             | Number               | No        |                                                                         |
+| borderTopLeftRight | Boolean              | No        |                                                                         |
+| bgColor            | String               | No        |                                                                         |
+| strokeWidth        | Number               | No        |                                                                         |
 
 ### CurvedBottomBar.Screen
 
-| Props              | Params               | isRequire | default          |
-| ------------------ | -------------------- | --------- | ---------------- |
-| name               | String               | Yes       |                  |
-| position           | left, right          | Yes       |                  |
-| component          | () => JSX.Element    | Yes       |                  |
+| Props              | Params               | isRequire | Description                                                                               |
+| ------------------ | -------------------- | --------- | ----------------------------------------------------------------------------------------- |
+| name               | String               | Yes       | Name of the route to jump to                                                              |
+| position           | left, right          | Yes       | Set position of screen to the left or right of the center tab item                        |
+| component          | () => JSX.Element    | Yes       | Screen params to merge into the destination route                                         |
 
 ### Usage
 ```javascript
@@ -182,6 +191,11 @@
     });
 
 ```
-
-## Source code example
-https://github.com/hoaphantn7604/react-native-curved-bottom-bar/tree/master/example
+### Suggested Packages
+- [react-native-utils-scale](https://www.npmjs.com/package/react-native-utils-scale) Provide solutions to make your app flexible for different screen sizes, different devices.
+- [react-native-element-dropdown](https://www.npmjs.com/package/react-native-element-dropdown) A react-native dropdown component easy to customize for both iOS and Android.
+- [react-native-element-image](https://www.npmjs.com/package/react-native-element-image) Automatically calculate width or height based on input Image component for React Native.
+- [react-native-element-timer](https://www.npmjs.com/package/react-native-element-timer) React Native Timer Countdown.
+- [react-native-vertical-swipe-view](https://www.npmjs.com/package/react-native-vertical-swipe-view) React Native Vertical Swipe View.
+- [react-native-checkbox-tree](https://www.npmjs.com/package/react-native-checkbox-tree) A simple and elegant checkbox tree for React Native.
+- [react-native-webrtc-simple](https://www.npmjs.com/package/react-native-webrtc-simple) A simple and easy to use module that help in making video call for React Native.

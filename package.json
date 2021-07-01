@@ -1,8 +1,8 @@
 {
   "name": "react-native-curved-bottom-bar",
   "title": "React Native Curved Bottom Bar",
-  "version": "1.0.0",
-  "description": "React Native Curved Bottom Bar",
+  "version": "1.0.1",
+  "description": "A high performance, beautiful and fully customizable curved bottom navigation bar for React Native.",
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,6 +14,8 @@
   },
   "keywords": [
     "react-native",
+    "elements",
+    "components",
     "navigation",
     "curved",
     "bottom-bar",
