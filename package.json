@@ -1,7 +1,7 @@
 {
   "name": "react-native-curved-bottom-bar",
   "title": "React Native Curved Bottom Bar",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A high performance, beautiful and fully customizable curved bottom navigation bar for React Native.",
   "main": "index.ts",
   "scripts": {
@@ -16,10 +16,10 @@
     "react-native",
     "elements",
     "components",
-    "navigation",
     "curved",
-    "bottom-bar",
-    "bottom-tabbar"
+    "bottom",
+    "tab-bar",
+    "tabbar"
   ],
   "author": {
     "name": "Hoa Phan",
