@@ -49,6 +49,7 @@ const ThemeScreen = props => {
         circleWidth={55}
         bgColor="white"
         borderTopLeftRight={true}
+        strokeWidth={2}
         initialRouteName="title1"
         renderCircle={() => (
           <TouchableOpacity
