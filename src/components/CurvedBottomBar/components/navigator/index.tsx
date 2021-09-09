@@ -43,6 +43,10 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
       setMaxWidth(w);
     }
     setMaxHeight(h);
+
+    setTimeout(() => {
+      setRouteName(selectTab);
+    }, 300);
   }, [orientation])
 
   const _renderButtonCenter = () => {
@@ -77,7 +81,7 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
             style={{ flex: 1 }}
             data={children}
             keyExtractor={(e, i) => i.toString()}
-            extraData={children}
+            extraData={orientation}
             horizontal
             scrollEnabled={false}
             renderItem={({ item, index }) => <View style={{ width: maxWidth, height: maxHeight }} key={index}>{item.props.component()}</View>}
