@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Dimensions, View } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { Dimensions, FlatList, View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 import { useDeviceOrientation } from '../../../useDeviceOrientation';
 import { getPath, getPathUp } from './path';
@@ -35,6 +35,7 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
   const [maxHeight, setMaxHeight] = useState<any>(Dimensions.get('window').height);
   const children = props?.children as any[];
   const orientation = useDeviceOrientation();
+  const ref: any = useRef(null);
 
   useEffect(() => {
     const { width: w, height: h } = Dimensions.get('window');
@@ -60,17 +61,27 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
 
   const setRouteName = (name: string) => {
     setSelectTab(name);
+    const index = children.findIndex(e => e.props.name == name);
+    if (index >= 0) {
+      ref.current.scrollToIndex({ index: index, animated: false });
+    }
   };
 
   const d = type === 'down' ? getPath(maxWidth, height, circleWidth >= 50 ? circleWidth : 50, borderTopLeftRight) : getPathUp(maxWidth, height + 30, circleWidth >= 50 ? circleWidth : 50, borderTopLeftRight);
   if (d) {
     return (
-      <View style={{flex:1 }}>
-        <View style={{ height: maxHeight, backgroundColor: 'white' }}>
-          {children.map((route, index) => {
-            const routeName = route.props.name;
-            return <View key={index} style={[selectTab === routeName ? { flex:1 } : { display: 'none' }]}>{route.props.component()}</View>
-          })}
+      <View style={{ flex: 1 }}>
+        <View style={{ height: maxHeight, width: maxWidth, backgroundColor: 'white' }}>
+          <FlatList
+            ref={ref}
+            style={{ flex: 1 }}
+            data={children}
+            keyExtractor={(e, i) => i.toString()}
+            extraData={children}
+            horizontal
+            scrollEnabled={false}
+            renderItem={({ item, index }) => <View style={{ width: maxWidth, height: maxHeight }} key={index}>{item.props.component()}</View>}
+          />
         </View>
 
         <View style={[styles.container, style]}>
