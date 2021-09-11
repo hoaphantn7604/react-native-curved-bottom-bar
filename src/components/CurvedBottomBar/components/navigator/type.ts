@@ -10,6 +10,7 @@ interface Props {
     bgColor?: string;
     initialRouteName: string;
     strokeWidth?: number;
+    swipeEnabled?: boolean;
     renderCircle: () => JSX.Element;
     tabBar: ({
       routeName,

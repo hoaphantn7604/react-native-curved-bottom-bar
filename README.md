@@ -33,6 +33,7 @@ or
 | borderTopLeftRight | Boolean              | No        |                                                                         |
 | bgColor            | String               | No        |                                                                         |
 | strokeWidth        | Number               | No        |                                                                         |
+| swipeEnabled       | Boolean              | No        | Indicating whether to enable swipe gestures                             |
 
 ### CurvedBottomBar.Screen
 

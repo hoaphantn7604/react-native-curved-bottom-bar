@@ -25,7 +25,8 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
     tabBar,
     renderCircle,
     borderTopLeftRight,
-    strokeWidth
+    strokeWidth,
+    swipeEnabled=false,
   } = props;
 
   const [selectTab, setSelectTab] = useState<string>(initialRouteName);
@@ -71,6 +72,16 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
     }
   };
 
+  const onScrollEnd = (e) => {
+    let contentOffset = e.nativeEvent.contentOffset;
+    let viewSize = e.nativeEvent.layoutMeasurement;
+
+    let pageNum = Math.floor(contentOffset.x / viewSize.width);
+    console.log('scrolled to page ', pageNum);
+   
+    setSelectTab(children[pageNum].props.name);
+  }
+
   const d = type === 'down' ? getPath(maxWidth, height, circleWidth >= 50 ? circleWidth : 50, borderTopLeftRight) : getPathUp(maxWidth, height + 30, circleWidth >= 50 ? circleWidth : 50, borderTopLeftRight);
   if (d) {
     return (
@@ -83,7 +94,9 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
             keyExtractor={(e, i) => i.toString()}
             extraData={orientation}
             horizontal
-            scrollEnabled={false}
+            scrollEnabled={swipeEnabled}
+            pagingEnabled={swipeEnabled}
+            onMomentumScrollEnd={onScrollEnd}
             renderItem={({ item, index }) => <View style={{ width: maxWidth, height: maxHeight }} key={index}>{item.props.component()}</View>}
           />
         </View>
