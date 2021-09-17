@@ -33,7 +33,8 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
   const [itemLeft, setItemLeft] = useState([]);
   const [itemRight, setItemRight] = useState([]);
   const [maxWidth, setMaxWidth] = useState<any>(width);
-  const [maxHeight, setMaxHeight] = useState<any>(Dimensions.get('window').height);
+  const [screenHeight, setScreenHeight] = useState<any>(Dimensions.get('window').height);
+  const [screenWidth, setScreenWidth] = useState<any>(Dimensions.get('window').width);
   const children = props?.children as any[];
   const orientation = useDeviceOrientation();
   const ref: any = useRef(null);
@@ -43,7 +44,8 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
     if (!width) {
       setMaxWidth(w);
     }
-    setMaxHeight(h);
+    setScreenWidth(w);
+    setScreenHeight(h);
 
     setTimeout(() => {
       setRouteName(selectTab);
@@ -86,7 +88,7 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
   if (d) {
     return (
       <View style={{ flex: 1 }}>
-        <View style={{ height: maxHeight, width: maxWidth, backgroundColor: 'white' }}>
+        <View style={{ height: screenHeight, width: screenWidth, backgroundColor: 'white' }}>
           <FlatList
             ref={ref}
             style={{ flex: 1 }}
@@ -97,7 +99,7 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
             scrollEnabled={swipeEnabled}
             pagingEnabled={swipeEnabled}
             onMomentumScrollEnd={onScrollEnd}
-            renderItem={({ item, index }) => <View style={{ width: maxWidth, height: maxHeight }} key={index}>{item.props.component()}</View>}
+            renderItem={({ item, index }) => <View style={{ width: screenWidth, height: screenHeight }} key={index}>{item.props.component()}</View>}
           />
         </View>
 
