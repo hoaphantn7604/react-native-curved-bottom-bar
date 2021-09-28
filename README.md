@@ -40,6 +40,7 @@ or
 | API                | Params               | Description                                                             | 
 | ------------------ | -------------------- | ----------------------------------------------------------------------- |
 | navigate           | () => void           | Navigate to a tabar                                                     |
+| getRouteName       | String               | Return route name                                                       |
 
 ### CurvedBottomBar.Screen
 
@@ -51,7 +52,7 @@ or
 
 ### Usage
 ```javascript
-    import React, { useState } from 'react';
+    import React, { useState, useRef } from 'react';
     import { StatusBar, StyleSheet, TouchableOpacity, View } from 'react-native';
     import { CurvedBottomBar } from 'react-native-curved-bottom-bar';
     import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -59,6 +60,7 @@ or
     StatusBar.setBarStyle('dark-content');
 
     const ThemeScreen = props => {
+        const ref = useRef();
         const [type, setType] = useState<'down' | 'up'>('down');
 
         const onClickButton = () => {
@@ -97,6 +99,7 @@ or
         return (
             <View style={styles.container}>
                 <CurvedBottomBar.Navigator
+                    ref={ref}
                     style={[type === 'down' && {backgroundColor: '#F5F5F5'}]}
                     type={type}
                     height={60}

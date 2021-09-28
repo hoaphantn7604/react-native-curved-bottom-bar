@@ -39,7 +39,7 @@ const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => 
   const refPageView: any = useRef(null);
 
   useImperativeHandle(ref, () => {
-    return { navigate: navigate };
+    return { navigate: navigate, getRouteName: selectTab };
   });
 
   const navigate = (routeName: string) => {

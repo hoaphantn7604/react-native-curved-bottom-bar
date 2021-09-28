@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { StatusBar, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { CurvedBottomBar } from 'react-native-curved-bottom-bar';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -6,6 +6,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 StatusBar.setBarStyle('dark-content');
 
 const ThemeScreen = props => {
+  const ref = useRef();
   const [type, setType] = useState<'down' | 'up'>('down');
 
   const onClickButton = () => {
@@ -44,6 +45,7 @@ const ThemeScreen = props => {
   return (
     <View style={styles.container}>
       <CurvedBottomBar.Navigator
+        ref={ref}
         type={type}
         height={60}
         circleWidth={55}
@@ -58,10 +60,10 @@ const ThemeScreen = props => {
             <Ionicons name="sync-outline" size={26} />
           </TouchableOpacity>
         )}
-        tabBar={({ routeName, selectTab, navigation }) => {
+        tabBar={({ routeName, selectTab, navigate }) => {
           return (
             <TouchableOpacity
-              onPress={() => navigation(routeName)}
+              onPress={() => navigate(routeName)}
               style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
               {_renderIcon(routeName, selectTab)}
             </TouchableOpacity>
@@ -70,21 +72,21 @@ const ThemeScreen = props => {
         <CurvedBottomBar.Screen
           name="title1"
           position="left"
-          component={() => <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />}
+          component={({navigate}) => <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />}
         />
         <CurvedBottomBar.Screen
           name="title2"
-          component={() => <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />}
+          component={({navigate}) => <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />}
           position="left"
         />
         <CurvedBottomBar.Screen
           name="title3"
-          component={() => <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />}
+          component={({navigate}) => <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />}
           position="right"
         />
         <CurvedBottomBar.Screen
           name="title4"
-          component={() => <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />}
+          component={({navigate}) => <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />}
           position="right"
         />
       </CurvedBottomBar.Navigator>
