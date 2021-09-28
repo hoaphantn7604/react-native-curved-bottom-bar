@@ -35,6 +35,12 @@ or
 | strokeWidth        | Number               | No        |                                                                         |
 | swipeEnabled       | Boolean              | No        | Indicating whether to enable swipe gestures                             |
 
+### Method
+
+| API                | Params               | Description                                                             | 
+| ------------------ | -------------------- | ----------------------------------------------------------------------- |
+| navigate           | () => void           | Navigate to a tabar                                                     |
+
 ### CurvedBottomBar.Screen
 
 | Props              | Params               | isRequire | Description                                                                               |

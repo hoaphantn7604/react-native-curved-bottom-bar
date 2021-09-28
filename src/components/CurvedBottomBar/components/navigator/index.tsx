@@ -43,7 +43,7 @@ const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => 
   });
 
   const navigate = (routeName: string) => {
-    setRouteName('routeName');
+    setRouteName(routeName);
   };
 
 
