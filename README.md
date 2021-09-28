@@ -105,10 +105,10 @@ or
                             <Ionicons name="chatbubbles-outline" size={23} />
                         </TouchableOpacity>
                     )}
-                    tabBar={({ routeName, selectTab, navigation }) => {
+                    tabBar={({ routeName, selectTab, navigate }) => {
                     return (
                         <TouchableOpacity
-                            onPress={() => navigation(routeName)}
+                            onPress={() => navigate(routeName)}
                             style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
                         >
                             {_renderIcon(routeName, selectTab)}
@@ -118,21 +118,21 @@ or
                     <CurvedBottomBar.Screen
                         name="title1"
                         position="left"
-                        component={() => <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />}
+                        component={({ navigate }) => <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />}
                     />
                     <CurvedBottomBar.Screen
                         name="title2"
-                        component={() => <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />}
+                        component={({ navigate }) => <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />}
                         position="left"
                     />
                     <CurvedBottomBar.Screen
                         name="title3"
-                        component={() => <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />}
+                        component={({ navigate }) => <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />}
                         position="right"
                     />
                     <CurvedBottomBar.Screen
                         name="title4"
-                        component={() => <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />}
+                        component={({ navigate }) => <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />}
                         position="right"
                     />
                 </CurvedBottomBar.Navigator>

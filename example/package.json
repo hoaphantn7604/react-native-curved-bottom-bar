@@ -13,8 +13,9 @@
     "d3-shape": "^2.1.0",
     "react": "17.0.1",
     "react-native": "0.64.1",
-    "react-native-svg": "^12.1.1",
     "react-native-curved-bottom-bar": "link:../",
+    "react-native-pager-view": "^5.4.4",
+    "react-native-svg": "^12.1.1",
     "react-native-vector-icons": "^8.1.0"
   },
   "devDependencies": {

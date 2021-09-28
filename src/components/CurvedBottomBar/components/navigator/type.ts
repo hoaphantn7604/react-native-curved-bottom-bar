@@ -1,3 +1,4 @@
+import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 
 interface Props {
@@ -15,11 +16,11 @@ interface Props {
     tabBar: ({
       routeName,
       selectTab,
-      navigation,
+      navigate,
     }: {
       routeName: string;
       selectTab: string;
-      navigation: (selectTab: string) => void;
+      navigate: (selectTab: string) => void;
     }) => JSX.Element;
 }
 

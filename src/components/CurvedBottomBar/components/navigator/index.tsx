@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { Dimensions, View } from 'react-native';
 import PagerView from 'react-native-pager-view';
 import Svg, { Path } from 'react-native-svg';
@@ -14,7 +14,7 @@ const defaultProps = {
   strokeWidth: 0
 };
 
-const BottomBarComponent: NavigatorBottomBar = (props) => {
+const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => {
   const {
     type,
     style,
@@ -36,14 +36,23 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
   const [maxWidth, setMaxWidth] = useState<any>(width);
   const children = props?.children as any[];
   const orientation = useDeviceOrientation();
-  const ref: any = useRef(null);
+  const refPageView: any = useRef(null);
+
+  useImperativeHandle(ref, () => {
+    return { navigate: navigate };
+  });
+
+  const navigate = (routeName: string) => {
+    setRouteName('routeName');
+  };
+
 
   useEffect(() => {
     const { width: w, height: h } = Dimensions.get('window');
     if (!width) {
       setMaxWidth(w);
     }
-  }, [orientation])
+  }, [orientation]);
 
   const _renderButtonCenter = () => {
     return renderCircle();
@@ -55,7 +64,7 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
       return index;
     }
     return 0;
-  }, [initialRouteName])
+  }, [initialRouteName]);
 
   useEffect(() => {
     const arrLeft: any = children.filter((item) => item?.props?.position === 'left');
@@ -70,26 +79,26 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
     setSelectTab(name);
     const index = children.findIndex(e => e.props?.name == name);
     if (index >= 0) {
-      ref.current.setPage(index);
+      refPageView.current.setPage(index);
     }
   };
 
   const onPageSelected = (index: number) => {
     setSelectTab(children[index].props?.name);
-  }
+  };
 
   const d = type === 'down' ? getPath(maxWidth, height, circleWidth >= 50 ? circleWidth : 50, borderTopLeftRight) : getPathUp(maxWidth, height + 30, circleWidth >= 50 ? circleWidth : 50, borderTopLeftRight);
   if (d) {
     return (
       <View style={{ flex: 1 }}>
         <PagerView
-          ref={ref}
+          ref={refPageView}
           style={{ flex: 1 }}
           initialPage={selectTabIndex}
           scrollEnabled={swipeEnabled}
           onPageSelected={e => onPageSelected(e.nativeEvent.position)}
         >
-          {children.map((item, index) => <View key={index.toString()} style={{ flex: 1 }}>{item.props.component()}</View>)}
+          {children.map((item, index) => <View key={index.toString()} style={{ flex: 1 }}>{item.props.component({ navigate: (routeName: string) => { setRouteName(routeName) } })}</View>)}
         </PagerView>
 
         <View style={[styles.container, style]}>
@@ -106,7 +115,7 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
                     {tabBar({
                       routeName,
                       selectTab: selectTab,
-                      navigation: (selectTab: string) => {
+                      navigate: (selectTab: string) => {
                         setRouteName(selectTab);
                       },
                     })}
@@ -123,7 +132,7 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
                     {tabBar({
                       routeName,
                       selectTab: selectTab,
-                      navigation: (selectTab: string) => {
+                      navigate: (selectTab: string) => {
                         setRouteName(selectTab);
                       },
                     })}
@@ -137,7 +146,7 @@ const BottomBarComponent: NavigatorBottomBar = (props) => {
     );
   }
   return null;
-};
+});
 
 BottomBarComponent.defaultProps = defaultProps;
 
