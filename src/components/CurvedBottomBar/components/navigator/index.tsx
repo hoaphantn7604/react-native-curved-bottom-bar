@@ -28,6 +28,7 @@ const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => 
     borderTopLeftRight,
     strokeWidth,
     swipeEnabled = false,
+    lazy=false,
   } = props;
 
   const [selectTab, setSelectTab] = useState<string>(initialRouteName);
@@ -37,6 +38,9 @@ const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => 
   const children = props?.children as any[];
   const orientation = useDeviceOrientation();
   const refPageView: any = useRef(null);
+  const [lazyList] = useState<Boolean[]>([...Array(children.length)].map((item, index) =>{
+    return false;
+ }));
 
   useImperativeHandle(ref, () => {
     return { navigate: navigate, getRouteName: selectTab };
@@ -87,6 +91,28 @@ const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => 
     setSelectTab(children[index].props?.name);
   };
 
+  const selectedTab = useMemo(()=>{
+    const selectIndex = children.findIndex(e => e.props?.name == selectTab);
+    lazyList[selectIndex] = true;
+    return lazyList
+  },[selectTab]);
+
+  const _renderTab = (item, index) => {
+    if(lazy){
+      return (<View
+        key={index.toString()}
+        style={{ flex: 1 }}>
+        {selectedTab[index] && item.props.component({ navigate: (routeName: string) => { setRouteName(routeName) } })}
+      </View>)
+    }else{
+      return (<View
+        key={index.toString()}
+        style={{ flex: 1 }}>
+        {item.props.component({ navigate: (routeName: string) => { setRouteName(routeName) } })}
+      </View>)
+    }
+  };
+
   const d = type === 'down' ? getPath(maxWidth, height, circleWidth >= 50 ? circleWidth : 50, borderTopLeftRight) : getPathUp(maxWidth, height + 30, circleWidth >= 50 ? circleWidth : 50, borderTopLeftRight);
   if (d) {
     return (
@@ -95,10 +121,10 @@ const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => 
           ref={refPageView}
           style={{ flex: 1 }}
           initialPage={selectTabIndex}
-          scrollEnabled={swipeEnabled}
+          scrollEnabled={lazy ? false : swipeEnabled}
           onPageSelected={e => onPageSelected(e.nativeEvent.position)}
         >
-          {children.map((item, index) => <View key={index.toString()} style={{ flex: 1 }}>{item.props.component({ navigate: (routeName: string) => { setRouteName(routeName) } })}</View>)}
+          {children.map(_renderTab)}
         </PagerView>
 
         <View style={[styles.container, style]}>

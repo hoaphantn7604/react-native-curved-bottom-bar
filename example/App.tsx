@@ -53,6 +53,7 @@ const ThemeScreen = props => {
         borderTopLeftRight={true}
         strokeWidth={2}
         swipeEnabled={true}
+        lazy
         initialRouteName="title1"
         renderCircle={() => (
           <TouchableOpacity

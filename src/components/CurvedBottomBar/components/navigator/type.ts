@@ -12,6 +12,7 @@ interface Props {
     initialRouteName: string;
     strokeWidth?: number;
     swipeEnabled?: boolean;
+    lazy?: boolean;
     renderCircle: () => JSX.Element;
     tabBar: ({
       routeName,

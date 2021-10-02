@@ -38,12 +38,13 @@ or
 | bgColor            | String               | No        |                                                                         |
 | strokeWidth        | Number               | No        |                                                                         |
 | swipeEnabled       | Boolean              | No        | Indicating whether to enable swipe gestures                             |
+| lazy               | Boolean              | No        | If "lazy" is true then "swipeEnabled" is disabled                       |
 
 ### Method
 
 | API                | Params               | Description                                                             | 
 | ------------------ | -------------------- | ----------------------------------------------------------------------- |
-| navigate           | () => void           | Navigate to a tabar                                                     |
+| navigate           | () => void           | Navigate to a tabbar                                                     |
 | getRouteName       | String               | Return route name                                                       |
 
 ### CurvedBottomBar.Screen
