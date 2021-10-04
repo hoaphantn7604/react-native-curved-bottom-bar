@@ -59,7 +59,7 @@ const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => 
   }, [orientation]);
 
   const _renderButtonCenter = () => {
-    return renderCircle();
+    return renderCircle({selectTab, navigate});
   };
 
   const selectTabIndex = useMemo(() => {

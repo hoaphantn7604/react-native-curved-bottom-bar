@@ -53,9 +53,8 @@ const ThemeScreen = props => {
         borderTopLeftRight={true}
         strokeWidth={2}
         swipeEnabled={true}
-        lazy
         initialRouteName="title1"
-        renderCircle={() => (
+        renderCircle={({ selectTab, navigate }) => (
           <TouchableOpacity
             style={[type === 'down' ? styles.btnCircle : styles.btnCircleUp]} onPress={onClickButton}>
             <Ionicons name="sync-outline" size={26} />
@@ -73,21 +72,21 @@ const ThemeScreen = props => {
         <CurvedBottomBar.Screen
           name="title1"
           position="left"
-          component={({navigate}) => <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />}
+          component={({ navigate }) => <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />}
         />
         <CurvedBottomBar.Screen
           name="title2"
-          component={({navigate}) => <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />}
+          component={({ navigate }) => <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />}
           position="left"
         />
         <CurvedBottomBar.Screen
           name="title3"
-          component={({navigate}) => <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />}
+          component={({ navigate }) => <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />}
           position="right"
         />
         <CurvedBottomBar.Screen
           name="title4"
-          component={({navigate}) => <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />}
+          component={({ navigate }) => <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />}
           position="right"
         />
       </CurvedBottomBar.Navigator>

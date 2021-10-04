@@ -2,7 +2,7 @@ import React from 'react';
 
 interface Props {
   name: string;
-  position: 'left' | 'right';
+  position: 'left' | 'right' | 'center';
   component: ({
     navigate,
   }: {

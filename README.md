@@ -24,36 +24,36 @@ or
 
 ### CurvedBottomBar.Navigator
 
-| Props              | Params               | isRequire | Description                                                             | 
-| ------------------ | -------------------- | --------- | ----------------------------------------------------------------------- |
-| type               | 'down' or 'up'       | Yes       | Type of the center tab item, downward curve or upward curve             |
-| initialRouteName   | String               | Yes       | The name of the route to render on first load of the navigator          |
-| tabBar             | () => JSX.Element    | Yes       | Function that returns a React element to display as the tab bar         |
-| renderCircle       | () => JSX.Element    | Yes       | Function that returns a React element to display as the center tab item |
-| circleWidth        | Number               | No        | Width of the center tab item                                            |
-| style              | ViewStyle            | No        |                                                                         |
-| width              | Number               | No        |                                                                         |
-| height             | Number               | No        |                                                                         |
-| borderTopLeftRight | Boolean              | No        |                                                                         |
-| bgColor            | String               | No        |                                                                         |
-| strokeWidth        | Number               | No        |                                                                         |
-| swipeEnabled       | Boolean              | No        | Indicating whether to enable swipe gestures                             |
-| lazy               | Boolean              | No        | If "lazy" is true then "swipeEnabled" is disabled                       |
+| Props              | Params                                              | isRequire | Description                                                             | 
+| ------------------ | --------------------------------------------------- | --------- | ----------------------------------------------------------------------- |
+| type               | 'down' or 'up'                                      | Yes       | Type of the center tab item, downward curve or upward curve             |
+| initialRouteName   | String                                              | Yes       | The name of the route to render on first load of the navigator          |
+| tabBar             | ({ routeName, selectTab, navigate }) => JSX.Element | Yes       | Function that returns a React element to display as the tab bar         |
+| renderCircle       | ({ selectTab, navigate }) => JSX.Element            | Yes       | Function that returns a React element to display as the center tab item |
+| circleWidth        | Number                                              | No        | Width of the center tab item                                            |
+| style              | ViewStyle                                           | No        |                                                                         |
+| width              | Number                                              | No        |                                                                         |
+| height             | Number                                              | No        |                                                                         |
+| borderTopLeftRight | Boolean                                             | No        |                                                                         |
+| bgColor            | String                                              | No        |                                                                         |
+| strokeWidth        | Number                                              | No        |                                                                         |
+| swipeEnabled       | Boolean                                             | No        | Indicating whether to enable swipe gestures                             |
+| lazy               | Boolean                                             | No        | If "lazy" is true then "swipeEnabled" is disabled                       |
 
 ### Method
 
 | API                | Params               | Description                                                             | 
 | ------------------ | -------------------- | ----------------------------------------------------------------------- |
-| navigate           | () => void           | Navigate to a tabbar                                                     |
+| navigate           | () => void           | Navigate to a tabbar                                                    |
 | getRouteName       | String               | Return route name                                                       |
 
 ### CurvedBottomBar.Screen
 
-| Props              | Params               | isRequire | Description                                                                               |
-| ------------------ | -------------------- | --------- | ----------------------------------------------------------------------------------------- |
-| name               | String               | Yes       | Name of the route to jump to                                                              |
-| position           | left, right          | Yes       | Set position of screen to the left or right of the center tab item                        |
-| component          | () => JSX.Element    | Yes       | Screen params to merge into the destination route                                         |
+| Props              | Params                        | isRequire | Description                                                                               |
+| ------------------ | ----------------------------- | --------- | ----------------------------------------------------------------------------------------- |
+| name               | String                        | Yes       | Name of the route to jump to                                                              |
+| position           | left, right, center           | Yes       | Set position of screen to the left or right of the center tab item                        |
+| component          | ({ navigate }) => JSX.Element | Yes       | Screen params to merge into the destination route                                         |
 
 ### Usage
 ```javascript
@@ -112,7 +112,7 @@ or
                     bgColor="white"
                     borderTopLeftRight={true}
                     initialRouteName="title1"
-                    renderCircle={() => (
+                    renderCircle={({ selectTab, navigate }) => (
                         <TouchableOpacity
                             style={[type === 'down' ? styles.btnCircle : styles.btnCircleUp]} onPress={onClickButton}
                         >
