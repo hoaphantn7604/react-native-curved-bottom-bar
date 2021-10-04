@@ -13,7 +13,13 @@ interface Props {
     strokeWidth?: number;
     swipeEnabled?: boolean;
     lazy?: boolean;
-    renderCircle: () => JSX.Element;
+    renderCircle: ({
+      selectTab,
+      navigate,
+    }: {
+      selectTab: string;
+      navigate: (selectTab: string) => void;
+    }) => JSX.Element;
     tabBar: ({
       routeName,
       selectTab,
