@@ -36,8 +36,8 @@ or
 | renderCircle       | ({ selectTab, navigate }) => JSX.Element            | Yes       | Function that returns a React element to display as the center tab item |
 | circleWidth        | Number                                              | No        | Width of the center tab item                                            |
 | style              | ViewStyle                                           | No        | Styling for container view                                              |
-| width              | Number                                              | No        | Set width for container view                                            |
-| height             | Number                                              | No        | Set height for container view                                           |
+| width              | Number                                              | No        | Customize width for container view                                      |
+| height             | Number                                              | No        | Customize height for container view                                     |
 | borderTopLeftRight | Boolean                                             | No        | Border radius top left and top right of container view                  |
 | bgColor            | String                                              | No        | Background color of container view                                      |
 | strokeWidth        | Number                                              | No        | Border width of container view                                          |
