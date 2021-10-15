@@ -3,12 +3,22 @@ A high performance, beautiful and fully customizable curved bottom navigation ba
 Implemented using [react-native-svg](https://github.com/react-native-svg/react-native-svg) and [react-native-pager-view](https://github.com/callstack/react-native-pager-view).
 ## Getting started
 ```js
-    npm install react-native-curved-bottom-bar react-native-svg react-native-pager-view --save
+    npm install react-native-curved-bottom-bar --save
 ```
 or
 ```js
-    yarn add react-native-curved-bottom-bar react-native-svg react-native-pager-view
+    yarn add react-native-curved-bottom-bar
 ```
+Now we need to install [react-native-svg](https://github.com/react-native-svg/react-native-svg) and [react-native-pager-view](https://github.com/callstack/react-native-pager-view).
+
+```js
+    npm install react-native-svg react-native-pager-view --save
+```
+or
+```js
+    yarn add react-native-svg react-native-pager-view
+```
+
 
 #### Source code demo
 - [react-native-template-components](https://github.com/hoaphantn7604/react-native-template-components) A beautiful template for React Native.
@@ -46,7 +56,7 @@ or
 | Props              | Params                        | isRequire | Description                                                                               |
 | ------------------ | ----------------------------- | --------- | ----------------------------------------------------------------------------------------- |
 | name               | String                        | Yes       | Name of the route to jump to                                                              |
-| position           | left, right, center           | Yes       | Set position of screen to the left or right of the center tab item                        |
+| position           | left, right, center           | Yes       | Set position of screen to the left or right of the center tab item.                       |
 | component          | ({ navigate }) => JSX.Element | Yes       | Screen params to merge into the destination route                                         |
 
 ### Usage
