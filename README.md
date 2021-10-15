@@ -1,6 +1,6 @@
 ## react-native-curved-bottom-bar
 A high performance, beautiful and fully customizable curved bottom navigation bar for React Native.
-
+Implemented using [react-native-svg](https://github.com/react-native-svg/react-native-svg) and [react-native-pager-view](https://github.com/callstack/react-native-pager-view).
 ## Getting started
 ```js
     npm install react-native-curved-bottom-bar react-native-svg react-native-pager-view --save
@@ -8,11 +8,6 @@ A high performance, beautiful and fully customizable curved bottom navigation ba
 or
 ```js
     yarn add react-native-curved-bottom-bar react-native-svg react-native-pager-view
-```
-
-### IOS
-```js
-    cd ios && pod install
 ```
 
 #### Source code demo
