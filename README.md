@@ -34,7 +34,7 @@ or
 | initialRouteName   | String                                              | Yes       | The name of the route to render on first load of the navigator          |
 | tabBar             | ({ routeName, selectTab, navigate }) => JSX.Element | Yes       | Function that returns a React element to display as the tab bar         |
 | renderCircle       | ({ selectTab, navigate }) => JSX.Element            | Yes       | Function that returns a React element to display as the center tab item |
-| circleWidth        | Number                                              | No        | Width of the center tab item                                            |
+| circleWidth        | Number                                              | No        | Customize width of the center tab item. Minimum is 50px                 |
 | style              | ViewStyle                                           | No        | Styling for container view                                              |
 | width              | Number                                              | No        | Customize width for container view                                      |
 | height             | Number                                              | No        | Customize height for container view                                     |
