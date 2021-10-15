@@ -35,12 +35,12 @@ or
 | tabBar             | ({ routeName, selectTab, navigate }) => JSX.Element | Yes       | Function that returns a React element to display as the tab bar         |
 | renderCircle       | ({ selectTab, navigate }) => JSX.Element            | Yes       | Function that returns a React element to display as the center tab item |
 | circleWidth        | Number                                              | No        | Width of the center tab item                                            |
-| style              | ViewStyle                                           | No        |                                                                         |
-| width              | Number                                              | No        |                                                                         |
-| height             | Number                                              | No        |                                                                         |
-| borderTopLeftRight | Boolean                                             | No        |                                                                         |
-| bgColor            | String                                              | No        |                                                                         |
-| strokeWidth        | Number                                              | No        |                                                                         |
+| style              | ViewStyle                                           | No        | Styling for container view                                              |
+| width              | Number                                              | No        | Set width for container view                                            |
+| height             | Number                                              | No        | Set height for container view                                           |
+| borderTopLeftRight | Boolean                                             | No        | Border radius top left and top right of container view                  |
+| bgColor            | String                                              | No        | Background color of container view                                      |
+| strokeWidth        | Number                                              | No        | Border width of container view                                          |
 | swipeEnabled       | Boolean                                             | No        | Indicating whether to enable swipe gestures                             |
 | lazy               | Boolean                                             | No        | If "lazy" is true then "swipeEnabled" is disabled                       |
 
@@ -56,7 +56,7 @@ or
 | Props              | Params                        | isRequire | Description                                                                               |
 | ------------------ | ----------------------------- | --------- | ----------------------------------------------------------------------------------------- |
 | name               | String                        | Yes       | Name of the route to jump to                                                              |
-| position           | left, right, center           | Yes       | Set position of screen to the left or right of the center tab item.                       |
+| position           | left, right, center           | Yes       | Set position of screen to the left or right of the center button. Use type "center" only when you want the center button is a tabview                      |
 | component          | ({ navigate }) => JSX.Element | Yes       | Screen params to merge into the destination route                                         |
 
 ### Usage
