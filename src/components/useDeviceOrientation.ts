@@ -32,18 +32,22 @@ export function useDeviceOrientation() {
   }, []);
 
   useEffect(() => {
-    Dimensions.addEventListener('change', () => {
+    const susbcription = Dimensions.addEventListener('change', () => {
       const screen = Dimensions.get('window');
       onChange(screen);
     });
 
     return () => {
-      Dimensions.removeEventListener('change', ()=>{
-        const screen = Dimensions.get('window');
-        onChange(screen);
-      });
+      if(susbcription?.remove){
+        susbcription.remove();
+      }else {
+        Dimensions.removeEventListener('change', ()=>{
+          const screen = Dimensions.get('window');
+          onChange(screen);
+        });  
+      }
     };
   }, []);
 
   return orientation.portrait === true ? 'PORTRAIT' : 'LANDSCAPE';
-}
+};
