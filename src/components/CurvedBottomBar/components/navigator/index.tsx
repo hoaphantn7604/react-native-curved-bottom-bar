@@ -28,7 +28,7 @@ const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => 
     borderTopLeftRight,
     strokeWidth,
     swipeEnabled = false,
-    lazy=false,
+    lazy = false,
   } = props;
 
   const [selectTab, setSelectTab] = useState<string>(initialRouteName);
@@ -38,9 +38,9 @@ const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => 
   const children = props?.children as any[];
   const orientation = useDeviceOrientation();
   const refPageView: any = useRef(null);
-  const [lazyList] = useState<Boolean[]>([...Array(children.length)].map((item, index) =>{
+  const [lazyList] = useState<Boolean[]>([...Array(children.length)].map((item, index) => {
     return false;
- }));
+  }));
 
   useImperativeHandle(ref, () => {
     return { navigate: navigate, getRouteName: selectTab };
@@ -59,7 +59,7 @@ const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => 
   }, [orientation]);
 
   const _renderButtonCenter = () => {
-    return renderCircle({selectTab, navigate});
+    return renderCircle({ selectTab, navigate });
   };
 
   const selectTabIndex = useMemo(() => {
@@ -91,23 +91,25 @@ const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => 
     setSelectTab(children[index].props?.name);
   };
 
-  const selectedTab = useMemo(()=>{
+  const selectedTab = useMemo(() => {
     const selectIndex = children.findIndex(e => e.props?.name == selectTab);
     lazyList[selectIndex] = true;
     return lazyList
-  },[selectTab]);
+  }, [selectTab]);
 
-  const _renderTab = (item, index) => {
-    if(lazy){
+  const _renderTab = (item: any, index: number) => {
+    if (lazy) {
       return (<View
         key={index.toString()}
         style={{ flex: 1 }}>
+        {item.props.renderHeader && item.props.renderHeader({ navigate: (routeName: string) => { setRouteName(routeName) } })}
         {selectedTab[index] && item.props.component({ navigate: (routeName: string) => { setRouteName(routeName) } })}
       </View>)
-    }else{
+    } else {
       return (<View
         key={index.toString()}
         style={{ flex: 1 }}>
+        {item.props.renderHeader && item.props.renderHeader({ navigate: (routeName: string) => { setRouteName(routeName) } })}
         {item.props.component({ navigate: (routeName: string) => { setRouteName(routeName) } })}
       </View>)
     }
