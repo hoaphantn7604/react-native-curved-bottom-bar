@@ -58,6 +58,7 @@ or
 | name               | String                        | Yes       | Name of the route to jump to                                                              |
 | position           | left, right, center           | Yes       | Set position of screen to the left or right of the center button. Use type "center" only when you want the center button is a tabview                      |
 | component          | ({ navigate }) => JSX.Element | Yes       | Screen params to merge into the destination route                                         |
+| renderHeader       | ({ navigate }) => JSX.Element | Yes       | Customize header in screen                                                                |
 
 ### Example 1
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/example1.png)
