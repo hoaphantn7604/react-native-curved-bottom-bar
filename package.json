@@ -28,19 +28,13 @@
   "license": "MIT",
   "licenseFilename": "LICENSE",
   "readmeFilename": "README.md",
-  "peerDependencies": {
-    "react": ">=16.8.1",
-    "react-native": ">=0.60.0-rc.0 <1.0.x",
-    "react-native-pager-view": "^5.4.4",
-    "react-native-svg": "^12.1.1"
-  },
   "devDependencies": {
     "react": "*",
-    "react-native": "*",
-    "react-native-pager-view": "*",
-    "react-native-svg": "*"
+    "react-native": "*"
   },
   "dependencies": {
-    "d3-shape": "^2.1.0"
+    "d3-shape": "*",
+    "react-native-pager-view": "*",
+    "react-native-svg": "*"
   }
 }
