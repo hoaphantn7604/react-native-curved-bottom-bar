@@ -32,8 +32,8 @@ or
 | ------------------ | --------------------------------------------------- | --------- | ----------------------------------------------------------------------- |
 | type               | 'down' or 'up'                                      | Yes       | Type of the center tab item, downward curve or upward curve             |
 | initialRouteName   | String                                              | Yes       | The name of the route to render on first load of the navigator          |
-| tabBar             | ({ routeName, selectTab, navigate }) => JSX.Element | Yes       | Function that returns a React element to display as the tab bar         |
-| renderCircle       | ({ selectTab, navigate }) => JSX.Element            | Yes       | Function that returns a React element to display as the center tab item |
+| tabBar             | ({ routeName, selectedTab, navigate }) => JSX.Element | Yes       | Function that returns a React element to display as the tab bar         |
+| renderCircle       | ({ selectedTab, navigate }) => JSX.Element            | Yes       | Function that returns a React element to display as the center tab item |
 | circleWidth        | Number                                              | No        | Customize width of the center tab item. Minimum is 50px                 |
 | style              | ViewStyle                                           | No        | Styling for container view                                              |
 | width              | Number                                              | No        | Customize width for container view                                      |
@@ -75,7 +75,7 @@ or
   import Ionicons from 'react-native-vector-icons/Ionicons';
 
   export const tabBar = () => {
-    const _renderIcon = (routeName: string, selectTab: string) => {
+    const _renderIcon = (routeName: string, selectedTab: string) => {
       let icon = '';
 
       switch (routeName) {
@@ -91,11 +91,11 @@ or
         <Ionicons
           name={icon}
           size={25}
-          color={routeName === selectTab ? 'black' : 'gray'}
+          color={routeName === selectedTab ? 'black' : 'gray'}
         />
       );
     };
-    const renderTabBar = ({ routeName, selectTab, navigate }: any) => {
+    const renderTabBar = ({ routeName, selectedTab, navigate }: any) => {
       return (
         <TouchableOpacity
           onPress={() => navigate(routeName)}
@@ -104,7 +104,7 @@ or
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          {_renderIcon(routeName, selectTab)}
+          {_renderIcon(routeName, selectedTab)}
         </TouchableOpacity>
       );
     };
@@ -120,7 +120,7 @@ or
           initialRouteName="title1"
           borderTopLeftRight
           swipeEnabled
-          renderCircle={({ selectTab, navigate }) => (
+          renderCircle={({ selectedTab, navigate }) => (
             <Animated.View style={styles.btnCircle}>
               <TouchableOpacity
                 style={{
@@ -206,7 +206,7 @@ or
   import Ionicons from 'react-native-vector-icons/Ionicons';
 
   export const tabBar = () => {
-    const _renderIcon = (routeName: string, selectTab: string) => {
+    const _renderIcon = (routeName: string, selectedTab: string) => {
       let icon = '';
 
       switch (routeName) {
@@ -222,11 +222,11 @@ or
         <Ionicons
           name={icon}
           size={25}
-          color={routeName === selectTab ? 'black' : 'gray'}
+          color={routeName === selectedTab ? 'black' : 'gray'}
         />
       );
     };
-    const renderTabBar = ({ routeName, selectTab, navigate }: any) => {
+    const renderTabBar = ({ routeName, selectedTab, navigate }: any) => {
       return (
         <TouchableOpacity
           onPress={() => navigate(routeName)}
@@ -235,7 +235,7 @@ or
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          {_renderIcon(routeName, selectTab)}
+          {_renderIcon(routeName, selectedTab)}
         </TouchableOpacity>
       );
     };
@@ -252,7 +252,7 @@ or
           initialRouteName="title1"
           borderTopLeftRight
           swipeEnabled
-          renderCircle={({ selectTab, navigate }) => (
+          renderCircle={({ selectedTab, navigate }) => (
             <Animated.View style={styles.btnCircleUp}>
               <TouchableOpacity
                 style={{

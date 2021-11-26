@@ -31,7 +31,7 @@ const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => 
     lazy = false,
   } = props;
 
-  const [selectTab, setSelectTab] = useState<string>(initialRouteName);
+  const [selectedTab, setselectedTab] = useState<string>(initialRouteName);
   const [itemLeft, setItemLeft] = useState([]);
   const [itemRight, setItemRight] = useState([]);
   const [maxWidth, setMaxWidth] = useState<any>(width);
@@ -43,7 +43,7 @@ const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => 
   }));
 
   useImperativeHandle(ref, () => {
-    return { navigate: navigate, getRouteName: selectTab };
+    return { navigate: navigate, getRouteName: selectedTab };
   });
 
   const navigate = (routeName: string) => {
@@ -59,10 +59,10 @@ const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => 
   }, [orientation]);
 
   const _renderButtonCenter = () => {
-    return renderCircle({ selectTab, navigate });
+    return renderCircle({ selectedTab, navigate });
   };
 
-  const selectTabIndex = useMemo(() => {
+  const selectedTabIndex = useMemo(() => {
     const index = children.findIndex(e => e.props?.name == initialRouteName);
     if (index >= 0) {
       return index;
@@ -80,7 +80,7 @@ const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => 
   }, []);
 
   const setRouteName = (name: string) => {
-    setSelectTab(name);
+    setselectedTab(name);
     const index = children.findIndex(e => e.props?.name == name);
     if (index >= 0) {
       refPageView.current.setPage(index);
@@ -88,14 +88,14 @@ const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => 
   };
 
   const onPageSelected = (index: number) => {
-    setSelectTab(children[index].props?.name);
+    setselectedTab(children[index].props?.name);
   };
 
-  const selectedTab = useMemo(() => {
-    const selectIndex = children.findIndex(e => e.props?.name == selectTab);
+  const tabSelected = useMemo(() => {
+    const selectIndex = children.findIndex(e => e.props?.name == selectedTab);
     lazyList[selectIndex] = true;
     return lazyList
-  }, [selectTab]);
+  }, [selectedTab]);
 
   const _renderTab = (item: any, index: number) => {
     if (lazy) {
@@ -103,7 +103,7 @@ const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => 
         key={index.toString()}
         style={{ flex: 1 }}>
         {item.props.renderHeader && item.props.renderHeader({ navigate: (routeName: string) => { setRouteName(routeName) } })}
-        {selectedTab[index] && item.props.component({ navigate: (routeName: string) => { setRouteName(routeName) } })}
+        {tabSelected[index] && item.props.component({ navigate: (routeName: string) => { setRouteName(routeName) } })}
       </View>)
     } else {
       return (<View
@@ -122,7 +122,7 @@ const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => 
         <PagerView
           ref={refPageView}
           style={{ flex: 1 }}
-          initialPage={selectTabIndex}
+          initialPage={selectedTabIndex}
           scrollEnabled={lazy ? false : swipeEnabled}
           onPageSelected={e => onPageSelected(e.nativeEvent.position)}
         >
@@ -142,9 +142,9 @@ const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => 
                   <View style={{ flex: 1 }} key={index}>
                     {tabBar({
                       routeName,
-                      selectTab: selectTab,
-                      navigate: (selectTab: string) => {
-                        setRouteName(selectTab);
+                      selectedTab: selectedTab,
+                      navigate: (selectedTab: string) => {
+                        setRouteName(selectedTab);
                       },
                     })}
                   </View>
@@ -159,9 +159,9 @@ const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => 
                   <View style={{ flex: 1 }} key={index}>
                     {tabBar({
                       routeName,
-                      selectTab: selectTab,
-                      navigate: (selectTab: string) => {
-                        setRouteName(selectTab);
+                      selectedTab: selectedTab,
+                      navigate: (selectedTab: string) => {
+                        setRouteName(selectedTab);
                       },
                     })}
                   </View>

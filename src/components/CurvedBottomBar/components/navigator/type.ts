@@ -14,20 +14,20 @@ interface Props {
     swipeEnabled?: boolean;
     lazy?: boolean;
     renderCircle: ({
-      selectTab,
+      selectedTab,
       navigate,
     }: {
-      selectTab: string;
-      navigate: (selectTab: string) => void;
+      selectedTab: string;
+      navigate: (selectedTab: string) => void;
     }) => JSX.Element;
     tabBar: ({
       routeName,
-      selectTab,
+      selectedTab,
       navigate,
     }: {
       routeName: string;
-      selectTab: string;
-      navigate: (selectTab: string) => void;
+      selectedTab: string;
+      navigate: (selectedTab: string) => void;
     }) => JSX.Element;
 }
 

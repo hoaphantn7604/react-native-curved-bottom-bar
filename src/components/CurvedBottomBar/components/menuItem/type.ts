@@ -6,12 +6,12 @@ interface Props {
   renderHeader?: ({
     navigate,
   }: {
-    navigate: (selectTab: string) => void;
+    navigate: (selectedTab: string) => void;
   }) => JSX.Element;
   component: ({
     navigate,
   }: {
-    navigate: (selectTab: string) => void;
+    navigate: (selectedTab: string) => void;
   }) => JSX.Element;
 }
 

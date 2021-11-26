@@ -19,7 +19,7 @@ const ThemeScreen = props => {
     }
   }
 
-  const _renderIcon = (routeName: string, selectTab: string) => {
+  const _renderIcon = (routeName: string, selectedTab: string) => {
     let icon = '';
 
     switch (routeName) {
@@ -38,7 +38,7 @@ const ThemeScreen = props => {
     }
 
     return (
-      <Ionicons name={icon} size={23} color={routeName === selectTab ? '#FF3030' : 'gray'} />
+      <Ionicons name={icon} size={23} color={routeName === selectedTab ? '#FF3030' : 'gray'} />
     );
   };
 
@@ -54,19 +54,19 @@ const ThemeScreen = props => {
         strokeWidth={2}
         swipeEnabled={true}
         initialRouteName="title1"
-        renderCircle={({ selectTab, navigate }) => (
+        renderCircle={({ selectedTab, navigate }) => (
           <TouchableOpacity
               style={[type === 'down' ? styles.btnCircle : styles.btnCircleUp]} onPress={onClickButton}
           >
               <Ionicons name="chatbubbles-outline" size={23} />
           </TouchableOpacity>
       )}
-        tabBar={({ routeName, selectTab, navigate }) => {
+        tabBar={({ routeName, selectedTab, navigate }) => {
           return (
             <TouchableOpacity
               onPress={() => navigate(routeName)}
               style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-              {_renderIcon(routeName, selectTab)}
+              {_renderIcon(routeName, selectedTab)}
             </TouchableOpacity>
           );
         }}>
