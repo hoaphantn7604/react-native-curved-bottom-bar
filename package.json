@@ -1,7 +1,7 @@
 {
   "name": "react-native-curved-bottom-bar",
   "title": "React Native Curved Bottom Bar",
-  "version": "1.7.6",
+  "version": "1.7.7",
   "description": "A high performance, beautiful and fully customizable curved bottom navigation bar for React Native.",
   "main": "index.ts",
   "scripts": {
@@ -31,8 +31,10 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
-    "d3-shape": "*",
     "react-native-pager-view": "*",
     "react-native-svg": "*"
+  },
+  "devDependencies": {
+    "d3-shape": "*"
   }
 }
