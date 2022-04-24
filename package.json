@@ -36,5 +36,8 @@
   },
   "dependencies": {
     "d3-shape": "*"
+  },
+  "devDependencies": {
+    "@types/d3-shape": "*"
   }
 }
