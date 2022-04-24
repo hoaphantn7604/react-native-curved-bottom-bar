@@ -5,7 +5,7 @@ import Svg, { Path } from 'react-native-svg';
 import { useDeviceOrientation } from '../../../useDeviceOrientation';
 import { getPath, getPathUp } from './path';
 import { styles } from './styles';
-import { NavigatorBottomBar } from './model';
+import { NavigatorBottomBarProps } from './model';
 
 const defaultProps = {
   bgColor: 'gray',
@@ -14,7 +14,7 @@ const defaultProps = {
   strokeWidth: 0
 };
 
-const BottomBarComponent: NavigatorBottomBar = React.forwardRef((props, ref) => {
+const BottomBarComponent: NavigatorBottomBarProps = React.forwardRef((props, ref) => {
   const {
     type,
     style,

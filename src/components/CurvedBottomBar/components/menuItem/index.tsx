@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { ScreenBottomBar } from './model';
+import { ScreenBottomBarProps } from './model';
 
-const MenuItemComponent: ScreenBottomBar = (props) => {
+const MenuItemComponent: ScreenBottomBarProps = (props) => {
   const { name } = props;
   return (
     <View style={styles.container}>
