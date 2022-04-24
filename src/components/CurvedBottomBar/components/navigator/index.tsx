@@ -5,7 +5,7 @@ import Svg, { Path } from 'react-native-svg';
 import { useDeviceOrientation } from '../../../useDeviceOrientation';
 import { getPath, getPathUp } from './path';
 import { styles } from './styles';
-import { NavigatorBottomBar } from './type';
+import { NavigatorBottomBar } from './model';
 
 const defaultProps = {
   bgColor: 'gray',

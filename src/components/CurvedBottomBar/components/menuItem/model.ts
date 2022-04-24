@@ -1,18 +1,18 @@
 import React from 'react';
 
-interface Props {
+interface IProps {
   name: string;
   position: 'left' | 'right' | 'center';
   renderHeader?: ({
     navigate,
   }: {
     navigate: (selectedTab: string) => void;
-  }) => JSX.Element;
+  }) => React.ReactNode;
   component: ({
     navigate,
   }: {
     navigate: (selectedTab: string) => void;
-  }) => JSX.Element;
+  }) => React.ReactNode;
 }
 
-export type ScreenBottomBar = React.FC<Props>
+export type ScreenBottomBarProps = React.FC<IProps>

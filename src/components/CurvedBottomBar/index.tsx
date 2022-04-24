@@ -1,5 +1,5 @@
 import Navigator from './components/navigator';
 import Screen from './components/menuItem';
-import { CurvedBottomBarType } from './type';
+import { CurvedBottomBarTypeProps } from './model';
 
-export const CurvedBottomBar: CurvedBottomBarType = { Navigator, Screen };
+export const CurvedBottomBar: CurvedBottomBarTypeProps = { Navigator, Screen };

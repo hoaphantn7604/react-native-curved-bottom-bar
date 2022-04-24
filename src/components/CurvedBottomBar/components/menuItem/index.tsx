@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { ScreenBottomBar } from './type';
+import { ScreenBottomBar } from './model';
 
 const MenuItemComponent: ScreenBottomBar = (props) => {
   const { name } = props;

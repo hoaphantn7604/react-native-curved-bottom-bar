@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 
-interface Props {
+interface IProps {
     type?: 'down' | 'up' | string;
     style?: StyleProp<ViewStyle>;
     width?: number;
@@ -13,13 +13,14 @@ interface Props {
     strokeWidth?: number;
     swipeEnabled?: boolean;
     lazy?: boolean;
+    children?: React.ReactNode;
     renderCircle: ({
       selectedTab,
       navigate,
     }: {
       selectedTab: string;
       navigate: (selectedTab: string) => void;
-    }) => JSX.Element;
+    }) => React.ReactNode;
     tabBar: ({
       routeName,
       selectedTab,
@@ -28,7 +29,7 @@ interface Props {
       routeName: string;
       selectedTab: string;
       navigate: (selectedTab: string) => void;
-    }) => JSX.Element;
+    }) => React.ReactNode;
 }
 
-export type NavigatorBottomBar = React.FC<Props>
+export type NavigatorBottomBarProps = React.FC<IProps>
