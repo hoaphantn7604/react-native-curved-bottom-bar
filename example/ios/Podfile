@@ -3,29 +3,19 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'example' do
+target 'CurvedBottomBarExample' do
   config = use_native_modules!
 
-  use_react_native!(
-    :path => config[:reactNativePath],
-    # to enable hermes on iOS, change `false` to `true` and then install pods
-    :hermes_enabled => false
-  )
-
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
-
-  target 'exampleTests' do
-    inherit! :complete
-    # Pods for testing
-  end
+  use_react_native!(:path => config["reactNativePath"])
 
   # Enables Flipper.
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
-  # you should disable the next line.
-  use_flipper!()
+  # you should disable these next few lines.
+  use_flipper!({ 'Flipper' => '0.80.0' })
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   post_install do |installer|
-    react_native_post_install(installer)
+    flipper_post_install(installer)
   end
 end
