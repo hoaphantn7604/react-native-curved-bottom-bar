@@ -60,7 +60,7 @@ const BottomBarComponent = React.forwardRef<any, IProps>((props, ref) => {
     }
   }, [orientation, width]);
 
-  const _renderButtonCenter = () => {
+  const _renderButtonCenter = (navigate: any) => {
     return renderCircle({ selectedTab, navigate });
   };
 
@@ -134,7 +134,7 @@ const BottomBarComponent = React.forwardRef<any, IProps>((props, ref) => {
                 );
               })}
             </View>
-            {_renderButtonCenter()}
+            {_renderButtonCenter(navigation.navigate)}
             <View style={[styles.rowRight, { height: height }]}>
               {itemRight.map((item: any, index) => {
                 const routeName = item?.props?.name;
