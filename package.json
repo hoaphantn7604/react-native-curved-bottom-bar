@@ -51,6 +51,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
+    "@react-navigation/bottom-tabs": "^6.3.1",
     "d3-shape": "*",
     "react-native-pager-view": "*",
     "react-native-svg": "*"
@@ -59,10 +60,10 @@
     "@commitlint/config-conventional": "^11.0.0",
     "@react-native-community/eslint-config": "^2.0.0",
     "@release-it/conventional-changelog": "^2.0.0",
+    "@types/d3-shape": "*",
     "@types/jest": "^26.0.0",
     "@types/react": "^16.9.19",
     "@types/react-native": "0.67.8",
-    "@types/d3-shape": "*",
     "commitlint": "^11.0.0",
     "eslint": "^7.2.0",
     "eslint-config-prettier": "^7.0.0",

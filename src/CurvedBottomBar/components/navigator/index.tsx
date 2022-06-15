@@ -1,19 +1,16 @@
-/* eslint-disable no-shadow */
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React, {
   useCallback,
   useEffect,
   useImperativeHandle,
-  useMemo,
-  useRef,
   useState,
 } from 'react';
 import { Dimensions, View } from 'react-native';
-import PagerView from 'react-native-pager-view';
 import Svg, { Path } from 'react-native-svg';
 import { useDeviceOrientation } from '../../../useDeviceOrientation';
+import type { IProps } from './model';
 import { getPath, getPathUp } from './path';
 import { styles } from './styles';
-import type { IProps } from './model';
 
 const defaultProps = {
   bgColor: 'gray',
@@ -21,6 +18,8 @@ const defaultProps = {
   borderTopLeftRight: false,
   strokeWidth: 0,
 };
+
+const Tab = createBottomTabNavigator();
 
 const BottomBarComponent = React.forwardRef<any, IProps>((props, ref) => {
   const SVG: any = Svg;
@@ -37,8 +36,6 @@ const BottomBarComponent = React.forwardRef<any, IProps>((props, ref) => {
     renderCircle,
     borderTopLeftRight,
     strokeWidth,
-    swipeEnabled = false,
-    lazy = false,
   } = props;
 
   const [selectedTab, setselectedTab] = useState<string>(initialRouteName);
@@ -47,12 +44,6 @@ const BottomBarComponent = React.forwardRef<any, IProps>((props, ref) => {
   const [maxWidth, setMaxWidth] = useState<any>(width);
   const children = props?.children as any[];
   const orientation = useDeviceOrientation();
-  const refPageView: any = useRef(null);
-  const [lazyList] = useState<Boolean[]>(
-    [...Array(children.length)].map(() => {
-      return false;
-    })
-  );
 
   useImperativeHandle(ref, () => {
     return { navigate: navigate, getRouteName: selectedTab };
@@ -73,24 +64,9 @@ const BottomBarComponent = React.forwardRef<any, IProps>((props, ref) => {
     return renderCircle({ selectedTab, navigate });
   };
 
-  const selectedTabIndex = useMemo(() => {
-    const index = children.findIndex((e) => e.props?.name === initialRouteName);
-    if (index >= 0) {
-      return index;
-    }
-    return 0;
-  }, [children, initialRouteName]);
-
-  const setRouteName = useCallback(
-    (name: string) => {
-      setselectedTab(name);
-      const index = children.findIndex((e) => e.props?.name === name);
-      if (index >= 0) {
-        refPageView.current.setPageWithoutAnimation(index);
-      }
-    },
-    [children]
-  );
+  const setRouteName = useCallback((name: string) => {
+    setselectedTab(name);
+  }, []);
 
   useEffect(() => {
     const arrLeft: any = children.filter(
@@ -104,55 +80,6 @@ const BottomBarComponent = React.forwardRef<any, IProps>((props, ref) => {
     setItemRight(arrRight);
     setRouteName(initialRouteName);
   }, [children, initialRouteName, setRouteName]);
-
-  const onPageSelected = (index: number) => {
-    setselectedTab(children[index].props?.name);
-  };
-
-  const tabSelected = useMemo(() => {
-    const selectIndex = children.findIndex(
-      (e) => e.props?.name === selectedTab
-    );
-    lazyList[selectIndex] = true;
-    return lazyList;
-  }, [children, lazyList, selectedTab]);
-
-  const _renderTab = (item: any, index: number) => {
-    if (lazy) {
-      return (
-        <View key={index.toString()} style={styles.flex1}>
-          {item.props.renderHeader &&
-            item.props.renderHeader({
-              navigate: (routeName: string) => {
-                setRouteName(routeName);
-              },
-            })}
-          {tabSelected[index] &&
-            item.props.component({
-              navigate: (routeName: string) => {
-                setRouteName(routeName);
-              },
-            })}
-        </View>
-      );
-    } else {
-      return (
-        <View key={index.toString()} style={styles.flex1}>
-          {item.props.renderHeader &&
-            item.props.renderHeader({
-              navigate: (routeName: string) => {
-                setRouteName(routeName);
-              },
-            })}
-          {item.props.component({
-            navigate: (routeName: string) => {
-              setRouteName(routeName);
-            },
-          })}
-        </View>
-      );
-    }
-  };
 
   const d =
     type === 'down'
@@ -168,21 +95,11 @@ const BottomBarComponent = React.forwardRef<any, IProps>((props, ref) => {
           circleWidth >= 50 ? circleWidth : 50,
           borderTopLeftRight
         );
-  if (d) {
-    return (
-      <View style={styles.flex1}>
-        <PagerView
-          ref={refPageView}
-          style={styles.flex1}
-          initialPage={selectedTabIndex}
-          scrollEnabled={lazy ? false : swipeEnabled}
-          onPageSelected={(e: { nativeEvent: { position: number } }) =>
-            onPageSelected(e.nativeEvent.position)
-          }
-        >
-          {children.map(_renderTab)}
-        </PagerView>
 
+  const MyTabBar = (props: any) => {
+    const { navigation } = props;
+    return (
+      <View>
         <View style={[styles.container, style]}>
           <SVG width={maxWidth} height={height + (type === 'down' ? 0 : 30)}>
             <PATH
@@ -209,6 +126,7 @@ const BottomBarComponent = React.forwardRef<any, IProps>((props, ref) => {
                       routeName,
                       selectedTab: selectedTab,
                       navigate: (selectedTab: string) => {
+                        navigation.navigate({ name: routeName, merge: true });
                         setRouteName(selectedTab);
                       },
                     })}
@@ -226,6 +144,7 @@ const BottomBarComponent = React.forwardRef<any, IProps>((props, ref) => {
                       routeName,
                       selectedTab: selectedTab,
                       navigate: (selectedTab: string) => {
+                        navigation.navigate({ name: routeName, merge: true });
                         setRouteName(selectedTab);
                       },
                     })}
@@ -237,8 +156,15 @@ const BottomBarComponent = React.forwardRef<any, IProps>((props, ref) => {
         </View>
       </View>
     );
-  }
-  return null;
+  };
+
+  return (
+    <Tab.Navigator {...props} tabBar={MyTabBar}>
+      {children?.map((e) => {
+        return <Tab.Screen {...e.props} />;
+      })}
+    </Tab.Navigator>
+  );
 });
 
 BottomBarComponent.defaultProps = defaultProps;

@@ -12,8 +12,6 @@ export interface IProps {
   bgColor?: string;
   initialRouteName: string;
   strokeWidth?: number;
-  swipeEnabled?: boolean;
-  lazy?: boolean;
   renderCircle: ({
     selectedTab,
     navigate,
