@@ -1,5 +1,3 @@
-import type React from 'react';
-
 interface IProps {
   name: string;
   position: 'left' | 'right' | 'center';
@@ -15,4 +13,4 @@ interface IProps {
   }) => JSX.Element;
 }
 
-export type ScreenBottomBarProps = React.FC<IProps>;
+export type ScreenBottomBarProps = IProps;

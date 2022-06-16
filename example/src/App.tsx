@@ -63,7 +63,6 @@ const ThemeScreen = () => {
         bgColor="white"
         borderTopLeftRight={true}
         strokeWidth={2}
-        swipeEnabled={true}
         initialRouteName="title1"
         renderCircle={() => (
           <TouchableOpacity

@@ -1,7 +1,18 @@
+import type {
+  BottomTabNavigationOptions,
+  BottomTabNavigationEventMap,
+} from '@react-navigation/bottom-tabs';
+import type { BottomTabNavigationConfig } from '@react-navigation/bottom-tabs/lib/typescript/src/types';
+import type {
+  DefaultNavigatorOptions,
+  ParamListBase,
+  TabNavigationState,
+  TabRouterOptions,
+} from '@react-navigation/native';
 import type React from 'react';
 import type { StyleProp, ViewStyle } from 'react-native';
 
-export interface IProps {
+type Props = {
   ref: React.MutableRefObject<any>;
   type?: 'down' | 'up' | string;
   style?: StyleProp<ViewStyle>;
@@ -28,6 +39,14 @@ export interface IProps {
     selectedTab: string;
     navigate: (selectedTab: string) => void;
   }) => JSX.Element;
-}
+};
 
-export type NavigatorBottomBarProps = React.FC<IProps>;
+export type NavigatorBottomBarProps = DefaultNavigatorOptions<
+  ParamListBase,
+  TabNavigationState<ParamListBase>,
+  BottomTabNavigationOptions,
+  BottomTabNavigationEventMap
+> &
+  Props &
+  TabRouterOptions &
+  BottomTabNavigationConfig;
