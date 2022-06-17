@@ -2,7 +2,6 @@ import type {
   BottomTabNavigationOptions,
   BottomTabNavigationEventMap,
 } from '@react-navigation/bottom-tabs';
-import type { BottomTabNavigationConfig } from '@react-navigation/bottom-tabs/lib/typescript/src/types';
 import type {
   DefaultNavigatorOptions,
   ParamListBase,
@@ -48,5 +47,4 @@ export type NavigatorBottomBarProps = DefaultNavigatorOptions<
   BottomTabNavigationEventMap
 > &
   Props &
-  TabRouterOptions &
-  BottomTabNavigationConfig;
+  TabRouterOptions;
