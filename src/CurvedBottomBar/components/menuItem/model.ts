@@ -1,4 +1,4 @@
-interface IProps {
+export interface ScreenBottomBarProps {
   name: string;
   position: 'left' | 'right' | 'center';
   renderHeader?: ({
@@ -12,5 +12,3 @@ interface IProps {
     navigate: (selectedTab: string) => void;
   }) => JSX.Element;
 }
-
-export type ScreenBottomBarProps = IProps;

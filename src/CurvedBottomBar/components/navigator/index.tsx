@@ -12,13 +12,7 @@ import { useDeviceOrientation } from '../../../useDeviceOrientation';
 import type { NavigatorBottomBarProps } from './model';
 import { getPath, getPathUp } from './path';
 import { styles } from './styles';
-
-const defaultProps = {
-  bgColor: 'gray',
-  type: 'down',
-  borderTopLeftRight: false,
-  strokeWidth: 0,
-};
+const { width: maxW } = Dimensions.get('window');
 
 const Tab = createBottomTabNavigator();
 
@@ -27,23 +21,23 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
     const SVG: any = Svg;
     const PATH: any = Path;
     const {
-      type,
+      type = 'down',
       style,
       width = null,
       height = 65,
       circleWidth = 50,
-      bgColor,
+      bgColor = 'gray',
       initialRouteName,
       tabBar,
       renderCircle,
-      borderTopLeftRight,
-      strokeWidth,
+      borderTopLeftRight = false,
+      strokeWidth = 0,
     } = props;
 
     const [selectedTab, setselectedTab] = useState<string>(initialRouteName);
-    const [itemLeft, setItemLeft] = useState([]);
-    const [itemRight, setItemRight] = useState([]);
-    const [maxWidth, setMaxWidth] = useState<any>(width);
+    const [itemLeft, setItemLeft] = useState<any[]>([]);
+    const [itemRight, setItemRight] = useState<any[]>([]);
+    const [maxWidth, setMaxWidth] = useState<number>(width || maxW);
     const children = props?.children as any[];
     const orientation = useDeviceOrientation();
 
@@ -162,14 +156,12 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
 
     return (
       <Tab.Navigator {...props} tabBar={MyTabBar}>
-        {children?.map((e) => {
+        {children?.map((e: any) => {
           return <Tab.Screen {...e.props} />;
         })}
       </Tab.Navigator>
     );
   }
 );
-
-BottomBarComponent.defaultProps = defaultProps;
 
 export default BottomBarComponent;
