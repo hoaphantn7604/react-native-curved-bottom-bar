@@ -21,7 +21,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 
 | Props              | Params                                              | isRequire | Description                                                             |
 | ------------------ | --------------------------------------------------- | --------- | ----------------------------------------------------------------------- |
-| type               | 'down' or 'up'                                      | Yes       | Type of the center tab item, downward curve or upward curve             |
+| type               | 'DOWN' or 'UP'                                      | Yes       | Type of the center tab item, downward curve or upward curve             |
 | initialRouteName   | String                                              | Yes       | The name of the route to render on first load of the navigator          |
 | tabBar             | ({ routeName, selectedTab, navigate }) => JSX.Element | Yes       | Function that returns a React element to display as the tab bar         |
 | renderCircle       | ({ selectedTab, navigate }) => JSX.Element            | Yes       | Function that returns a React element to display as the center tab item |
@@ -39,7 +39,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 | Props              | Params                        | isRequire | Description                                                                               |
 | ------------------ | ----------------------------- | --------- | ----------------------------------------------------------------------------------------- |
 | name               | String                        | Yes       | Name of the route to jump to                                                              |
-| position           | left, right, center           | Yes       | Set position of screen to the left or right of the center button. Use type "center" only when you want the center button is a tabview                      |
+| position           | 'LEFT' or 'RIGHT' or 'CENTER' or 'CHILDREN'           | Yes       | Set position of screen to the left or right of the center button. Use type "center" only when you want the center button is a tabview                      |
 | component          | (props) => JSX.Element        | Yes       | Screen params to merge into the destination route                                         |
 
 ### Example 1

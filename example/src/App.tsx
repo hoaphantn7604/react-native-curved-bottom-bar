@@ -2,6 +2,7 @@
 import React, { useState, useRef } from 'react';
 import {
   Alert,
+  Button,
   StatusBar,
   StyleSheet,
   TouchableOpacity,
@@ -9,11 +10,12 @@ import {
 } from 'react-native';
 import { CurvedBottomBar } from 'react-native-curved-bottom-bar';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 
 StatusBar.setBarStyle('dark-content');
 
 const ThemeScreen = () => {
+  const { navigate, goBack } = useNavigation();
   const ref = useRef<any>(null);
   const [type, setType] = useState<'DOWN' | 'UP'>('DOWN');
 
@@ -56,74 +58,113 @@ const ThemeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <NavigationContainer>
-        <CurvedBottomBar.Navigator
-          ref={ref}
-          type={type}
-          height={60}
-          circleWidth={55}
-          bgColor="white"
-          borderTopLeftRight={true}
-          strokeWidth={2}
-          initialRouteName="title1"
-          renderCircle={() => (
+      <CurvedBottomBar.Navigator
+        ref={ref}
+        type={type}
+        height={60}
+        circleWidth={55}
+        bgColor="white"
+        borderTopLeftRight={true}
+        strokeWidth={2}
+        initialRouteName="title1"
+        renderCircle={() => (
+          <TouchableOpacity
+            style={[type === 'DOWN' ? styles.btnCircle : styles.btnCircleUp]}
+            onPress={() => onClickButton()}
+          >
+            <Ionicons name="chatbubbles-outline" size={23} />
+          </TouchableOpacity>
+        )}
+        tabBar={({ routeName, selectedTab, navigate }) => {
+          return (
             <TouchableOpacity
-              style={[type === 'DOWN' ? styles.btnCircle : styles.btnCircleUp]}
-              onPress={() => onClickButton()}
+              onPress={() => navigate(routeName)}
+              style={{
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
             >
-              <Ionicons name="chatbubbles-outline" size={23} />
+              {_renderIcon(routeName, selectedTab)}
             </TouchableOpacity>
-          )}
-          tabBar={({ routeName, selectedTab, navigate }) => {
-            return (
-              <TouchableOpacity
-                onPress={() => navigate(routeName)}
-                style={{
-                  flex: 1,
-                  alignItems: 'center',
-                  justifyContent: 'center',
+          );
+        }}
+      >
+        <CurvedBottomBar.Screen
+          name="title1"
+          position="LEFT"
+          component={() => (
+            <View
+              style={{
+                backgroundColor: '#BFEFFF',
+                flex: 1,
+                justifyContent: 'center',
+              }}
+            >
+              <Button
+                title="Children"
+                onPress={() => {
+                  navigate('children');
                 }}
-              >
-                {_renderIcon(routeName, selectedTab)}
-              </TouchableOpacity>
-            );
-          }}
-        >
-          <CurvedBottomBar.Screen
-            name="title1"
-            position="LEFT"
-            component={() => (
-              <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />
-            )}
-          />
-          <CurvedBottomBar.Screen
-            name="title2"
-            component={() => (
-              <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />
-            )}
-            position="LEFT"
-          />
-          <CurvedBottomBar.Screen
-            name="title3"
-            position="RIGHT"
-            component={() => (
-              <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />
-            )}
-          />
-          <CurvedBottomBar.Screen
-            name="title4"
-            component={() => (
-              <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />
-            )}
-            position="RIGHT"
-          />
-        </CurvedBottomBar.Navigator>
-      </NavigationContainer>
+              />
+            </View>
+          )}
+        />
+        <CurvedBottomBar.Screen
+          name="title2"
+          component={() => (
+            <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />
+          )}
+          position="LEFT"
+        />
+        <CurvedBottomBar.Screen
+          name="title3"
+          position="RIGHT"
+          component={() => (
+            <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />
+          )}
+        />
+        <CurvedBottomBar.Screen
+          name="title4"
+          component={() => (
+            <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />
+          )}
+          position="RIGHT"
+        />
+        <CurvedBottomBar.Screen
+          name="children"
+          component={() => (
+            <View
+              style={{
+                backgroundColor: '#BFEFFF',
+                flex: 1,
+                justifyContent: 'center',
+              }}
+            >
+              <Button
+                title="Back"
+                onPress={() => {
+                  goBack();
+                }}
+              />
+            </View>
+          )}
+          position="CHILDREN"
+        />
+      </CurvedBottomBar.Navigator>
     </View>
   );
 };
 
-export default ThemeScreen;
+const MainScreen = () => {
+  return (
+    <NavigationContainer>
+      <ThemeScreen />
+    </NavigationContainer>
+  );
+};
+
+export default MainScreen;
 
 const styles = StyleSheet.create({
   container: {
