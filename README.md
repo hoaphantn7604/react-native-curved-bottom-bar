@@ -33,12 +33,6 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 | bgColor            | String                                              | No        | Background color of container view                                      |
 | strokeWidth        | Number                                              | No        | Border width of container view                                          |
 
-### Method
-
-| API                | Params               | Description                                                             |
-| ------------------ | -------------------- | ----------------------------------------------------------------------- |
-| navigate           | () => void           | Navigate to a tabbar                                                    |
-| getRouteName       | String               | Return route name                                                       |
 
 ### CurvedBottomBar.Screen
 
@@ -46,8 +40,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 | ------------------ | ----------------------------- | --------- | ----------------------------------------------------------------------------------------- |
 | name               | String                        | Yes       | Name of the route to jump to                                                              |
 | position           | left, right, center           | Yes       | Set position of screen to the left or right of the center button. Use type "center" only when you want the center button is a tabview                      |
-| component          | ({ navigate }) => JSX.Element | Yes       | Screen params to merge into the destination route                                         |
-| renderHeader       | ({ navigate }) => JSX.Element | Yes       | Customize header in screen                                                                |
+| component          | (props) => JSX.Element        | Yes       | Screen params to merge into the destination route                                         |
 
 ### Example 1
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/example1.png)
@@ -126,13 +119,13 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
             <CurvedBottomBar.Screen
               name="title1"
               position="left"
-              component={({ navigate }) => (
+              component={() => (
                 <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />
               )}
             />
             <CurvedBottomBar.Screen
               name="title2"
-              component={({ navigate }) => (
+              component={() => (
                 <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />
               )}
               position="right"
@@ -260,13 +253,13 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
             <CurvedBottomBar.Screen
               name="title1"
               position="left"
-              component={({ navigate }) => (
+              component={() => (
                 <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />
               )}
             />
             <CurvedBottomBar.Screen
               name="title2"
-              component={({ navigate }) => (
+              component={() => (
                 <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />
               )}
               position="right"

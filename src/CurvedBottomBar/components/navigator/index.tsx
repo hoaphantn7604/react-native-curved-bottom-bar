@@ -42,12 +42,8 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
     const orientation = useDeviceOrientation();
 
     useImperativeHandle(ref, () => {
-      return { navigate: navigate, getRouteName: selectedTab };
+      return {};
     });
-
-    const navigate = (routeName: string) => {
-      setRouteName(routeName);
-    };
 
     useEffect(() => {
       const { width: w } = Dimensions.get('window');
@@ -121,9 +117,14 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
                       {tabBar({
                         routeName,
                         selectedTab: selectedTab,
-                        navigate: (selectedTab: string) => {
-                          navigation.navigate({ name: routeName, merge: true });
-                          setRouteName(selectedTab);
+                        navigate: (selectTab: string) => {
+                          if (selectTab !== selectedTab) {
+                            navigation.navigate({
+                              name: routeName,
+                              merge: true,
+                            });
+                            setRouteName(selectTab);
+                          }
                         },
                       })}
                     </View>
@@ -139,9 +140,14 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
                       {tabBar({
                         routeName,
                         selectedTab: selectedTab,
-                        navigate: (selectedTab: string) => {
-                          navigation.navigate({ name: routeName, merge: true });
-                          setRouteName(selectedTab);
+                        navigate: (selectTab: string) => {
+                          if (selectTab !== selectedTab) {
+                            navigation.navigate({
+                              name: routeName,
+                              merge: true,
+                            });
+                            setRouteName(selectTab);
+                          }
                         },
                       })}
                     </View>
