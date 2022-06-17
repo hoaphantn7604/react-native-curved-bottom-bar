@@ -1,11 +1,6 @@
 /* eslint-disable no-shadow */
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import React, {
-  useCallback,
-  useEffect,
-  useImperativeHandle,
-  useState,
-} from 'react';
+import React, { useEffect, useImperativeHandle, useState } from 'react';
 import { Dimensions, View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 import { useDeviceOrientation } from '../../../useDeviceOrientation';
@@ -34,7 +29,6 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
       strokeWidth = 0,
     } = props;
 
-    const [selectedTab, setselectedTab] = useState<string>(initialRouteName);
     const [itemLeft, setItemLeft] = useState<any[]>([]);
     const [itemRight, setItemRight] = useState<any[]>([]);
     const [maxWidth, setMaxWidth] = useState<number>(width || maxW);
@@ -53,12 +47,19 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
     }, [orientation, width]);
 
     const _renderButtonCenter = (navigate: any) => {
-      return renderCircle({ selectedTab, navigate });
-    };
+      const getTab = children.filter(
+        (e: any) => e?.props?.position === 'CENTER'
+      )[0]?.props?.name;
 
-    const setRouteName = useCallback((name: string) => {
-      setselectedTab(name);
-    }, []);
+      return renderCircle({
+        selectedTab: getTab,
+        navigate: (selectTab: string) => {
+          if (selectTab) {
+            navigate(selectTab);
+          }
+        },
+      });
+    };
 
     useEffect(() => {
       const arrLeft: any = children.filter(
@@ -70,8 +71,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
 
       setItemLeft(arrLeft);
       setItemRight(arrRight);
-      setRouteName(initialRouteName);
-    }, [children, initialRouteName, setRouteName]);
+    }, [children, initialRouteName]);
 
     const d =
       type === 'DOWN'
@@ -89,7 +89,8 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
           );
 
     const MyTabBar = (props: any) => {
-      const { navigation } = props;
+      const { state, navigation } = props;
+      const focusedTab = state?.routes[state.index].name;
       return (
         <View>
           <View style={[styles.container, style]}>
@@ -116,14 +117,13 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
                     <View style={styles.flex1} key={index}>
                       {tabBar({
                         routeName,
-                        selectedTab: selectedTab,
+                        selectedTab: focusedTab,
                         navigate: (selectTab: string) => {
-                          if (selectTab !== selectedTab) {
+                          if (selectTab !== focusedTab) {
                             navigation.navigate({
                               name: routeName,
                               merge: true,
                             });
-                            setRouteName(selectTab);
                           }
                         },
                       })}
@@ -139,14 +139,13 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
                     <View style={styles.flex1} key={index}>
                       {tabBar({
                         routeName,
-                        selectedTab: selectedTab,
+                        selectedTab: focusedTab,
                         navigate: (selectTab: string) => {
-                          if (selectTab !== selectedTab) {
+                          if (selectTab !== focusedTab) {
                             navigation.navigate({
                               name: routeName,
                               merge: true,
                             });
-                            setRouteName(selectTab);
                           }
                         },
                       })}

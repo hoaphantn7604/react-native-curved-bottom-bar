@@ -69,7 +69,7 @@ const ThemeScreen = () => {
           renderCircle={() => (
             <TouchableOpacity
               style={[type === 'DOWN' ? styles.btnCircle : styles.btnCircleUp]}
-              onPress={onClickButton}
+              onPress={() => onClickButton()}
             >
               <Ionicons name="chatbubbles-outline" size={23} />
             </TouchableOpacity>
