@@ -56,10 +56,10 @@
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
     "@react-native-community/eslint-config": "^2.0.0",
-    "@release-it/conventional-changelog": "^2.0.0",
-    "react-native-svg": "*",
-    "@types/d3-shape": "*",
     "@react-navigation/bottom-tabs": "^6.3.1",
+    "@react-navigation/native": "^6.0.10",
+    "@release-it/conventional-changelog": "^2.0.0",
+    "@types/d3-shape": "*",
     "@types/jest": "^26.0.0",
     "@types/react": "^18.0.12",
     "@types/react-native": "0.67.8",
@@ -74,14 +74,15 @@
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-builder-bob": "^0.18.0",
+    "react-native-svg": "*",
     "release-it": "^14.2.2",
     "typescript": "^4.1.3"
   },
   "peerDependencies": {
+    "@react-navigation/bottom-tabs": "*",
     "react": "*",
     "react-native": "*",
-    "react-native-svg": "*",
-    "@react-navigation/bottom-tabs": "*"
+    "react-native-svg": "*"
   },
   "jest": {
     "preset": "react-native",
