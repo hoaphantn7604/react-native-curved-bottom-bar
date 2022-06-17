@@ -14,7 +14,7 @@ import type { StyleProp, ViewStyle } from 'react-native';
 
 type Props = {
   ref: React.MutableRefObject<any>;
-  type?: 'down' | 'up' | string;
+  type?: 'DOWN' | 'UP';
   style?: StyleProp<ViewStyle>;
   width?: number;
   height?: number;

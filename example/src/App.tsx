@@ -15,14 +15,14 @@ StatusBar.setBarStyle('dark-content');
 
 const ThemeScreen = () => {
   const ref = useRef<any>(null);
-  const [type, setType] = useState<'down' | 'up'>('down');
+  const [type, setType] = useState<'DOWN' | 'UP'>('DOWN');
 
   const onClickButton = () => {
-    if (type === 'up') {
-      setType('down');
+    if (type === 'UP') {
+      setType('DOWN');
       Alert.alert('Change type curve down');
     } else {
-      setType('up');
+      setType('UP');
       Alert.alert('Change type curve up');
     }
   };
@@ -68,7 +68,7 @@ const ThemeScreen = () => {
           initialRouteName="title1"
           renderCircle={() => (
             <TouchableOpacity
-              style={[type === 'down' ? styles.btnCircle : styles.btnCircleUp]}
+              style={[type === 'DOWN' ? styles.btnCircle : styles.btnCircleUp]}
               onPress={onClickButton}
             >
               <Ionicons name="chatbubbles-outline" size={23} />
@@ -91,7 +91,7 @@ const ThemeScreen = () => {
         >
           <CurvedBottomBar.Screen
             name="title1"
-            position="left"
+            position="LEFT"
             component={() => (
               <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />
             )}
@@ -101,11 +101,11 @@ const ThemeScreen = () => {
             component={() => (
               <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />
             )}
-            position="left"
+            position="LEFT"
           />
           <CurvedBottomBar.Screen
             name="title3"
-            position="right"
+            position="RIGHT"
             component={() => (
               <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />
             )}
@@ -115,7 +115,7 @@ const ThemeScreen = () => {
             component={() => (
               <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />
             )}
-            position="right"
+            position="RIGHT"
           />
         </CurvedBottomBar.Navigator>
       </NavigationContainer>

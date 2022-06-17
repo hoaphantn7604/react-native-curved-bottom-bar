@@ -1,6 +1,6 @@
 import type React from 'react';
 export interface ScreenBottomBarProps {
   name: string;
-  position: 'left' | 'right' | 'center';
+  position: 'LEFT' | 'RIGHT' | 'CENTER';
   component: (props: React.ComponentType<any>) => JSX.Element;
 }

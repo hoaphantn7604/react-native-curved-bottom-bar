@@ -21,7 +21,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
     const SVG: any = Svg;
     const PATH: any = Path;
     const {
-      type = 'down',
+      type = 'DOWN',
       style,
       width = null,
       height = 65,
@@ -62,10 +62,10 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
 
     useEffect(() => {
       const arrLeft: any = children.filter(
-        (item) => item?.props?.position === 'left'
+        (item) => item?.props?.position === 'LEFT'
       );
       const arrRight: any = children.filter(
-        (item) => item?.props?.position === 'right'
+        (item) => item?.props?.position === 'RIGHT'
       );
 
       setItemLeft(arrLeft);
@@ -74,7 +74,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
     }, [children, initialRouteName, setRouteName]);
 
     const d =
-      type === 'down'
+      type === 'DOWN'
         ? getPath(
             maxWidth,
             height,
@@ -93,7 +93,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
       return (
         <View>
           <View style={[styles.container, style]}>
-            <SVG width={maxWidth} height={height + (type === 'down' ? 0 : 30)}>
+            <SVG width={maxWidth} height={height + (type === 'DOWN' ? 0 : 30)}>
               <PATH
                 fill={bgColor}
                 stroke="#DDDDDD"
@@ -105,7 +105,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
               style={[
                 styles.main,
                 { width: maxWidth },
-                type === 'up' && styles.top30,
+                type === 'UP' && styles.top30,
               ]}
             >
               <View style={[styles.rowLeft, { height: height }]}>
