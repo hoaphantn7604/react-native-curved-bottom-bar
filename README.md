@@ -1,6 +1,6 @@
 ## react-native-curved-bottom-bar
 A high performance, beautiful and fully customizable curved bottom navigation bar for React Native.
-Implemented using [react-native-svg](https://github.com/react-native-svg/react-native-svg) and [react-native-pager-view](https://github.com/callstack/react-native-pager-view).
+Implemented using [react-native-svg](https://github.com/react-native-svg/react-native-svg) and [@react-navigation/bottom-tabs](https://github.com/react-navigation/react-navigation).
 ## Getting started
 ```js
     npm install react-native-curved-bottom-bar --save
@@ -9,14 +9,14 @@ or
 ```js
     yarn add react-native-curved-bottom-bar
 ```
-Now we need to install [react-native-svg](https://github.com/react-native-svg/react-native-svg) and [react-native-pager-view](https://github.com/callstack/react-native-pager-view).
+Now we need to install [react-native-svg](https://github.com/react-native-svg/react-native-svg) and [@react-navigation/bottom-tabs](https://github.com/react-navigation/react-navigation).
 
 ```js
-    npm install react-native-svg react-native-pager-view --save
+    npm install react-native-svg @react-navigation/native @react-navigation/bottom-tabs --save
 ```
 or
 ```js
-    yarn add react-native-svg react-native-pager-view
+    yarn add react-native-svg @react-navigation/native @react-navigation/bottom-tabs
 ```
 
 
@@ -28,7 +28,7 @@ or
 
 ### CurvedBottomBar.Navigator
 
-| Props              | Params                                              | isRequire | Description                                                             | 
+| Props              | Params                                              | isRequire | Description                                                             |
 | ------------------ | --------------------------------------------------- | --------- | ----------------------------------------------------------------------- |
 | type               | 'down' or 'up'                                      | Yes       | Type of the center tab item, downward curve or upward curve             |
 | initialRouteName   | String                                              | Yes       | The name of the route to render on first load of the navigator          |
@@ -41,12 +41,10 @@ or
 | borderTopLeftRight | Boolean                                             | No        | Border radius top left and top right of container view                  |
 | bgColor            | String                                              | No        | Background color of container view                                      |
 | strokeWidth        | Number                                              | No        | Border width of container view                                          |
-| swipeEnabled       | Boolean                                             | No        | Indicating whether to enable swipe gestures                             |
-| lazy               | Boolean                                             | No        | If "lazy" is true then "swipeEnabled" is disabled                       |
 
 ### Method
 
-| API                | Params               | Description                                                             | 
+| API                | Params               | Description                                                             |
 | ------------------ | -------------------- | ----------------------------------------------------------------------- |
 | navigate           | () => void           | Navigate to a tabbar                                                    |
 | getRouteName       | String               | Return route name                                                       |
@@ -119,7 +117,6 @@ or
           bgColor="white"
           initialRouteName="title1"
           borderTopLeftRight
-          swipeEnabled
           renderCircle={({ selectedTab, navigate }) => (
             <Animated.View style={styles.btnCircle}>
               <TouchableOpacity
@@ -251,7 +248,6 @@ or
           bgColor="white"
           initialRouteName="title1"
           borderTopLeftRight
-          swipeEnabled
           renderCircle={({ selectedTab, navigate }) => (
             <Animated.View style={styles.btnCircleUp}>
               <TouchableOpacity

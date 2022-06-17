@@ -51,16 +51,16 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "@react-navigation/bottom-tabs": "^6.3.1",
-    "@react-navigation/native": "^6.0.10",
-    "d3-shape": "*",
-    "react-native-svg": "*"
+    "d3-shape": "*"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
     "@react-native-community/eslint-config": "^2.0.0",
     "@release-it/conventional-changelog": "^2.0.0",
+    "react-native-svg": "*",
     "@types/d3-shape": "*",
+    "@react-navigation/bottom-tabs": "^6.3.1",
+    "@react-navigation/native": "^6.0.10",
     "@types/jest": "^26.0.0",
     "@types/react": "^18.0.12",
     "@types/react-native": "0.67.8",
@@ -81,7 +81,9 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
-    "react-native-svg": "*"
+    "react-native-svg": "*",
+    "@react-navigation/bottom-tabs": "*",
+    "@react-navigation/native": "*"
   },
   "jest": {
     "preset": "react-native",
