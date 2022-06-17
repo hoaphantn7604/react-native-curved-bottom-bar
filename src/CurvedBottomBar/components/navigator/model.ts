@@ -29,7 +29,7 @@ type Props = {
     selectedTab: string;
     navigate: (selectedTab: string) => void;
   }) => JSX.Element;
-  tabBar: ({
+  tabBar?: ({
     routeName,
     selectedTab,
     navigate,

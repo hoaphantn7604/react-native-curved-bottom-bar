@@ -32,4 +32,9 @@ export const styles = StyleSheet.create({
   top30: {
     top: 30,
   },
+  itemTab: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });

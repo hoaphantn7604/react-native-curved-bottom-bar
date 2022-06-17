@@ -1,7 +1,7 @@
 /* eslint-disable no-shadow */
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React, { useEffect, useImperativeHandle, useState } from 'react';
-import { Dimensions, View } from 'react-native';
+import { Dimensions, Text, View, TouchableOpacity } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 import { useDeviceOrientation } from '../../../useDeviceOrientation';
 import type { NavigatorBottomBarProps } from './model';
@@ -88,6 +88,17 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
             borderTopLeftRight
           );
 
+    const renderItem = ({ color, routeName, navigate }: any) => {
+      return (
+        <TouchableOpacity
+          style={styles.itemTab}
+          onPress={() => navigate(routeName)}
+        >
+          <Text style={{ color: color }}>{routeName}</Text>
+        </TouchableOpacity>
+      );
+    };
+
     const MyTabBar = (props: any) => {
       const { state, navigation } = props;
       const focusedTab = state?.routes[state.index].name;
@@ -113,6 +124,14 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
                 {itemLeft.map((item: any, index) => {
                   const routeName: string = item?.props?.name;
 
+                  if (tabBar === undefined) {
+                    return renderItem({
+                      routeName,
+                      color: focusedTab === routeName ? 'blue' : 'gray',
+                      navigate: navigation.navigate,
+                    });
+                  }
+
                   return (
                     <View style={styles.flex1} key={index}>
                       {tabBar({
@@ -135,6 +154,15 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
               <View style={[styles.rowRight, { height: height }]}>
                 {itemRight.map((item: any, index) => {
                   const routeName = item?.props?.name;
+
+                  if (tabBar === undefined) {
+                    return renderItem({
+                      routeName,
+                      color: focusedTab === routeName ? 'blue' : 'gray',
+                      navigate: navigation.navigate,
+                    });
+                  }
+
                   return (
                     <View style={styles.flex1} key={index}>
                       {tabBar({
