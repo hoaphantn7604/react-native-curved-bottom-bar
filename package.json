@@ -60,7 +60,6 @@
     "react-native-svg": "*",
     "@types/d3-shape": "*",
     "@react-navigation/bottom-tabs": "^6.3.1",
-    "@react-navigation/native": "^6.0.10",
     "@types/jest": "^26.0.0",
     "@types/react": "^18.0.12",
     "@types/react-native": "0.67.8",
@@ -82,8 +81,7 @@
     "react": "*",
     "react-native": "*",
     "react-native-svg": "*",
-    "@react-navigation/bottom-tabs": "*",
-    "@react-navigation/native": "*"
+    "@react-navigation/bottom-tabs": "*"
   },
   "jest": {
     "preset": "react-native",

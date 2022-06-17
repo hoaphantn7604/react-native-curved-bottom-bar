@@ -3,22 +3,13 @@ A high performance, beautiful and fully customizable curved bottom navigation ba
 Implemented using [react-native-svg](https://github.com/react-native-svg/react-native-svg) and [@react-navigation/bottom-tabs](https://github.com/react-navigation/react-navigation).
 ## Getting started
 ```js
-    npm install react-native-curved-bottom-bar --save
+npm install react-native-curved-bottom-bar --save
 ```
 or
 ```js
-    yarn add react-native-curved-bottom-bar
+yarn add react-native-curved-bottom-bar
 ```
-Now we need to install [react-native-svg](https://github.com/react-native-svg/react-native-svg) and [@react-navigation/bottom-tabs](https://github.com/react-navigation/react-navigation).
-
-```js
-    npm install react-native-svg @react-navigation/native @react-navigation/bottom-tabs --save
-```
-or
-```js
-    yarn add react-native-svg @react-navigation/native @react-navigation/bottom-tabs
-```
-
+Now we need to install [react-native-svg](https://github.com/react-native-svg/react-native-svg) and [@react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator/).
 
 #### Source code demo
 [react-native-template-components](https://github.com/hoaphantn7604/react-native-template-components) A beautiful template for React Native.
@@ -71,6 +62,7 @@ or
   } from 'react-native';
   import { CurvedBottomBar } from 'react-native-curved-bottom-bar';
   import Ionicons from 'react-native-vector-icons/Ionicons';
+  import { NavigationContainer } from '@react-navigation/native';
 
   export const tabBar = () => {
     const _renderIcon = (routeName: string, selectedTab: string) => {
@@ -109,42 +101,44 @@ or
 
     return (
       <View style={{ flex: 1 }}>
-        <CurvedBottomBar.Navigator
-          style={styles.bottomBar}
-          strokeWidth={0.5}
-          height={55}
-          circleWidth={55}
-          bgColor="white"
-          initialRouteName="title1"
-          borderTopLeftRight
-          renderCircle={({ selectedTab, navigate }) => (
-            <Animated.View style={styles.btnCircle}>
-              <TouchableOpacity
-                style={{
-                  flex: 1,
-                  justifyContent: 'center',
-                }}
-                onPress={() => Alert.alert('Click Action')}>
-                <Ionicons name={'apps-sharp'} color="gray" size={25} />
-              </TouchableOpacity>
-            </Animated.View>
-          )}
-          tabBar={renderTabBar}>
-          <CurvedBottomBar.Screen
-            name="title1"
-            position="left"
-            component={({ navigate }) => (
-              <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />
+        <NavigationContainer>
+          <CurvedBottomBar.Navigator
+            style={styles.bottomBar}
+            strokeWidth={0.5}
+            height={55}
+            circleWidth={55}
+            bgColor="white"
+            initialRouteName="title1"
+            borderTopLeftRight
+            renderCircle={({ selectedTab, navigate }) => (
+              <Animated.View style={styles.btnCircle}>
+                <TouchableOpacity
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                  }}
+                  onPress={() => Alert.alert('Click Action')}>
+                  <Ionicons name={'apps-sharp'} color="gray" size={25} />
+                </TouchableOpacity>
+              </Animated.View>
             )}
-          />
-          <CurvedBottomBar.Screen
-            name="title2"
-            component={({ navigate }) => (
-              <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />
-            )}
-            position="right"
-          />
-        </CurvedBottomBar.Navigator>
+            tabBar={renderTabBar}>
+            <CurvedBottomBar.Screen
+              name="title1"
+              position="left"
+              component={({ navigate }) => (
+                <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />
+              )}
+            />
+            <CurvedBottomBar.Screen
+              name="title2"
+              component={({ navigate }) => (
+                <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />
+              )}
+              position="right"
+            />
+          </CurvedBottomBar.Navigator>
+        </NavigationContainer>
       </View>
     );
   };
@@ -201,6 +195,7 @@ or
   } from 'react-native';
   import { CurvedBottomBar } from 'react-native-curved-bottom-bar';
   import Ionicons from 'react-native-vector-icons/Ionicons';
+  import { NavigationContainer } from '@react-navigation/native';
 
   export const tabBar = () => {
     const _renderIcon = (routeName: string, selectedTab: string) => {
@@ -239,43 +234,45 @@ or
 
     return (
       <View style={{ flex: 1 }}>
-        <CurvedBottomBar.Navigator
-          type="up"
-          style={styles.bottomBar}
-          strokeWidth={0.5}
-          height={55}
-          circleWidth={55}
-          bgColor="white"
-          initialRouteName="title1"
-          borderTopLeftRight
-          renderCircle={({ selectedTab, navigate }) => (
-            <Animated.View style={styles.btnCircleUp}>
-              <TouchableOpacity
-                style={{
-                  flex: 1,
-                  justifyContent: 'center',
-                }}
-                onPress={() => Alert.alert('Click Action')}>
-                <Ionicons name={'apps-sharp'} color="gray" size={25} />
-              </TouchableOpacity>
-            </Animated.View>
-          )}
-          tabBar={renderTabBar}>
-          <CurvedBottomBar.Screen
-            name="title1"
-            position="left"
-            component={({ navigate }) => (
-              <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />
+        <NavigationContainer>
+          <CurvedBottomBar.Navigator
+            type="up"
+            style={styles.bottomBar}
+            strokeWidth={0.5}
+            height={55}
+            circleWidth={55}
+            bgColor="white"
+            initialRouteName="title1"
+            borderTopLeftRight
+            renderCircle={({ selectedTab, navigate }) => (
+              <Animated.View style={styles.btnCircleUp}>
+                <TouchableOpacity
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                  }}
+                  onPress={() => Alert.alert('Click Action')}>
+                  <Ionicons name={'apps-sharp'} color="gray" size={25} />
+                </TouchableOpacity>
+              </Animated.View>
             )}
-          />
-          <CurvedBottomBar.Screen
-            name="title2"
-            component={({ navigate }) => (
-              <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />
-            )}
-            position="right"
-          />
-        </CurvedBottomBar.Navigator>
+            tabBar={renderTabBar}>
+            <CurvedBottomBar.Screen
+              name="title1"
+              position="left"
+              component={({ navigate }) => (
+                <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />
+              )}
+            />
+            <CurvedBottomBar.Screen
+              name="title2"
+              component={({ navigate }) => (
+                <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />
+              )}
+              position="right"
+            />
+          </CurvedBottomBar.Navigator>
+        </NavigationContainer>
       </View>
     );
   };

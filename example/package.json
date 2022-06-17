@@ -9,10 +9,14 @@
     "start": "react-native start"
   },
   "dependencies": {
-    "react": "16.13.1",
-    "react-native": "0.63.4",
-    "react-native-pager-view": "*",
-    "react-native-svg": "*",
+    "@react-navigation/bottom-tabs": "^6.3.1",
+    "@react-navigation/native": "^6.0.10",
+    "react": "17.0.2",
+    "react-native": "0.68.2",
+    "react-native-eject": "^0.1.2",
+    "react-native-safe-area-context": "^4.3.1",
+    "react-native-screens": "^3.13.1",
+    "react-native-svg": "^12.3.0",
     "react-native-vector-icons": "^9.1.0"
   },
   "devDependencies": {
