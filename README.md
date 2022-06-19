@@ -14,7 +14,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 #### Source code demo
 [react-native-template-components](https://github.com/hoaphantn7604/react-native-template-components) A beautiful template for React Native.
 ### Demo
-![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/demo.gif)
+![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar.gif)
 
 
 ### CurvedBottomBar.Navigator
@@ -43,7 +43,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 | component          | (props) => JSX.Element        | Yes       | Screen params to merge into the destination route                                         |
 
 ### Example 1
-![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/example1.png)
+![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar-1.png)
 ```javascript
   import React from 'react';
   import {
@@ -176,7 +176,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 ```
 
 ### Example 2
-![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/example2.png)
+![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar-1.png)
 ```js
   import React from 'react';
   import {
