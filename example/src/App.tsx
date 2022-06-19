@@ -1,8 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { useState, useRef } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import React, { useRef, useState } from 'react';
 import {
   Alert,
-  Button,
   StatusBar,
   StyleSheet,
   TouchableOpacity,
@@ -10,12 +10,10 @@ import {
 } from 'react-native';
 import { CurvedBottomBar } from 'react-native-curved-bottom-bar';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
 
 StatusBar.setBarStyle('dark-content');
 
 const ThemeScreen = () => {
-  const { navigate, goBack } = useNavigation();
   const ref = useRef<any>(null);
   const [type, setType] = useState<'DOWN' | 'UP'>('DOWN');
 
@@ -98,16 +96,8 @@ const ThemeScreen = () => {
               style={{
                 backgroundColor: '#BFEFFF',
                 flex: 1,
-                justifyContent: 'center',
               }}
-            >
-              <Button
-                title="Children"
-                onPress={() => {
-                  navigate('children');
-                }}
-              />
-            </View>
+            />
           )}
         />
         <CurvedBottomBar.Screen
@@ -130,26 +120,6 @@ const ThemeScreen = () => {
             <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />
           )}
           position="RIGHT"
-        />
-        <CurvedBottomBar.Screen
-          name="children"
-          component={() => (
-            <View
-              style={{
-                backgroundColor: '#BFEFFF',
-                flex: 1,
-                justifyContent: 'center',
-              }}
-            >
-              <Button
-                title="Back"
-                onPress={() => {
-                  goBack();
-                }}
-              />
-            </View>
-          )}
-          position="CHILDREN"
         />
       </CurvedBottomBar.Navigator>
     </View>
