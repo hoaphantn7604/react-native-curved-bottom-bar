@@ -1,8 +1,8 @@
-import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
-import type React from 'react';
-export interface ScreenBottomBarProps {
-  name: string;
+import type { RouteConfig } from '@react-navigation/core/lib/typescript/src/types';
+
+type MenuItem = {
   position: 'LEFT' | 'RIGHT' | 'CENTER';
-  component: (props: React.ComponentType<any>) => JSX.Element;
-  options?: BottomTabNavigationOptions;
-}
+};
+type RouteConfigComponent = RouteConfig<any, any, any, any, any>;
+
+export type ScreenBottomBarProps = RouteConfigComponent & MenuItem;
