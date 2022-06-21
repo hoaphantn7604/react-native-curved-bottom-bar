@@ -190,7 +190,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
     return (
       <Tab.Navigator {...props} tabBar={MyTabBar}>
         {children?.map((e: any) => {
-          return <Tab.Screen {...e.props} />;
+          return <Tab.Screen key={e} {...e.props} />;
         })}
       </Tab.Navigator>
     );
