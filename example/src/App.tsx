@@ -54,7 +54,7 @@ const ThemeScreen = () => {
     );
   };
 
-  const renderScreen = () => {
+  const RenderScreen = () => {
     return (
       <View
         style={{
@@ -102,21 +102,21 @@ const ThemeScreen = () => {
         <CurvedBottomBar.Screen
           name="title1"
           position="LEFT"
-          component={renderScreen}
+          component={RenderScreen}
         />
         <CurvedBottomBar.Screen
           name="title2"
-          component={renderScreen}
+          component={RenderScreen}
           position="LEFT"
         />
         <CurvedBottomBar.Screen
           name="title3"
           position="RIGHT"
-          component={renderScreen}
+          component={RenderScreen}
         />
         <CurvedBottomBar.Screen
           name="title4"
-          component={renderScreen}
+          component={RenderScreen}
           position="RIGHT"
         />
       </CurvedBottomBar.Navigator>

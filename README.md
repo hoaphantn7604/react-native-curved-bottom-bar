@@ -118,7 +118,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
             tabBar={renderTabBar}>
             <CurvedBottomBar.Screen
               name="title1"
-              position="left"
+              position="LEFT"
               component={() => (
                 <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />
               )}
@@ -128,7 +128,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
               component={() => (
                 <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />
               )}
-              position="right"
+              position="RIGHT"
             />
           </CurvedBottomBar.Navigator>
         </NavigationContainer>
@@ -229,7 +229,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
       <View style={{ flex: 1 }}>
         <NavigationContainer>
           <CurvedBottomBar.Navigator
-            type="up"
+            type="UP"
             style={styles.bottomBar}
             strokeWidth={0.5}
             height={55}
@@ -252,7 +252,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
             tabBar={renderTabBar}>
             <CurvedBottomBar.Screen
               name="title1"
-              position="left"
+              position="LEFT"
               component={() => (
                 <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />
               )}
@@ -262,7 +262,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
               component={() => (
                 <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />
               )}
-              position="right"
+              position="RIGHT"
             />
           </CurvedBottomBar.Navigator>
         </NavigationContainer>
