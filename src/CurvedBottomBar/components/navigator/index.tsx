@@ -91,6 +91,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
     const renderItem = ({ color, routeName, navigate }: any) => {
       return (
         <TouchableOpacity
+          key={routeName}
           style={styles.itemTab}
           onPress={() => navigate(routeName)}
         >
@@ -133,7 +134,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
                   }
 
                   return (
-                    <View style={styles.flex1} key={index}>
+                    <View style={styles.flex1} key={index.toString()}>
                       {tabBar({
                         routeName,
                         selectedTab: focusedTab,
@@ -164,7 +165,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
                   }
 
                   return (
-                    <View style={styles.flex1} key={index}>
+                    <View style={styles.flex1} key={index.toString()}>
                       {tabBar({
                         routeName,
                         selectedTab: focusedTab,
@@ -189,8 +190,8 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
 
     return (
       <Tab.Navigator {...props} tabBar={MyTabBar}>
-        {children?.map((e: any) => {
-          return <Tab.Screen {...e.props} />;
+        {children?.map((e: any, index: number) => {
+          return <Tab.Screen key={index.toString()} {...e.props} />;
         })}
       </Tab.Navigator>
     );

@@ -54,6 +54,17 @@ const ThemeScreen = () => {
     );
   };
 
+  const renderScreen = () => {
+    return (
+      <View
+        style={{
+          backgroundColor: '#BFEFFF',
+          flex: 1,
+        }}
+      />
+    );
+  };
+
   return (
     <View style={styles.container}>
       <CurvedBottomBar.Navigator
@@ -91,34 +102,21 @@ const ThemeScreen = () => {
         <CurvedBottomBar.Screen
           name="title1"
           position="LEFT"
-          component={() => (
-            <View
-              style={{
-                backgroundColor: '#BFEFFF',
-                flex: 1,
-              }}
-            />
-          )}
+          component={renderScreen}
         />
         <CurvedBottomBar.Screen
           name="title2"
-          component={() => (
-            <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />
-          )}
+          component={renderScreen}
           position="LEFT"
         />
         <CurvedBottomBar.Screen
           name="title3"
           position="RIGHT"
-          component={() => (
-            <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />
-          )}
+          component={renderScreen}
         />
         <CurvedBottomBar.Screen
           name="title4"
-          component={() => (
-            <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />
-          )}
+          component={renderScreen}
           position="RIGHT"
         />
       </CurvedBottomBar.Navigator>

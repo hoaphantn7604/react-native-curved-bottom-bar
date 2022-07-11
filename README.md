@@ -176,7 +176,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 ```
 
 ### Example 2
-![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar-1.png)
+![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar-2.png)
 ```js
   import React from 'react';
   import {
