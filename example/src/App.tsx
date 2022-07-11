@@ -13,6 +13,17 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 StatusBar.setBarStyle('dark-content');
 
+const RenderScreen = () => {
+  return (
+    <View
+      style={{
+        backgroundColor: '#BFEFFF',
+        flex: 1,
+      }}
+    />
+  );
+};
+
 const ThemeScreen = () => {
   const ref = useRef<any>(null);
   const [type, setType] = useState<'DOWN' | 'UP'>('DOWN');
@@ -50,17 +61,6 @@ const ThemeScreen = () => {
         name={icon}
         size={23}
         color={routeName === selectedTab ? '#FF3030' : 'gray'}
-      />
-    );
-  };
-
-  const RenderScreen = () => {
-    return (
-      <View
-        style={{
-          backgroundColor: '#BFEFFF',
-          flex: 1,
-        }}
       />
     );
   };
