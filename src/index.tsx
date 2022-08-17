@@ -1,3 +1,1 @@
-import { CurvedBottomBar } from './CurvedBottomBar';
-
-export { CurvedBottomBar };
+export * from './CurvedBottomBar';
