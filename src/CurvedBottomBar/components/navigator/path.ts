@@ -3,10 +3,11 @@ import { scale } from 'react-native-size-scaling';
 
 export const getPath = (
   width: number,
-  height: number,
+  iHeight: number,
   centerWidth: number,
   borderTopLeftRight = false
 ) => {
+  const height = scale(iHeight);
   const circleWidth = scale(centerWidth) + scale(16);
 
   const line: any = (shape as any)
@@ -33,9 +34,9 @@ export const getPath = (
       { x: (width - circleWidth) / 2, y: scale(17) },
 
       { x: width / 2 - circleWidth / 2 + scale(8), y: height / 2 + scale(2) },
-      { x: width / 2 - 10, y: height / 2 + scale(10) },
+      { x: width / 2 - scale(10), y: height / 2 + scale(10) },
       { x: width / 2, y: height / 2 + scale(10) },
-      { x: width / 2 + 10, y: height / 2 + scale(10) },
+      { x: width / 2 + scale(10), y: height / 2 + scale(10) },
       { x: width / 2 + circleWidth / 2 - scale(8), y: height / 2 + scale(2) },
 
       { x: (width - circleWidth) / 2 + circleWidth, y: scale(17) }, // border center right
@@ -58,7 +59,7 @@ export const getPath = (
     { x: width - scale(20), y: 0 },
     { x: width - scale(10), y: scale(2) },
     { x: width - scale(2), y: scale(10) },
-    { x: width, y: 20 },
+    { x: width, y: scale(20) },
     { x: width, y: height },
     { x: width, y: height },
     // bottom
@@ -99,10 +100,11 @@ export const getPath = (
 
 export const getPathUp = (
   width: number,
-  height: number,
+  iHeight: number,
   centerWidth = 50,
   borderTopLeftRight = false
 ) => {
+  const height = scale(iHeight);
   const circleWidth = scale(centerWidth);
 
   const line = (shape as any)

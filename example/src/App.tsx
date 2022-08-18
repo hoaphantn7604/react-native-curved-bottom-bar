@@ -1,15 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 import { NavigationContainer } from '@react-navigation/native';
 import React, { useRef, useState } from 'react';
-import {
-  Alert,
-  StatusBar,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { Alert, StatusBar, TouchableOpacity, View } from 'react-native';
 import { CurvedBottomBar } from 'react-native-curved-bottom-bar';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { StyleSheet } from 'react-native-size-scaling';
 
 StatusBar.setBarStyle('dark-content');
 
