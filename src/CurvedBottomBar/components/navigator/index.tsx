@@ -32,12 +32,17 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
     const [itemLeft, setItemLeft] = useState<any[]>([]);
     const [itemRight, setItemRight] = useState<any[]>([]);
     const [maxWidth, setMaxWidth] = useState<number>(width || maxW);
+    const [isShow, setIsShow] = useState(true);
     const children = props?.children as any[];
     const orientation = useDeviceOrientation();
 
     useImperativeHandle(ref, () => {
-      return {};
+      return { setVisible };
     });
+
+    const setVisible = (visible: boolean) => {
+      setIsShow(visible);
+    };
 
     useEffect(() => {
       const { width: w } = Dimensions.get('window');
@@ -104,84 +109,82 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
       const { state, navigation } = props;
       const focusedTab = state?.routes[state.index].name;
       return (
-        <View>
-          <View style={[styles.container, style]}>
-            <SVG width={maxWidth} height={height + (type === 'DOWN' ? 0 : 30)}>
-              <PATH
-                fill={bgColor}
-                stroke="#DDDDDD"
-                strokeWidth={strokeWidth}
-                {...{ d }}
-              />
-            </SVG>
-            <View
-              style={[
-                styles.main,
-                { width: maxWidth },
-                type === 'UP' && styles.top30,
-              ]}
-            >
-              <View style={[styles.rowLeft, { height: height }]}>
-                {itemLeft.map((item: any, index) => {
-                  const routeName: string = item?.props?.name;
+        <View style={[styles.container, style, !isShow && styles.hide]}>
+          <SVG width={maxWidth} height={height + (type === 'DOWN' ? 0 : 30)}>
+            <PATH
+              fill={bgColor}
+              stroke="#DDDDDD"
+              strokeWidth={strokeWidth}
+              {...{ d }}
+            />
+          </SVG>
+          <View
+            style={[
+              styles.main,
+              { width: maxWidth },
+              type === 'UP' && styles.top30,
+            ]}
+          >
+            <View style={[styles.rowLeft, { height: height }]}>
+              {itemLeft.map((item: any, index) => {
+                const routeName: string = item?.props?.name;
 
-                  if (tabBar === undefined) {
-                    return renderItem({
+                if (tabBar === undefined) {
+                  return renderItem({
+                    routeName,
+                    color: focusedTab === routeName ? 'blue' : 'gray',
+                    navigate: navigation.navigate,
+                  });
+                }
+
+                return (
+                  <View style={styles.flex1} key={index.toString()}>
+                    {tabBar({
                       routeName,
-                      color: focusedTab === routeName ? 'blue' : 'gray',
-                      navigate: navigation.navigate,
-                    });
-                  }
+                      selectedTab: focusedTab,
+                      navigate: (selectTab: string) => {
+                        if (selectTab !== focusedTab) {
+                          navigation.navigate({
+                            name: routeName,
+                            merge: true,
+                          });
+                        }
+                      },
+                    })}
+                  </View>
+                );
+              })}
+            </View>
+            {_renderButtonCenter(navigation.navigate)}
+            <View style={[styles.rowRight, { height: height }]}>
+              {itemRight.map((item: any, index) => {
+                const routeName = item?.props?.name;
 
-                  return (
-                    <View style={styles.flex1} key={index.toString()}>
-                      {tabBar({
-                        routeName,
-                        selectedTab: focusedTab,
-                        navigate: (selectTab: string) => {
-                          if (selectTab !== focusedTab) {
-                            navigation.navigate({
-                              name: routeName,
-                              merge: true,
-                            });
-                          }
-                        },
-                      })}
-                    </View>
-                  );
-                })}
-              </View>
-              {_renderButtonCenter(navigation.navigate)}
-              <View style={[styles.rowRight, { height: height }]}>
-                {itemRight.map((item: any, index) => {
-                  const routeName = item?.props?.name;
+                if (tabBar === undefined) {
+                  return renderItem({
+                    routeName,
+                    color: focusedTab === routeName ? 'blue' : 'gray',
+                    navigate: navigation.navigate,
+                  });
+                }
 
-                  if (tabBar === undefined) {
-                    return renderItem({
+                return (
+                  <View style={styles.flex1} key={index.toString()}>
+                    {tabBar({
                       routeName,
-                      color: focusedTab === routeName ? 'blue' : 'gray',
-                      navigate: navigation.navigate,
-                    });
-                  }
-
-                  return (
-                    <View style={styles.flex1} key={index.toString()}>
-                      {tabBar({
-                        routeName,
-                        selectedTab: focusedTab,
-                        navigate: (selectTab: string) => {
-                          if (selectTab !== focusedTab) {
-                            navigation.navigate({
-                              name: routeName,
-                              merge: true,
-                            });
-                          }
-                        },
-                      })}
-                    </View>
-                  );
-                })}
-              </View>
+                      selectedTab: focusedTab,
+                      navigate: (selectTab: string) => {
+                        if (selectTab !== focusedTab) {
+                          navigation.navigate({
+                            name: routeName,
+                            merge: true,
+                          });
+                        }
+                      },
+                    })}
+                  </View>
+                );
+              })}
             </View>
           </View>
         </View>

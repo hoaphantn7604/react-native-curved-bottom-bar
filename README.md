@@ -44,6 +44,11 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 | position           | 'LEFT' or 'RIGHT' or 'CENTER' | Yes       | Set position of screen to the left or right of the center button. Use type "center" only when you want the center button is a tabview                      |
 | component          | (props) => JSX.Element        | Yes       | Screen params to merge into the destination route                                         |
 
+### API
+| Function           | Params                        | Description                                                                               |
+| ------------------ | ----------------------------- | ----------------------------------------------------------------------------------------- |
+| setVisible         | Boolean                       | Used to hide/show the tab bar. Ex: ref.current.setVisible(false)                          |
+
 ### Example 1
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar-1.png)
 ```javascript
