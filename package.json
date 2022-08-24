@@ -1,6 +1,6 @@
 {
   "name": "react-native-curved-bottom-bar",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A high performance, beautiful and fully customizable curved bottom navigation bar for React Native.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
