@@ -108,8 +108,11 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
     const MyTabBar = (props: any) => {
       const { state, navigation } = props;
       const focusedTab = state?.routes[state.index].name;
+      if (isShow) {
+        return null;
+      }
       return (
-        <View style={[styles.container, style, !isShow && styles.hide]}>
+        <View style={[styles.container, style]}>
           <SVG width={maxWidth} height={height + (type === 'DOWN' ? 0 : 30)}>
             <PATH
               fill={bgColor}
