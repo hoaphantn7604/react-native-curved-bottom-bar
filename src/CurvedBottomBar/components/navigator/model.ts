@@ -23,9 +23,11 @@ type Props = {
   initialRouteName: string;
   strokeWidth?: number;
   renderCircle: ({
+    routeName,
     selectedTab,
     navigate,
   }: {
+    routeName: string;
     selectedTab: string;
     navigate: (selectedTab: string) => void;
   }) => JSX.Element;

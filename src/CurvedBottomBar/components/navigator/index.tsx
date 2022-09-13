@@ -51,13 +51,14 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
       }
     }, [orientation, width]);
 
-    const _renderButtonCenter = (navigate: any) => {
+    const _renderButtonCenter = (focusedTab: string, navigate: any) => {
       const getTab = children.filter(
         (e: any) => e?.props?.position === 'CENTER'
       )[0]?.props?.name;
 
       return renderCircle({
-        selectedTab: getTab,
+        routeName: getTab,
+        selectedTab: focusedTab,
         navigate: (selectTab: string) => {
           if (selectTab) {
             navigate(selectTab);
@@ -160,7 +161,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
                 );
               })}
             </View>
-            {_renderButtonCenter(navigation.navigate)}
+            {_renderButtonCenter(focusedTab, navigation.navigate)}
             <View style={[styles.rowRight, { height: height }]}>
               {itemRight.map((item: any, index) => {
                 const routeName = item?.props?.name;
