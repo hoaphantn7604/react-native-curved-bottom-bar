@@ -19,19 +19,20 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 
 ### CurvedBottomBar.Navigator
 
-| Props              | Params                                              | isRequire | Description                                                             |
-| ------------------ | --------------------------------------------------- | --------- | ----------------------------------------------------------------------- |
-| type               | 'DOWN' or 'UP'                                      | Yes       | Type of the center tab item, downward curve or upward curve             |
-| initialRouteName   | String                                              | Yes       | The name of the route to render on first load of the navigator          |
+| Props              | Params                                                | isRequire | Description                                                             |
+|--------------------|-------------------------------------------------------| --------- |-------------------------------------------------------------------------|
+| type               | 'DOWN' or 'UP'                                        | Yes       | Type of the center tab item, downward curve or upward curve             |
+| initialRouteName   | String                                                | Yes       | The name of the route to render on first load of the navigator          |
 | tabBar             | ({ routeName, selectedTab, navigate }) => JSX.Element | Yes       | Function that returns a React element to display as the tab bar         |
 | renderCircle       | ({ routeName, selectedTab, navigate }) => JSX.Element | Yes       | Function that returns a React element to display as the center tab item |
-| circleWidth        | Number                                              | No        | Customize width of the center tab item. Minimum is 50px                 |
-| style              | ViewStyle                                           | No        | Styling for container view                                              |
-| width              | Number                                              | No        | Customize width for container view                                      |
-| height             | Number                                              | No        | Customize height for container view                                     |
-| borderTopLeftRight | Boolean                                             | No        | Border radius top left and top right of container view                  |
-| bgColor            | String                                              | No        | Background color of container view                                      |
-| strokeWidth        | Number                                              | No        | Border width of container view                                          |
+| circleWidth        | Number                                                | No        | Customize width of the center tab item. Minimum is 50px                 |
+| style              | ViewStyle                                             | No        | Styling for container view                                              |
+| width              | Number                                                | No        | Customize width for container view                                      |
+| height             | Number                                                | No        | Customize height for container view                                     |
+| borderTopLeftRight | Boolean                                               | No        | Border radius top left and top right of container view                  |
+| bgColor            | String                                                | No        | Background color of container view                                      |
+| strokeColor        | ColorValue                                            | No        | Navigator stroke color                                                  |
+| strokeWidth        | Number                                                | No        | Border width of container view                                          |
 
 
 ### CurvedBottomBar.Screen
@@ -103,6 +104,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
           <CurvedBottomBar.Navigator
             style={styles.bottomBar}
             strokeWidth={0.5}
+            strokeColor="#DDDDDD"
             height={55}
             circleWidth={55}
             bgColor="white"
@@ -237,6 +239,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
             type="UP"
             style={styles.bottomBar}
             strokeWidth={0.5}
+            strokeColor="#DDDDDD"
             height={55}
             circleWidth={55}
             bgColor="white"

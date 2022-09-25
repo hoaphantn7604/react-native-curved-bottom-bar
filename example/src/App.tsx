@@ -70,6 +70,7 @@ const ThemeScreen = () => {
         bgColor="white"
         borderTopLeftRight={true}
         strokeWidth={2}
+        strokeColor={'#6e00f6'}
         initialRouteName="title1"
         renderCircle={() => (
           <TouchableOpacity
