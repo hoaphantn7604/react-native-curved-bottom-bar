@@ -9,7 +9,7 @@ import type {
   TabRouterOptions,
 } from '@react-navigation/native';
 import type React from 'react';
-import type { StyleProp, ViewStyle } from 'react-native';
+import type { ColorValue, StyleProp, ViewStyle } from 'react-native';
 
 type Props = {
   ref: React.MutableRefObject<any>;
@@ -22,6 +22,7 @@ type Props = {
   bgColor?: string;
   initialRouteName: string;
   strokeWidth?: number;
+  strokeColor?: ColorValue;
   renderCircle: ({
     routeName,
     selectedTab,

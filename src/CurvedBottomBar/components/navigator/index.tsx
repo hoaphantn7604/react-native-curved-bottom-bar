@@ -22,6 +22,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
       height = 65,
       circleWidth = 50,
       bgColor = 'gray',
+      strokeColor = '#DDDDDD',
       initialRouteName,
       tabBar,
       renderCircle,
@@ -119,7 +120,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
           <SVG width={maxWidth} height={height + (type === 'DOWN' ? 0 : 30)}>
             <PATH
               fill={bgColor}
-              stroke="#DDDDDD"
+              stroke={strokeColor}
               strokeWidth={strokeWidth}
               {...{ d }}
             />
