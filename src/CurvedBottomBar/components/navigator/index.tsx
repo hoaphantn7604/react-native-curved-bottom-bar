@@ -2,6 +2,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React, { useEffect, useImperativeHandle, useState } from 'react';
 import { Dimensions, Text, View, TouchableOpacity } from 'react-native';
+import { scale } from 'react-native-size-scaling';
 import Svg, { Path } from 'react-native-svg';
 import { useDeviceOrientation } from '../../../useDeviceOrientation';
 import type { NavigatorBottomBarProps } from './model';
@@ -22,7 +23,6 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
       height = 65,
       circleWidth = 50,
       bgColor = 'gray',
-      strokeColor = '#DDDDDD',
       initialRouteName,
       tabBar,
       renderCircle,
@@ -117,10 +117,13 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
 
       return (
         <View style={[styles.container, style]}>
-          <SVG width={maxWidth} height={height + (type === 'DOWN' ? 0 : 30)}>
+          <SVG
+            width={maxWidth}
+            height={scale(height) + (type === 'DOWN' ? 0 : scale(30))}
+          >
             <PATH
               fill={bgColor}
-              stroke={strokeColor}
+              stroke="#DDDDDD"
               strokeWidth={strokeWidth}
               {...{ d }}
             />
@@ -132,7 +135,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
               type === 'UP' && styles.top30,
             ]}
           >
-            <View style={[styles.rowLeft, { height: height }]}>
+            <View style={[styles.rowLeft, { height: scale(height) }]}>
               {itemLeft.map((item: any, index) => {
                 const routeName: string = item?.props?.name;
 
@@ -163,7 +166,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
               })}
             </View>
             {_renderButtonCenter(focusedTab, navigation.navigate)}
-            <View style={[styles.rowRight, { height: height }]}>
+            <View style={[styles.rowRight, { height: scale(height) }]}>
               {itemRight.map((item: any, index) => {
                 const routeName = item?.props?.name;
 

@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native-size-scaling';
 
 export const styles = StyleSheet.create({
   wrapContainer: {
