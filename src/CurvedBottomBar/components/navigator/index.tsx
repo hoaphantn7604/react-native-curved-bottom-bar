@@ -28,6 +28,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
       renderCircle,
       borderTopLeftRight = false,
       strokeWidth = 0,
+      strokeColor = '#DDDDDD',
     } = props;
 
     const [itemLeft, setItemLeft] = useState<any[]>([]);
@@ -123,7 +124,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
           >
             <PATH
               fill={bgColor}
-              stroke="#DDDDDD"
+              stroke={strokeColor}
               strokeWidth={strokeWidth}
               {...{ d }}
             />
