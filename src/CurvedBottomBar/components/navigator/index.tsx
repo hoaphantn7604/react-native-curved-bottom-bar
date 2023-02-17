@@ -81,19 +81,16 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
       setItemRight(arrRight);
     }, [children, initialRouteName]);
 
+    const getWidth =
+      circleWidth < 50 ? 50 : circleWidth > 60 ? 60 : circleWidth;
+
     const d =
       type === 'DOWN'
-        ? getPathDown(
-            maxWidth,
-            height,
-            circleWidth >= 50 ? circleWidth : 50,
-            borderTopLeftRight,
-            position
-          )
+        ? getPathDown(maxWidth, height, getWidth, borderTopLeftRight, position)
         : getPathUp(
             maxWidth,
             height + 30,
-            circleWidth >= 50 ? circleWidth : 50,
+            getWidth,
             borderTopLeftRight,
             position
           );
@@ -156,7 +153,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
       if (position === 'LEFT') {
         return (
           <>
-            <View style={{ marginLeft: circleWidth / 2 }}>
+            <View style={{ marginLeft: getWidth / 2 }}>
               {_renderButtonCenter(focusedTab, navigation.navigate)}
             </View>
             {_renderTabIcon(
@@ -176,7 +173,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
               focusedTab,
               navigation
             )}
-            <View style={{ marginRight: circleWidth / 2 }}>
+            <View style={{ marginRight: getWidth / 2 }}>
               {_renderButtonCenter(focusedTab, navigation.navigate)}
             </View>
           </>

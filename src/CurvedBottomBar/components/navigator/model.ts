@@ -11,15 +11,27 @@ import type {
 import type React from 'react';
 import type { ColorValue, StyleProp, ViewStyle } from 'react-native';
 
+type Enumerate<
+  N extends number,
+  Acc extends number[] = []
+> = Acc['length'] extends N
+  ? Acc[number]
+  : Enumerate<N, [...Acc, Acc['length']]>;
+
+type Range<F extends number, T extends number> = Exclude<
+  Enumerate<T>,
+  Enumerate<F>
+>;
+
 type Props = {
   ref: React.MutableRefObject<any>;
   type?: 'DOWN' | 'UP';
   position?: 'CENTER' | 'LEFT' | 'RIGHT';
   style?: StyleProp<ViewStyle>;
   width?: number;
-  height?: number;
+  height?: Range<50, 91>;
   borderTopLeftRight?: boolean;
-  circleWidth?: number;
+  circleWidth?: Range<50, 61>;
   bgColor?: string;
   initialRouteName: string;
   strokeWidth?: number;
