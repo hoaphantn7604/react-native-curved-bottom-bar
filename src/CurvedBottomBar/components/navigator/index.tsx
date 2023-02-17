@@ -156,7 +156,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
       if (position === 'LEFT') {
         return (
           <>
-            <View style={styles.circleLeft}>
+            <View style={{ marginLeft: circleWidth / 2 }}>
               {_renderButtonCenter(focusedTab, navigation.navigate)}
             </View>
             {_renderTabIcon(
@@ -176,7 +176,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
               focusedTab,
               navigation
             )}
-            <View style={styles.circleRight}>
+            <View style={{ marginRight: circleWidth / 2 }}>
               {_renderButtonCenter(focusedTab, navigation.navigate)}
             </View>
           </>
