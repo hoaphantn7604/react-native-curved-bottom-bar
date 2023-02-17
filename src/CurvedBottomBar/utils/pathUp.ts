@@ -105,7 +105,7 @@ const lineBorderRight = (width: number, height: number) => {
 
 //** Path Curved Up */
 const lineCurved = (iPosition: number, circle: number) => {
-  const position = scale(iPosition);
+  const position = iPosition;
   const circleWidth = circle + position;
   const trim = (position + circleWidth) / 2;
 
@@ -114,7 +114,7 @@ const lineCurved = (iPosition: number, circle: number) => {
     .x((d: { x: any }) => d.x)
     .y((d: { y: any }) => d.y)
     .curve(shape.curveBasis)([
-    { x: position - scale(30), y: scale(30) },
+    { x: position - scale(50), y: scale(30) },
     { x: position - scale(8), y: scale(30) },
     { x: position - scale(3), y: scale(10) },
 
@@ -122,7 +122,7 @@ const lineCurved = (iPosition: number, circle: number) => {
 
     { x: circleWidth + scale(3), y: scale(10) },
     { x: circleWidth + scale(8), y: scale(30) },
-    { x: circleWidth + scale(30), y: scale(30) },
+    { x: circleWidth + scale(50), y: scale(30) },
   ]);
 
   return curved;

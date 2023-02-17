@@ -65,7 +65,7 @@ const ThemeScreen = () => {
       <CurvedBottomBar.Navigator
         ref={ref}
         type={type}
-        position={'RIGHT'}
+        position={'CENTER'}
         height={60}
         circleWidth={50}
         bgColor="white"

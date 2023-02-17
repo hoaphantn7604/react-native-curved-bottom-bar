@@ -59,6 +59,7 @@ const lineBorderLeft = (width: number, height: number) => {
     // right
     { x: width, y: 0 },
     { x: width, y: height },
+    { x: width, y: height },
     // bottom
     { x: width, y: height },
     { x: 0, y: height },
@@ -103,7 +104,7 @@ const lineBorderRight = (width: number, height: number) => {
 
 //** Path Curved Down Left */
 const lineCurved = (iPosition: number, height: number, circle: number) => {
-  const position = scale(iPosition);
+  const position = iPosition;
   const circleWidth = circle + position;
   const trim = (position + circleWidth) / 2;
 
@@ -144,7 +145,7 @@ export const getPathDown = (
 
   if (borderTopLeftRight && position === 'LEFT') {
     return `${lineBorderRight(width, height)} ${lineCurved(
-      centerWidth / 2.2,
+      circleWidth / 3,
       height,
       circleWidth
     )}`;
@@ -152,7 +153,7 @@ export const getPathDown = (
 
   if (borderTopLeftRight && position === 'RIGHT') {
     return `${lineBorderLeft(width, height)} ${lineCurved(
-      width - centerWidth * 1.75,
+      width - circleWidth * 1.33,
       height,
       circleWidth
     )}`;
@@ -168,7 +169,7 @@ export const getPathDown = (
 
   if (position === 'LEFT') {
     return `${line(width, height)} ${lineCurved(
-      centerWidth / 2.2,
+      circleWidth / 3,
       height,
       circleWidth
     )}`;
@@ -176,7 +177,7 @@ export const getPathDown = (
 
   if (position === 'RIGHT') {
     return `${line(width, height)} ${lineCurved(
-      width - centerWidth * 1.75,
+      width - circleWidth * 1.33,
       height,
       circleWidth
     )}`;

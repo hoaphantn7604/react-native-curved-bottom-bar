@@ -153,7 +153,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
       if (position === 'LEFT') {
         return (
           <>
-            <View style={{ marginLeft: getWidth / 2 }}>
+            <View style={{ marginLeft: scale(getWidth) / 2 }}>
               {_renderButtonCenter(focusedTab, navigation.navigate)}
             </View>
             {_renderTabIcon(
@@ -173,7 +173,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
               focusedTab,
               navigation
             )}
-            <View style={{ marginRight: getWidth / 2 }}>
+            <View style={{ marginRight: scale(getWidth) / 2 }}>
               {_renderButtonCenter(focusedTab, navigation.navigate)}
             </View>
           </>
