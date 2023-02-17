@@ -139,12 +139,12 @@ export const getPathUp = (
   const circleWidth = scale(centerWidth);
 
   if (borderTopLeftRight && position === 'LEFT') {
-    return `${lineBorderRight(width, height)} ${lineCurved(28, circleWidth)}`;
+    return `${lineBorderRight(width, height)} ${lineCurved(30, circleWidth)}`;
   }
 
   if (borderTopLeftRight && position === 'RIGHT') {
     return `${lineBorderLeft(width, height)} ${lineCurved(
-      width - 84,
+      width - 80,
       circleWidth
     )}`;
   }
@@ -157,11 +157,11 @@ export const getPathUp = (
   }
 
   if (position === 'LEFT') {
-    return `${line(width, height)} ${lineCurved(28, circleWidth)}`;
+    return `${line(width, height)} ${lineCurved(30, circleWidth)}`;
   }
 
   if (position === 'RIGHT') {
-    return `${line(width, height)} ${lineCurved(width - 84, circleWidth)}`;
+    return `${line(width, height)} ${lineCurved(width - 80, circleWidth)}`;
   }
 
   return `${line(width, height)} ${lineCurved(

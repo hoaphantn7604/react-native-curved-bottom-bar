@@ -67,7 +67,7 @@ const ThemeScreen = () => {
         type={type}
         position={'RIGHT'}
         height={60}
-        circleWidth={55}
+        circleWidth={50}
         bgColor="white"
         borderTopLeftRight={true}
         initialRouteName="title1"

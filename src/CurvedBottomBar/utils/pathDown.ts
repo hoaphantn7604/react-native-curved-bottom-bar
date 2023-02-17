@@ -144,7 +144,7 @@ export const getPathDown = (
 
   if (borderTopLeftRight && position === 'LEFT') {
     return `${lineBorderRight(width, height)} ${lineCurved(
-      20,
+      22,
       height,
       circleWidth
     )}`;
@@ -152,7 +152,7 @@ export const getPathDown = (
 
   if (borderTopLeftRight && position === 'RIGHT') {
     return `${lineBorderLeft(width, height)} ${lineCurved(
-      width - 90,
+      width - 88,
       height,
       circleWidth
     )}`;
@@ -167,12 +167,12 @@ export const getPathDown = (
   }
 
   if (position === 'LEFT') {
-    return `${line(width, height)} ${lineCurved(20, height, circleWidth)}`;
+    return `${line(width, height)} ${lineCurved(22, height, circleWidth)}`;
   }
 
   if (position === 'RIGHT') {
     return `${line(width, height)} ${lineCurved(
-      width - 90,
+      width - 88,
       height,
       circleWidth
     )}`;
