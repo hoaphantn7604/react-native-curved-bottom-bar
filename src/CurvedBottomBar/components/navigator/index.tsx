@@ -4,9 +4,10 @@ import React, { useEffect, useImperativeHandle, useState } from 'react';
 import { Dimensions, Text, View, TouchableOpacity } from 'react-native';
 import { scale } from 'react-native-size-scaling';
 import Svg, { Path } from 'react-native-svg';
+import { getPathDown } from '../../utils/pathDown';
+import { getPathUp } from '../../utils/pathUp';
 import { useDeviceOrientation } from '../../../useDeviceOrientation';
 import type { NavigatorBottomBarProps } from './model';
-import { getPath, getPathUp } from './path';
 import { styles } from './styles';
 const { width: maxW } = Dimensions.get('window');
 
@@ -83,7 +84,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
 
     const d =
       type === 'DOWN'
-        ? getPath(
+        ? getPathDown(
             maxWidth,
             height,
             circleWidth >= 50 ? circleWidth : 50,

@@ -69,8 +69,6 @@ const ThemeScreen = () => {
         circleWidth={55}
         bgColor="white"
         borderTopLeftRight={true}
-        strokeWidth={2}
-        strokeColor={'#6e00f6'}
         initialRouteName="title1"
         renderCircle={() => (
           <TouchableOpacity
@@ -104,6 +102,11 @@ const ThemeScreen = () => {
           name="title2"
           component={RenderScreen}
           position="LEFT"
+        />
+        <CurvedBottomBar.Screen
+          name="title0"
+          component={RenderScreen}
+          position="CENTER"
         />
         <CurvedBottomBar.Screen
           name="title3"
