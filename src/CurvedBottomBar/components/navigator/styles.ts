@@ -20,12 +20,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  rowRight: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
   flex1: {
     flex: 1,
   },
@@ -36,5 +30,11 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  circleRight: {
+    marginRight: 25,
+  },
+  circleLeft: {
+    marginLeft: 25,
   },
 });

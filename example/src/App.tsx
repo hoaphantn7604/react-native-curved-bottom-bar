@@ -65,6 +65,7 @@ const ThemeScreen = () => {
       <CurvedBottomBar.Navigator
         ref={ref}
         type={type}
+        position={'RIGHT'}
         height={60}
         circleWidth={55}
         bgColor="white"
@@ -113,11 +114,11 @@ const ThemeScreen = () => {
           position="RIGHT"
           component={RenderScreen}
         />
-        <CurvedBottomBar.Screen
+        {/* <CurvedBottomBar.Screen
           name="title4"
           component={RenderScreen}
           position="RIGHT"
-        />
+        /> */}
       </CurvedBottomBar.Navigator>
     </View>
   );

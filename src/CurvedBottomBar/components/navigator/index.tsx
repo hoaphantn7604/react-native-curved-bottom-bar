@@ -15,10 +15,9 @@ const Tab = createBottomTabNavigator();
 
 const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
   (props, ref) => {
-    const SVG: any = Svg;
-    const PATH: any = Path;
     const {
       type = 'DOWN',
+      position = 'CENTER',
       style,
       width = null,
       height = 65,
@@ -88,13 +87,15 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
             maxWidth,
             height,
             circleWidth >= 50 ? circleWidth : 50,
-            borderTopLeftRight
+            borderTopLeftRight,
+            position
           )
         : getPathUp(
             maxWidth,
             height + 30,
             circleWidth >= 50 ? circleWidth : 50,
-            borderTopLeftRight
+            borderTopLeftRight,
+            position
           );
 
     const renderItem = ({ color, routeName, navigate }: any) => {
@@ -109,96 +110,121 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
       );
     };
 
-    const MyTabBar = (props: any) => {
+    const _renderTabIcon = (
+      arr: any[],
+      focusedTab: string,
+      navigation: any
+    ) => {
+      return (
+        <View style={[styles.rowLeft, { height: scale(height) }]}>
+          {arr.map((item: any, index) => {
+            const routeName: string = item?.props?.name;
+
+            if (tabBar === undefined) {
+              return renderItem({
+                routeName,
+                color: focusedTab === routeName ? 'blue' : 'gray',
+                navigate: navigation.navigate,
+              });
+            }
+
+            return (
+              <View style={styles.flex1} key={index.toString()}>
+                {tabBar({
+                  routeName,
+                  selectedTab: focusedTab,
+                  navigate: (selectTab: string) => {
+                    if (selectTab !== focusedTab) {
+                      navigation.navigate({
+                        name: routeName,
+                        merge: true,
+                      });
+                    }
+                  },
+                })}
+              </View>
+            );
+          })}
+        </View>
+      );
+    };
+
+    const renderPosition = (props: any) => {
       const { state, navigation } = props;
       const focusedTab = state?.routes[state.index].name;
 
+      if (position === 'LEFT') {
+        return (
+          <>
+            <View style={styles.circleLeft}>
+              {_renderButtonCenter(focusedTab, navigation.navigate)}
+            </View>
+            {_renderTabIcon(
+              [...itemLeft, ...itemRight],
+              focusedTab,
+              navigation
+            )}
+          </>
+        );
+      }
+
+      if (position === 'RIGHT') {
+        return (
+          <>
+            {_renderTabIcon(
+              [...itemLeft, ...itemRight],
+              focusedTab,
+              navigation
+            )}
+            <View style={styles.circleRight}>
+              {_renderButtonCenter(focusedTab, navigation.navigate)}
+            </View>
+          </>
+        );
+      }
+
+      return (
+        <>
+          {_renderTabIcon(itemLeft, focusedTab, navigation)}
+          {_renderButtonCenter(focusedTab, navigation.navigate)}
+          {_renderTabIcon(itemRight, focusedTab, navigation)}
+        </>
+      );
+    };
+
+    const _renderTabContainer = (props: any) => {
+      return (
+        <View
+          style={[
+            styles.main,
+            { width: maxWidth },
+            type === 'UP' && styles.top30,
+          ]}
+        >
+          {renderPosition(props)}
+        </View>
+      );
+    };
+
+    const MyTabBar = (props: any) => {
       if (!isShow) {
         return null;
       }
 
       return (
         <View style={[styles.container, style]}>
-          <SVG
+          <Svg
             width={maxWidth}
             height={scale(height) + (type === 'DOWN' ? 0 : scale(30))}
           >
-            <PATH
+            <Path
               fill={bgColor}
               stroke={strokeColor}
               strokeWidth={strokeWidth}
               {...{ d }}
             />
-          </SVG>
-          <View
-            style={[
-              styles.main,
-              { width: maxWidth },
-              type === 'UP' && styles.top30,
-            ]}
-          >
-            <View style={[styles.rowLeft, { height: scale(height) }]}>
-              {itemLeft.map((item: any, index) => {
-                const routeName: string = item?.props?.name;
-
-                if (tabBar === undefined) {
-                  return renderItem({
-                    routeName,
-                    color: focusedTab === routeName ? 'blue' : 'gray',
-                    navigate: navigation.navigate,
-                  });
-                }
-
-                return (
-                  <View style={styles.flex1} key={index.toString()}>
-                    {tabBar({
-                      routeName,
-                      selectedTab: focusedTab,
-                      navigate: (selectTab: string) => {
-                        if (selectTab !== focusedTab) {
-                          navigation.navigate({
-                            name: routeName,
-                            merge: true,
-                          });
-                        }
-                      },
-                    })}
-                  </View>
-                );
-              })}
-            </View>
-            {_renderButtonCenter(focusedTab, navigation.navigate)}
-            <View style={[styles.rowRight, { height: scale(height) }]}>
-              {itemRight.map((item: any, index) => {
-                const routeName = item?.props?.name;
-
-                if (tabBar === undefined) {
-                  return renderItem({
-                    routeName,
-                    color: focusedTab === routeName ? 'blue' : 'gray',
-                    navigate: navigation.navigate,
-                  });
-                }
-
-                return (
-                  <View style={styles.flex1} key={index.toString()}>
-                    {tabBar({
-                      routeName,
-                      selectedTab: focusedTab,
-                      navigate: (selectTab: string) => {
-                        if (selectTab !== focusedTab) {
-                          navigation.navigate({
-                            name: routeName,
-                            merge: true,
-                          });
-                        }
-                      },
-                    })}
-                  </View>
-                );
-              })}
-            </View>
-          </View>
+          </Svg>
+          {_renderTabContainer(props)}
         </View>
       );
     };
