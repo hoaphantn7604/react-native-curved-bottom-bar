@@ -41,7 +41,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 | Props              | Params                        | isRequire | Description                                                                               |
 | ------------------ | ----------------------------- | --------- | ----------------------------------------------------------------------------------------- |
 | name               | String                        | Yes       | Name of the route to jump to                                                              |
-| position           | 'LEFT' or 'RIGHT' or 'CIRCLE' | Yes       | Set position of screen to the left or right of the center button. Use type "CIRCLE" only when you want the center button is a tabview |
+| position           | 'LEFT' or 'RIGHT' or 'CIRCLE' | Yes       | Set position of tabar icon to the left or right of the circle button. Use type "CIRCLE" only when you want the circle button is a tabview |
 | component          | (props) => JSX.Element        | Yes       | Screen params to merge into the destination route                                         |
 
 ### API
