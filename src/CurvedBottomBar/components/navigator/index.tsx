@@ -17,7 +17,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
   (props, ref) => {
     const {
       type = 'DOWN',
-      position = 'CENTER',
+      circlePosition = 'CENTER',
       style,
       width = null,
       height = 65,
@@ -55,7 +55,8 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
 
     const _renderButtonCenter = (focusedTab: string, navigate: any) => {
       const getTab = children.filter(
-        (e: any) => e?.props?.position === 'CENTER'
+        (e: any) =>
+          e?.props?.position === 'CIRCLE' || e?.props?.position === 'CENTER'
       )[0]?.props?.name;
 
       return renderCircle({
@@ -86,13 +87,19 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
 
     const d =
       type === 'DOWN'
-        ? getPathDown(maxWidth, height, getWidth, borderTopLeftRight, position)
+        ? getPathDown(
+            maxWidth,
+            height,
+            getWidth,
+            borderTopLeftRight,
+            circlePosition
+          )
         : getPathUp(
             maxWidth,
             height + 30,
             getWidth,
             borderTopLeftRight,
-            position
+            circlePosition
           );
 
     const renderItem = ({ color, routeName, navigate }: any) => {
@@ -150,7 +157,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
       const { state, navigation } = props;
       const focusedTab = state?.routes[state.index].name;
 
-      if (position === 'LEFT') {
+      if (circlePosition === 'LEFT') {
         return (
           <>
             <View style={{ marginLeft: scale(getWidth) / 2 }}>
@@ -165,7 +172,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
         );
       }
 
-      if (position === 'RIGHT') {
+      if (circlePosition === 'RIGHT') {
         return (
           <>
             {_renderTabIcon(

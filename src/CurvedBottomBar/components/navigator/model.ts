@@ -26,7 +26,7 @@ type Range<F extends number, T extends number> = Exclude<
 type Props = {
   ref: React.MutableRefObject<any>;
   type?: 'DOWN' | 'UP';
-  position?: 'CENTER' | 'LEFT' | 'RIGHT';
+  circlePosition?: 'CENTER' | 'LEFT' | 'RIGHT';
   style?: StyleProp<ViewStyle>;
   width?: number;
   height?: Range<50, 91>;

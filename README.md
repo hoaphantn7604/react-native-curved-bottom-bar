@@ -22,7 +22,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 | Props              | Params                                                | isRequire | Description                                                       |
 |--------------------|-------------------------------------------------------| --------- |-------------------------------------------------------------------|
 | type               | 'DOWN' or 'UP'                                        | Yes       | Type of the center tab item, downward curve or upward curve       |
-| position           | 'CENTER' or 'LEFT' or 'RIGHT'                         | No        | Position of circle button                                         |
+| circlePosition     | 'CENTER' or 'LEFT' or 'RIGHT'                         | No        | Position of circle button                                         |
 | initialRouteName   | String                                                | Yes       | The name of the route to render on first load of the navigator    |
 | tabBar             | ({ routeName, selectedTab, navigate }) => JSX.Element | Yes       | Function that returns a React element to display as the tab bar   |
 | renderCircle       | ({ routeName, selectedTab, navigate }) => JSX.Element | Yes       | Function that returns a React element to display as the center tab item |
@@ -41,7 +41,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 | Props              | Params                        | isRequire | Description                                                                               |
 | ------------------ | ----------------------------- | --------- | ----------------------------------------------------------------------------------------- |
 | name               | String                        | Yes       | Name of the route to jump to                                                              |
-| position           | 'LEFT' or 'RIGHT' or 'CENTER' | Yes       | Set position of screen to the left or right of the center button. Use type "center" only when you want the center button is a tabview |
+| position           | 'LEFT' or 'RIGHT' or 'CIRCLE' | Yes       | Set position of screen to the left or right of the center button. Use type "CIRCLE" only when you want the center button is a tabview |
 | component          | (props) => JSX.Element        | Yes       | Screen params to merge into the destination route                                         |
 
 ### API
@@ -107,7 +107,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
             strokeWidth={0.5}
             strokeColor="#DDDDDD"
             height={55}
-            circleWidth={55}
+            circleWidth={50}
             bgColor="white"
             initialRouteName="title1"
             borderTopLeftRight
@@ -242,7 +242,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
             strokeWidth={0.5}
             strokeColor="#DDDDDD"
             height={55}
-            circleWidth={55}
+            circleWidth={50}
             bgColor="white"
             initialRouteName="title1"
             borderTopLeftRight

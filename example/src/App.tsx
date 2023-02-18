@@ -1,7 +1,6 @@
-/* eslint-disable react-native/no-inline-styles */
 import { NavigationContainer } from '@react-navigation/native';
 import React, { useRef, useState } from 'react';
-import { Alert, StatusBar, TouchableOpacity, View } from 'react-native';
+import { StatusBar, TouchableOpacity, View } from 'react-native';
 import { CurvedBottomBar } from 'react-native-curved-bottom-bar';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StyleSheet } from 'react-native-size-scaling';
@@ -9,29 +8,12 @@ import { StyleSheet } from 'react-native-size-scaling';
 StatusBar.setBarStyle('dark-content');
 
 const RenderScreen = () => {
-  return (
-    <View
-      style={{
-        backgroundColor: '#BFEFFF',
-        flex: 1,
-      }}
-    />
-  );
+  return <View style={styles.screen} />;
 };
 
 const ThemeScreen = () => {
   const ref = useRef<any>(null);
-  const [type, setType] = useState<'DOWN' | 'UP'>('DOWN');
-
-  const onClickButton = () => {
-    if (type === 'UP') {
-      setType('DOWN');
-      Alert.alert('Change type curve down');
-    } else {
-      setType('UP');
-      Alert.alert('Change type curve up');
-    }
-  };
+  const [type] = useState<'DOWN' | 'UP'>('DOWN');
 
   const _renderIcon = (routeName: string, selectedTab: string) => {
     let icon = '';
@@ -65,29 +47,31 @@ const ThemeScreen = () => {
       <CurvedBottomBar.Navigator
         ref={ref}
         type={type}
-        position={'CENTER'}
-        height={60}
+        circlePosition={'CENTER'}
+        height={55}
         circleWidth={50}
         bgColor="white"
         borderTopLeftRight={true}
         initialRouteName="title1"
-        renderCircle={() => (
+        renderCircle={({ routeName, selectedTab, navigate }) => (
           <TouchableOpacity
             style={[type === 'DOWN' ? styles.btnCircle : styles.btnCircleUp]}
-            onPress={() => onClickButton()}
+            onPress={() => {
+              navigate(routeName);
+            }}
           >
-            <Ionicons name="chatbubbles-outline" size={23} />
+            <Ionicons
+              name="chatbubbles-outline"
+              size={23}
+              color={selectedTab === routeName ? 'red' : 'black'}
+            />
           </TouchableOpacity>
         )}
         tabBar={({ routeName, selectedTab, navigate }) => {
           return (
             <TouchableOpacity
               onPress={() => navigate(routeName)}
-              style={{
-                flex: 1,
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
+              style={styles.tabbarIcon}
             >
               {_renderIcon(routeName, selectedTab)}
             </TouchableOpacity>
@@ -107,18 +91,18 @@ const ThemeScreen = () => {
         <CurvedBottomBar.Screen
           name="title0"
           component={RenderScreen}
-          position="CENTER"
+          position="CIRCLE"
         />
         <CurvedBottomBar.Screen
           name="title3"
           position="RIGHT"
           component={RenderScreen}
         />
-        {/* <CurvedBottomBar.Screen
+        <CurvedBottomBar.Screen
           name="title4"
           component={RenderScreen}
           position="RIGHT"
-        /> */}
+        />
       </CurvedBottomBar.Navigator>
     </View>
   );
@@ -180,5 +164,14 @@ const styles = StyleSheet.create({
   img: {
     width: 30,
     height: 30,
+  },
+  tabbarIcon: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  screen: {
+    backgroundColor: '#BFEFFF',
+    flex: 1,
   },
 });
