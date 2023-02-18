@@ -51,7 +51,7 @@ const ThemeScreen = () => {
         height={55}
         circleWidth={50}
         bgColor="white"
-        borderTopLeftRight={true}
+        borderTopLeftRight
         initialRouteName="title1"
         renderCircle={({ routeName, selectedTab, navigate }) => (
           <TouchableOpacity

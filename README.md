@@ -26,10 +26,10 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 | initialRouteName   | String                                                | Yes       | The name of the route to render on first load of the navigator    |
 | tabBar             | ({ routeName, selectedTab, navigate }) => JSX.Element | Yes       | Function that returns a React element to display as the tab bar   |
 | renderCircle       | ({ routeName, selectedTab, navigate }) => JSX.Element | Yes       | Function that returns a React element to display as the center tab item |
-| circleWidth        | Number                                                | No        | Customize width of the center tab item. Minimum is 50px           |
+| circleWidth        | Number                                                | No        | Customize width of the center tab item. Minimum is 50px and Maximum is 60px 
 | style              | ViewStyle                                             | No        | Styling for container view                                        |
 | width              | Number                                                | No        | Customize width for container view                                |
-| height             | Number                                                | No        | Customize height for container view                               |
+| height             | Number                                                | No        | Customize height for container view, Minimum is 50px and Maximum is 90px |
 | borderTopLeftRight | Boolean                                               | No        | Border radius top left and top right of container view            |
 | bgColor            | String                                                | No        | Background color of container view                                |
 | strokeColor        | ColorValue                                            | No        | Navigator stroke color                                            |

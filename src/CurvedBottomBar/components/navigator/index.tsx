@@ -1,6 +1,11 @@
 /* eslint-disable no-shadow */
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import React, { useEffect, useImperativeHandle, useState } from 'react';
+import React, {
+  useEffect,
+  useImperativeHandle,
+  useState,
+  useMemo,
+} from 'react';
 import { Dimensions, Text, View, TouchableOpacity } from 'react-native';
 import { scale } from 'react-native-size-scaling';
 import Svg, { Path } from 'react-native-svg';
@@ -82,22 +87,27 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
       setItemRight(arrRight);
     }, [children, initialRouteName]);
 
-    const getWidth =
-      circleWidth < 50 ? 50 : circleWidth > 60 ? 60 : circleWidth;
+    const getCircleWidth = useMemo(() => {
+      return circleWidth < 50 ? 50 : circleWidth > 60 ? 60 : circleWidth;
+    }, [circleWidth]);
+
+    const getTabbarHeight = useMemo(() => {
+      return height < 50 ? 50 : height > 90 ? 90 : height;
+    }, [height]);
 
     const d =
       type === 'DOWN'
         ? getPathDown(
             maxWidth,
-            height,
-            getWidth,
+            getTabbarHeight,
+            getCircleWidth,
             borderTopLeftRight,
             circlePosition
           )
         : getPathUp(
             maxWidth,
-            height + 30,
-            getWidth,
+            getTabbarHeight + 30,
+            getCircleWidth,
             borderTopLeftRight,
             circlePosition
           );
@@ -120,7 +130,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
       navigation: any
     ) => {
       return (
-        <View style={[styles.rowLeft, { height: scale(height) }]}>
+        <View style={[styles.rowLeft, { height: scale(getTabbarHeight) }]}>
           {arr.map((item: any, index) => {
             const routeName: string = item?.props?.name;
 
@@ -160,7 +170,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
       if (circlePosition === 'LEFT') {
         return (
           <>
-            <View style={{ marginLeft: scale(getWidth) / 2 }}>
+            <View style={{ marginLeft: scale(getCircleWidth) / 2 }}>
               {_renderButtonCenter(focusedTab, navigation.navigate)}
             </View>
             {_renderTabIcon(
@@ -180,7 +190,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
               focusedTab,
               navigation
             )}
-            <View style={{ marginRight: scale(getWidth) / 2 }}>
+            <View style={{ marginRight: scale(getCircleWidth) / 2 }}>
               {_renderButtonCenter(focusedTab, navigation.navigate)}
             </View>
           </>
@@ -219,7 +229,7 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
         <View style={[styles.container, style]}>
           <Svg
             width={maxWidth}
-            height={scale(height) + (type === 'DOWN' ? 0 : scale(30))}
+            height={scale(getTabbarHeight) + (type === 'DOWN' ? 0 : scale(30))}
           >
             <Path
               fill={bgColor}
