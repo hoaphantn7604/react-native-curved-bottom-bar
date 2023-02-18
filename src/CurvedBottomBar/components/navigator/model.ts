@@ -44,6 +44,7 @@ interface Props {
   initialRouteName: string;
   strokeWidth?: number;
   strokeColor?: ColorValue;
+  defaultScreenOptions?: unknown;
   renderCircle: ({
     routeName,
     selectedTab,

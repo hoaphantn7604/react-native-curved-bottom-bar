@@ -21,7 +21,7 @@ const { width: maxW } = Dimensions.get('window');
 const Tab = createBottomTabNavigator();
 
 const BottomBarComponent: (
-  props: Omit<NavigatorBottomBarProps, 'defaultScreenOptions'>
+  props: NavigatorBottomBarProps
 ) => ReactElement<any, string | JSXElementConstructor<any>> | null =
   React.forwardRef((props, ref) => {
     const {
