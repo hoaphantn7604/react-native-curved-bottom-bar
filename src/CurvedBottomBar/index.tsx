@@ -1,4 +1,7 @@
 import Screen from './components/menuItem';
 import Navigator from './components/navigator';
+import { ICurvedBottomBarRef } from './components/navigator/model';
 
-export const CurvedBottomBar = { Navigator, Screen };
+const CurvedBottomBar = { Navigator, Screen };
+
+export { CurvedBottomBar, ICurvedBottomBarRef };

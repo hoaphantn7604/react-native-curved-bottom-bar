@@ -23,8 +23,16 @@ type Range<F extends number, T extends number> = Exclude<
   Enumerate<F>
 >;
 
-type Props = {
-  ref: React.MutableRefObject<any>;
+export interface ICurvedBottomBarRef {
+  setVisible: (visible: boolean) => void;
+}
+
+interface Props {
+  ref?:
+    | React.RefObject<ICurvedBottomBarRef>
+    | React.MutableRefObject<ICurvedBottomBarRef>
+    | null
+    | undefined;
   type?: 'DOWN' | 'UP';
   circlePosition?: 'CENTER' | 'LEFT' | 'RIGHT';
   style?: StyleProp<ViewStyle>;
@@ -54,7 +62,7 @@ type Props = {
     selectedTab: string;
     navigate: (selectedTab: string) => void;
   }) => JSX.Element;
-};
+}
 
 export type NavigatorBottomBarProps = DefaultNavigatorOptions<
   ParamListBase,

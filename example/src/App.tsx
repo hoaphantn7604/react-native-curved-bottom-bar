@@ -1,7 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React, { useRef, useState } from 'react';
 import { StatusBar, TouchableOpacity, View } from 'react-native';
-import { CurvedBottomBar } from 'react-native-curved-bottom-bar';
+import {
+  CurvedBottomBar,
+  ICurvedBottomBarRef,
+} from 'react-native-curved-bottom-bar';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StyleSheet } from 'react-native-size-scaling';
 
@@ -12,7 +15,7 @@ const RenderScreen = () => {
 };
 
 const ThemeScreen = () => {
-  const ref = useRef<any>(null);
+  const ref = useRef<ICurvedBottomBarRef>(null);
   const [type] = useState<'DOWN' | 'UP'>('DOWN');
 
   const _renderIcon = (routeName: string, selectedTab: string) => {

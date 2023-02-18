@@ -5,6 +5,8 @@ import React, {
   useImperativeHandle,
   useState,
   useMemo,
+  ReactElement,
+  JSXElementConstructor,
 } from 'react';
 import { Dimensions, Text, View, TouchableOpacity } from 'react-native';
 import { scale } from 'react-native-size-scaling';
@@ -18,8 +20,10 @@ const { width: maxW } = Dimensions.get('window');
 
 const Tab = createBottomTabNavigator();
 
-const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
-  (props, ref) => {
+const BottomBarComponent: (
+  props: Omit<NavigatorBottomBarProps, 'defaultScreenOptions'>
+) => ReactElement<any, string | JSXElementConstructor<any>> | null =
+  React.forwardRef((props, ref) => {
     const {
       type = 'DOWN',
       circlePosition = 'CENTER',
@@ -250,7 +254,6 @@ const BottomBarComponent = React.forwardRef<any, NavigatorBottomBarProps>(
         })}
       </Tab.Navigator>
     );
-  }
-);
+  });
 
 export default BottomBarComponent;
