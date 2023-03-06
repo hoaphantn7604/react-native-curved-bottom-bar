@@ -1,5 +1,5 @@
-import type { NavigatorBottomBarProps } from './components/navigator/model';
-import type { ScreenBottomBarProps } from './components/menuItem/model';
+import type { NavigatorBottomBarProps } from './components/BottomBarView/model';
+import type { ScreenBottomBarProps } from './components/MenuItemView/model';
 
 export type CurvedBottomBarTypeProps = {
   Navigator: NavigatorBottomBarProps;

@@ -32,8 +32,6 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 | height             | Number                                                | No        | Customize height for container view, Minimum is 50px and Maximum is 90px |
 | borderTopLeftRight | Boolean                                               | No        | Border radius top left and top right of container view            |
 | bgColor            | String                                                | No        | Background color of container view                                |
-| strokeColor        | ColorValue                                            | No        | Navigator stroke color                                            |
-| strokeWidth        | Number                                                | No        | Border width of container view                                    |
 
 
 ### CurvedBottomBar.Screen
@@ -104,8 +102,6 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
         <NavigationContainer>
           <CurvedBottomBar.Navigator
             style={styles.bottomBar}
-            strokeWidth={0.5}
-            strokeColor="#DDDDDD"
             height={55}
             circleWidth={50}
             bgColor="white"
@@ -239,8 +235,6 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
           <CurvedBottomBar.Navigator
             type="UP"
             style={styles.bottomBar}
-            strokeWidth={0.5}
-            strokeColor="#DDDDDD"
             height={55}
             circleWidth={50}
             bgColor="white"

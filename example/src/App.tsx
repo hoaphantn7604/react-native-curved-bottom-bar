@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 import { NavigationContainer } from '@react-navigation/native';
 import React, { useRef, useState } from 'react';
 import { StatusBar, TouchableOpacity, View } from 'react-native';
