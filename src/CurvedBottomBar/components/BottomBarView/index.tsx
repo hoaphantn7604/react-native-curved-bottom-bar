@@ -38,6 +38,7 @@ const BottomBarComponent: (
       tabBar,
       renderCircle,
       borderTopLeftRight = false,
+      shadowStyle = styles.shadow,
     } = props;
 
     const [itemLeft, setItemLeft] = useState<any[]>([]);
@@ -231,7 +232,7 @@ const BottomBarComponent: (
 
       return (
         <View style={[styles.container, style]}>
-          <CurvedBottomBarView style={styles.shadow}>
+          <CurvedBottomBarView style={shadowStyle || {}}>
             <Svg
               width={maxWidth}
               height={

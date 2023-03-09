@@ -36,6 +36,7 @@ interface Props {
   type?: 'DOWN' | 'UP';
   circlePosition?: 'CENTER' | 'LEFT' | 'RIGHT';
   style?: StyleProp<ViewStyle>;
+  shadowStyle?: StyleProp<ViewStyle>;
   width?: number;
   height?: Range<50, 91>;
   borderTopLeftRight?: boolean;

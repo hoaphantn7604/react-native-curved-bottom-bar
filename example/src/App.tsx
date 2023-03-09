@@ -1,7 +1,13 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { NavigationContainer } from '@react-navigation/native';
 import React, { useRef, useState } from 'react';
-import { StatusBar, TouchableOpacity, View } from 'react-native';
+import {
+  Button,
+  LogBox,
+  StatusBar,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {
   CurvedBottomBar,
   ICurvedBottomBarRef,
@@ -10,14 +16,40 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StyleSheet } from 'react-native-size-scaling';
 
 StatusBar.setBarStyle('dark-content');
+LogBox.ignoreAllLogs();
 
-const RenderScreen = () => {
-  return <View style={styles.screen} />;
+type voidType = () => void;
+
+const RenderScreen = ({
+  onDown,
+  onUp,
+  onLeft,
+  onCenter,
+  onRight,
+}: {
+  onDown: voidType;
+  onUp: voidType;
+  onLeft: voidType;
+  onCenter: voidType;
+  onRight: voidType;
+}) => {
+  return (
+    <View style={styles.screen}>
+      <Button title="Mode Curved Down" onPress={onDown} />
+      <Button title="Mode Curved Up" onPress={onUp} />
+      <Button title="Position Left" onPress={onLeft} />
+      <Button title="Position Center" onPress={onCenter} />
+      <Button title="Position Right" onPress={onRight} />
+    </View>
+  );
 };
 
 const ThemeScreen = () => {
   const ref = useRef<ICurvedBottomBarRef>(null);
-  const [type] = useState<'DOWN' | 'UP'>('DOWN');
+  const [type, setType] = useState<'DOWN' | 'UP'>('DOWN');
+  const [position, setposition] = useState<'LEFT' | 'CENTER' | 'RIGHT'>(
+    'CENTER'
+  );
 
   const _renderIcon = (routeName: string, selectedTab: string) => {
     let icon = '';
@@ -46,12 +78,28 @@ const ThemeScreen = () => {
     );
   };
 
+  const onDown = () => {
+    setType('DOWN');
+  };
+  const onUp = () => {
+    setType('UP');
+  };
+  const onLeft = () => {
+    setposition('LEFT');
+  };
+  const onCenter = () => {
+    setposition('CENTER');
+  };
+  const onRight = () => {
+    setposition('RIGHT');
+  };
+
   return (
     <View style={styles.container}>
       <CurvedBottomBar.Navigator
         ref={ref}
         type={type}
-        circlePosition={'CENTER'}
+        circlePosition={position}
         height={55}
         circleWidth={50}
         bgColor="white"
@@ -85,26 +133,66 @@ const ThemeScreen = () => {
         <CurvedBottomBar.Screen
           name="title1"
           position="LEFT"
-          component={RenderScreen}
+          component={() => (
+            <RenderScreen
+              onDown={onDown}
+              onUp={onUp}
+              onLeft={onLeft}
+              onCenter={onCenter}
+              onRight={onRight}
+            />
+          )}
         />
         <CurvedBottomBar.Screen
           name="title2"
-          component={RenderScreen}
+          component={() => (
+            <RenderScreen
+              onDown={onDown}
+              onUp={onUp}
+              onLeft={onLeft}
+              onCenter={onCenter}
+              onRight={onRight}
+            />
+          )}
           position="LEFT"
         />
         <CurvedBottomBar.Screen
           name="title0"
-          component={RenderScreen}
+          component={() => (
+            <RenderScreen
+              onDown={onDown}
+              onUp={onUp}
+              onLeft={onLeft}
+              onCenter={onCenter}
+              onRight={onRight}
+            />
+          )}
           position="CIRCLE"
         />
         <CurvedBottomBar.Screen
           name="title3"
           position="RIGHT"
-          component={RenderScreen}
+          component={() => (
+            <RenderScreen
+              onDown={onDown}
+              onUp={onUp}
+              onLeft={onLeft}
+              onCenter={onCenter}
+              onRight={onRight}
+            />
+          )}
         />
         <CurvedBottomBar.Screen
           name="title4"
-          component={RenderScreen}
+          component={() => (
+            <RenderScreen
+              onDown={onDown}
+              onUp={onUp}
+              onLeft={onLeft}
+              onCenter={onCenter}
+              onRight={onRight}
+            />
+          )}
           position="RIGHT"
         />
       </CurvedBottomBar.Navigator>
@@ -177,5 +265,6 @@ const styles = StyleSheet.create({
   screen: {
     backgroundColor: '#BFEFFF',
     flex: 1,
+    justifyContent: 'center',
   },
 });
