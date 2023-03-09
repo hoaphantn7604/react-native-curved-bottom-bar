@@ -1,13 +1,7 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { NavigationContainer } from '@react-navigation/native';
 import React, { useRef, useState } from 'react';
-import {
-  Button,
-  LogBox,
-  StatusBar,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { LogBox, StatusBar, Text, TouchableOpacity, View } from 'react-native';
 import {
   CurvedBottomBar,
   ICurvedBottomBarRef,
@@ -19,6 +13,14 @@ StatusBar.setBarStyle('dark-content');
 LogBox.ignoreAllLogs();
 
 type voidType = () => void;
+
+const Button = ({ title, onPress }: { title: string; onPress: () => void }) => {
+  return (
+    <TouchableOpacity style={styles.button} onPress={onPress}>
+      <Text style={styles.titleButton}>{title}</Text>
+    </TouchableOpacity>
+  );
+};
 
 const RenderScreen = ({
   onDown,
@@ -35,6 +37,7 @@ const RenderScreen = ({
 }) => {
   return (
     <View style={styles.screen}>
+      <Text style={styles.title}>React Native Curved Bottom Bar</Text>
       <Button title="Mode Curved Down" onPress={onDown} />
       <Button title="Mode Curved Up" onPress={onUp} />
       <Button title="Position Left" onPress={onLeft} />
@@ -55,16 +58,16 @@ const ThemeScreen = () => {
     let icon = '';
 
     switch (routeName) {
-      case 'title1':
+      case 'Tab1':
         icon = 'ios-home-outline';
         break;
-      case 'title2':
+      case 'Tab2':
         icon = 'apps-outline';
         break;
-      case 'title3':
+      case 'Tab3':
         icon = 'bar-chart-outline';
         break;
-      case 'title4':
+      case 'Tab4':
         icon = 'person-outline';
         break;
     }
@@ -131,7 +134,7 @@ const ThemeScreen = () => {
         }}
       >
         <CurvedBottomBar.Screen
-          name="title1"
+          name="Tab1"
           position="LEFT"
           component={() => (
             <RenderScreen
@@ -144,7 +147,7 @@ const ThemeScreen = () => {
           )}
         />
         <CurvedBottomBar.Screen
-          name="title2"
+          name="Tab2"
           component={() => (
             <RenderScreen
               onDown={onDown}
@@ -157,7 +160,7 @@ const ThemeScreen = () => {
           position="LEFT"
         />
         <CurvedBottomBar.Screen
-          name="title0"
+          name="TabCenter"
           component={() => (
             <RenderScreen
               onDown={onDown}
@@ -170,7 +173,7 @@ const ThemeScreen = () => {
           position="CIRCLE"
         />
         <CurvedBottomBar.Screen
-          name="title3"
+          name="Tab3"
           position="RIGHT"
           component={() => (
             <RenderScreen
@@ -183,7 +186,7 @@ const ThemeScreen = () => {
           )}
         />
         <CurvedBottomBar.Screen
-          name="title4"
+          name="Tab4"
           component={() => (
             <RenderScreen
               onDown={onDown}
@@ -266,5 +269,28 @@ const styles = StyleSheet.create({
     backgroundColor: '#BFEFFF',
     flex: 1,
     justifyContent: 'center',
+  },
+  title: {
+    fontSize: 22,
+    alignSelf: 'center',
+    marginBottom: 50,
+  },
+  button: {
+    alignSelf: 'center',
+    backgroundColor: 'white',
+    margin: 8,
+    padding: 12,
+    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 1,
+  },
+  titleButton: {
+    fontWeight: 'bold',
   },
 });
