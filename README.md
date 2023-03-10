@@ -13,8 +13,9 @@ yarn add react-native-curved-bottom-bar
 ```
 Now we need to install [react-native-svg](https://github.com/react-native-svg/react-native-svg) and [@react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator).
 
-### Demo
-![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar.gif)
+## Video demo & tutorial
+
+[<img src="https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bat-thumbnail.jpg">](https://youtu.be/uauWt3UNJtI)
 
 
 ### CurvedBottomBar.Navigator
