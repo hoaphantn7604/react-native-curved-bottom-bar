@@ -28,7 +28,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 | renderCircle       | ({ routeName, selectedTab, navigate }) => JSX.Element | Yes       | Function that returns a React element to display as the center tab item |
 | circleWidth        | Number                                                | No        | Customize width of the center tab item. Minimum is 50px and Maximum is 60px 
 | style              | ViewStyle                                             | No        | Styling for container view                                        |
-| shadowStyle        | ViewStyle                                             | No        | Styling for shadow view                                           |
+| shadowStyle        | ViewStyle                                             | No        | Styling for shadow view.                                          |
 | width              | Number                                                | No        | Customize width for container view                                |
 | height             | Number                                                | No        | Customize height for container view, Minimum is 50px and Maximum is 90px |
 | borderTopLeftRight | Boolean                                               | No        | Border radius top left and top right of container view            |
@@ -48,7 +48,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 | ------------------ | ----------------------------- | ----------------------------------------------------------------------------------------- |
 | setVisible         | Boolean                       | Used to hide/show the tab bar. Ex: ref.current.setVisible(false)                          |
 
-### Example 1
+### Use in Expo
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar-1.png)
 ```javascript
   import React from 'react';
@@ -59,7 +59,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
     TouchableOpacity,
     View,
   } from 'react-native';
-  import { CurvedBottomBar } from 'react-native-curved-bottom-bar';
+  import { CurvedBottomBarExpo } from 'react-native-curved-bottom-bar';
   import Ionicons from 'react-native-vector-icons/Ionicons';
   import { NavigationContainer } from '@react-navigation/native';
 
@@ -101,7 +101,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
     return (
       <View style={{ flex: 1 }}>
         <NavigationContainer>
-          <CurvedBottomBar.Navigator
+          <CurvedBottomBarExpo.Navigator
             style={styles.bottomBar}
             height={55}
             circleWidth={50}
@@ -121,21 +121,21 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
               </Animated.View>
             )}
             tabBar={renderTabBar}>
-            <CurvedBottomBar.Screen
+            <CurvedBottomBarExpo.Screen
               name="title1"
               position="LEFT"
               component={() => (
                 <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />
               )}
             />
-            <CurvedBottomBar.Screen
+            <CurvedBottomBarExpo.Screen
               name="title2"
               component={() => (
                 <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />
               )}
               position="RIGHT"
             />
-          </CurvedBottomBar.Navigator>
+          </CurvedBottomBarExpo.Navigator>
         </NavigationContainer>
       </View>
     );
@@ -180,7 +180,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
   });
 ```
 
-### Example 2
+### Use in RN CLI
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar-2.png)
 ```js
   import React from 'react';

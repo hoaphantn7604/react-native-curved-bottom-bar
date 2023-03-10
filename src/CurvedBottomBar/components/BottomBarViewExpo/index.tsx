@@ -14,7 +14,7 @@ import { scale } from 'react-native-size-scaling';
 import { useDeviceOrientation } from '../../../useDeviceOrientation';
 import { getPathDown } from '../../utils/pathDown';
 import { getPathUp } from '../../utils/pathUp';
-import { CurvedViewComponent } from '../CurvedView/curvedView';
+import { CurvedViewExpoComponent } from '../CurvedView/curvedViewExpo';
 import type { NavigatorBottomBarProps } from './model';
 import { styles } from './styles';
 const { width: maxW } = Dimensions.get('window');
@@ -231,13 +231,14 @@ const BottomBarComponent: (
 
       return (
         <View style={[styles.container, style]}>
-          <CurvedViewComponent
+          <CurvedViewExpoComponent
             style={shadowStyle}
             width={maxWidth}
             height={scale(getTabbarHeight) + (type === 'DOWN' ? 0 : scale(30))}
             bgColor={bgColor}
             path={d}
           />
+
           {_renderTabContainer(props)}
         </View>
       );

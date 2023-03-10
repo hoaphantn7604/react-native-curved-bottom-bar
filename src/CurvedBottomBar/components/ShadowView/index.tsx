@@ -1,3 +1,4 @@
+import { StyleProp } from 'react-native';
 import {
   requireNativeComponent,
   UIManager,
@@ -13,7 +14,7 @@ const LINKING_ERROR =
   '- You are not using Expo Go\n';
 
 type CurvedBottomBarProps = {
-  style: ViewStyle;
+  style?: StyleProp<ViewStyle>;
 };
 
 const ComponentName = 'CurvedBottomBarView';

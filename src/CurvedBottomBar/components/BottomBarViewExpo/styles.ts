@@ -4,6 +4,15 @@ export const styles = StyleSheet.create({
   wrapContainer: {
     flex: 1,
   },
+  shadow: {
+    shadowColor: '#DDDDDD',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 5,
+  },
   container: {
     alignSelf: 'center',
     position: 'absolute',
