@@ -60,7 +60,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
     View,
   } from 'react-native';
   import { CurvedBottomBarExpo } from 'react-native-curved-bottom-bar';
-  import Ionicons from 'react-native-vector-icons/Ionicons';
+  import Ionicons from '@expo/vector-icons/Ionicons';
   import { NavigationContainer } from '@react-navigation/native';
 
   export const tabBar = () => {
