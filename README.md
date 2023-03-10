@@ -2,7 +2,7 @@
 
 # react-native-curved-bottom-bar
 A high performance, beautiful and fully customizable curved bottom navigation bar for React Native.
-Implemented using [react-native-svg](https://github.com/react-native-svg/react-native-svg) and [@react-navigation/bottom-tabs](https://github.com/react-navigation/react-navigation).
+Implemented using [react-native-svg](https://github.com/react-native-svg/react-native-svg) and [@react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator).
 ## Getting started
 ```js
 npm install react-native-curved-bottom-bar --save
@@ -11,7 +11,7 @@ or
 ```js
 yarn add react-native-curved-bottom-bar
 ```
-Now we need to install [react-native-svg](https://github.com/react-native-svg/react-native-svg) and [@react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator/).
+Now we need to install [react-native-svg](https://github.com/react-native-svg/react-native-svg) and [@react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator).
 
 ### Demo
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar.gif)
