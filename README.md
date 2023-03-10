@@ -63,7 +63,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
   import Ionicons from '@expo/vector-icons/Ionicons';
   import { NavigationContainer } from '@react-navigation/native';
 
-  export const tabBar = () => {
+  export default function App() {
     const _renderIcon = (routeName, selectedTab) => {
       let icon = '';
 
@@ -195,7 +195,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
   import Ionicons from 'react-native-vector-icons/Ionicons';
   import { NavigationContainer } from '@react-navigation/native';
 
-  export const tabBar = () => {
+  export default function App() {
     const _renderIcon = (routeName, selectedTab) => {
       let icon = '';
 

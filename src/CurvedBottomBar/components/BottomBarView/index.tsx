@@ -245,8 +245,14 @@ const BottomBarComponent: (
 
     return (
       <Tab.Navigator {...props} tabBar={MyTabBar}>
-        {children?.map((e: any, index: number) => {
-          return <Tab.Screen key={index.toString()} {...e.props} />;
+        {children?.map((e: any) => {
+          const Component = e?.props?.component;
+
+          return (
+            <Tab.Screen key={e?.props?.name} name={e?.props?.name}>
+              {(props) => <Component {...props} />}
+            </Tab.Screen>
+          );
         })}
       </Tab.Navigator>
     );

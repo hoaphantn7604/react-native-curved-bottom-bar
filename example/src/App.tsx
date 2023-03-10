@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { NavigationContainer } from '@react-navigation/native';
 import React, { useRef, useState } from 'react';
-import { LogBox, StatusBar, Text, TouchableOpacity, View } from 'react-native';
+import { StatusBar, Text, TouchableOpacity, View } from 'react-native';
 import {
   CurvedBottomBar,
   ICurvedBottomBarRef,
@@ -10,7 +10,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StyleSheet } from 'react-native-size-scaling';
 
 StatusBar.setBarStyle('dark-content');
-LogBox.ignoreAllLogs();
 
 type voidType = () => void;
 
