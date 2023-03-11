@@ -1,4 +1,4 @@
-[<img src="https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar-demo.png">](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar-demo.png)
+![<img src="https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar-demo.png">](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar-demo.png)
 
 # react-native-curved-bottom-bar
 A high performance, beautiful and fully customizable curved bottom navigation bar for React Native.
@@ -7,6 +7,10 @@ Implemented using [react-native-svg](https://github.com/react-native-svg/react-n
 ```js
 If you love this library, give us a star, you will be a ray of sunshine in our lives :)
 ```
+
+### Free React Native Boilerplate
+[React Native Boilerplate](https://github.com/hoaphantn7604/react-native-template-components) is a beautiful template for React Native.
+
 ## Getting started
 ```js
 npm install react-native-curved-bottom-bar --save
@@ -19,11 +23,11 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 
 ## Demo
 
-[<img src="https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bat-thumbnail.jpg">](https://youtu.be/uauWt3UNJtI)
+![<img src="https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bat-thumbnail.jpg">](https://youtu.be/uauWt3UNJtI)
 
 <br />
 
-[<img src="https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar.gif">](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar.gif)
+![<img src="https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar.gif">](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar.gif)
 
 
 ### CurvedBottomBar.Navigator
@@ -368,4 +372,4 @@ export const styles = StyleSheet.create({
 ```
 <br />
 
-[<img src="https://github.com/hoaphantn7604/file-upload/blob/master/document/profile/hoa_phan_dev_banner.png">](https://www.youtube.com/channel/UCemCdKGzUgbfsLeGFOvbVEw?sub_confirmation=1)
+![<img src="https://github.com/hoaphantn7604/file-upload/blob/master/document/profile/hoa_phan_dev_banner.png">](https://github.com/hoaphantn7604)
