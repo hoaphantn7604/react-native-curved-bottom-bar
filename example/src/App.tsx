@@ -99,6 +99,7 @@ const ThemeScreen = () => {
   return (
     <View style={styles.container}>
       <CurvedBottomBar.Navigator
+        shadowStyle={styles.shawdow}
         ref={ref}
         type={type}
         circlePosition={position}
@@ -215,6 +216,15 @@ export default MainScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  shawdow: {
+    shadowColor: '#DDDDDD',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 5,
   },
   btnCircle: {
     width: 60,
