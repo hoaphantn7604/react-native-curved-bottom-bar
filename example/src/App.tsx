@@ -13,7 +13,7 @@ StatusBar.setBarStyle('dark-content');
 
 type voidType = () => void;
 
-const Button = ({ title, onPress }: { title: string; onPress: () => void }) => {
+const Button = ({ title, onPress }: { title: string; onPress: voidType }) => {
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
       <Text style={styles.titleButton}>{title}</Text>
@@ -21,19 +21,17 @@ const Button = ({ title, onPress }: { title: string; onPress: () => void }) => {
   );
 };
 
-const RenderScreen = ({
-  onDown,
-  onUp,
-  onLeft,
-  onCenter,
-  onRight,
-}: {
+interface IRenderScreen {
   onDown: voidType;
   onUp: voidType;
   onLeft: voidType;
   onCenter: voidType;
   onRight: voidType;
-}) => {
+}
+
+const RenderScreen: React.FC<IRenderScreen> = (props) => {
+  const { onDown, onUp, onLeft, onCenter, onRight } = props;
+
   return (
     <View style={styles.screen}>
       <Text style={styles.title}>React Native Curved Bottom Bar</Text>

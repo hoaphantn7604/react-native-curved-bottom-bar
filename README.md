@@ -59,266 +59,312 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 
 ### Use in Expo
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar-1.png)
-```javascript
-  import React from 'react';
-  import {
-    Alert,
-    Animated,
-    StyleSheet,
-    TouchableOpacity,
-    View,
-  } from 'react-native';
-  import { CurvedBottomBarExpo } from 'react-native-curved-bottom-bar';
-  import Ionicons from '@expo/vector-icons/Ionicons';
-  import { NavigationContainer } from '@react-navigation/native';
+```js
+import React from 'react';
+import {
+  Alert,
+  Animated,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { CurvedBottomBar } from 'react-native-curved-bottom-bar';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { NavigationContainer } from '@react-navigation/native';
 
-  export default function App() {
-    const _renderIcon = (routeName, selectedTab) => {
-      let icon = '';
+const Screen1 = () => {
+  return <View style={styles.screen1} />;
+};
 
-      switch (routeName) {
-        case 'title1':
-          icon = 'ios-home-outline';
-          break;
-        case 'title2':
-          icon = 'settings-outline';
-          break;
-      }
+const Screen2 = () => {
+  return <View style={styles.screen2} />;
+};
 
-      return (
-        <Ionicons
-          name={icon}
-          size={25}
-          color={routeName === selectedTab ? 'black' : 'gray'}
-        />
-      );
-    };
-    const renderTabBar = ({ routeName, selectedTab, navigate }) => {
-      return (
-        <TouchableOpacity
-          onPress={() => navigate(routeName)}
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          {_renderIcon(routeName, selectedTab)}
-        </TouchableOpacity>
-      );
-    };
+export default function App() {
+  const _renderIcon = (routeName, selectedTab) => {
+    let icon = '';
+
+    switch (routeName) {
+      case 'title1':
+        icon = 'ios-home-outline';
+        break;
+      case 'title2':
+        icon = 'settings-outline';
+        break;
+    }
 
     return (
-      <View style={{ flex: 1 }}>
-        <NavigationContainer>
-          <CurvedBottomBarExpo.Navigator
-            style={styles.bottomBar}
-            height={55}
-            circleWidth={50}
-            bgColor="white"
-            initialRouteName="title1"
-            borderTopLeftRight
-            renderCircle={({ selectedTab, navigate }) => (
-              <Animated.View style={styles.btnCircle}>
-                <TouchableOpacity
-                  style={{
-                    flex: 1,
-                    justifyContent: 'center',
-                  }}
-                  onPress={() => Alert.alert('Click Action')}>
-                  <Ionicons name={'apps-sharp'} color="gray" size={25} />
-                </TouchableOpacity>
-              </Animated.View>
-            )}
-            tabBar={renderTabBar}>
-            <CurvedBottomBarExpo.Screen
-              name="title1"
-              position="LEFT"
-              component={() => (
-                <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />
-              )}
-            />
-            <CurvedBottomBarExpo.Screen
-              name="title2"
-              component={() => (
-                <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />
-              )}
-              position="RIGHT"
-            />
-          </CurvedBottomBarExpo.Navigator>
-        </NavigationContainer>
-      </View>
+      <Ionicons
+        name={icon}
+        size={25}
+        color={routeName === selectedTab ? 'black' : 'gray'}
+      />
+    );
+  };
+  const renderTabBar = ({ routeName, selectedTab, navigate }) => {
+    return (
+      <TouchableOpacity
+        onPress={() => navigate(routeName)}
+        style={styles.tabbarItem}
+      >
+        {_renderIcon(routeName, selectedTab)}
+      </TouchableOpacity>
     );
   };
 
-  export const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      padding: 20,
+  return (
+    <NavigationContainer>
+      <CurvedBottomBar.Navigator
+        type="DOWN"
+        style={styles.bottomBar}
+        shadowStyle={styles.shawdow}
+        height={55}
+        circleWidth={50}
+        bgColor="white"
+        initialRouteName="title1"
+        borderTopLeftRight
+        renderCircle={({ selectedTab, navigate }) => (
+          <Animated.View style={styles.btnCircleUp}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => Alert.alert('Click Action')}
+            >
+              <Ionicons name={'apps-sharp'} color="gray" size={25} />
+            </TouchableOpacity>
+          </Animated.View>
+        )}
+        tabBar={renderTabBar}
+      >
+        <CurvedBottomBar.Screen
+          name="title1"
+          position="LEFT"
+          component={() => <Screen1 />}
+        />
+        <CurvedBottomBar.Screen
+          name="title2"
+          component={() => <Screen2 />}
+          position="RIGHT"
+        />
+      </CurvedBottomBar.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+  shawdow: {
+    shadowColor: '#DDDDDD',
+    shadowOffset: {
+      width: 0,
+      height: 0,
     },
-    button: {
-      marginVertical: 5,
+    shadowOpacity: 1,
+    shadowRadius: 5,
+  },
+  button: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  bottomBar: {},
+  btnCircleUp: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#E8E8E8',
+    bottom: 30,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
     },
-    bottomBar: {},
-    btnCircle: {
-      width: 60,
-      height: 60,
-      borderRadius: 35,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: 'white',
-      padding: 10,
-      shadowColor: '#000',
-      shadowOffset: {
-        width: 0,
-        height: 0.5,
-      },
-      shadowOpacity: 0.2,
-      shadowRadius: 1.41,
-      elevation: 1,
-      bottom: 30,
-    },
-    imgCircle: {
-      width: 30,
-      height: 30,
-      tintColor: 'gray',
-    },
-    img: {
-      width: 30,
-      height: 30,
-    },
-  });
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 1,
+  },
+  imgCircle: {
+    width: 30,
+    height: 30,
+    tintColor: 'gray',
+  },
+  tabbarItem: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  img: {
+    width: 30,
+    height: 30,
+  },
+  screen1: {
+    flex: 1,
+    backgroundColor: '#BFEFFF',
+  },
+  screen2: {
+    flex: 1,
+    backgroundColor: '#FFEBCD',
+  },
+});
+
 ```
 
 ### Use in RN CLI
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar-2.png)
 ```js
-  import React from 'react';
-  import {
-    Alert,
-    Animated,
-    StyleSheet,
-    TouchableOpacity,
-    View,
-  } from 'react-native';
-  import { CurvedBottomBar } from 'react-native-curved-bottom-bar';
-  import Ionicons from 'react-native-vector-icons/Ionicons';
-  import { NavigationContainer } from '@react-navigation/native';
+import React from 'react';
+import {
+  Alert,
+  Animated,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { CurvedBottomBar } from 'react-native-curved-bottom-bar';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { NavigationContainer } from '@react-navigation/native';
 
-  export default function App() {
-    const _renderIcon = (routeName, selectedTab) => {
-      let icon = '';
+const Screen1 = () => {
+  return <View style={styles.screen1} />;
+};
 
-      switch (routeName) {
-        case 'title1':
-          icon = 'ios-home-outline';
-          break;
-        case 'title2':
-          icon = 'settings-outline';
-          break;
-      }
+const Screen2 = () => {
+  return <View style={styles.screen2} />;
+};
 
-      return (
-        <Ionicons
-          name={icon}
-          size={25}
-          color={routeName === selectedTab ? 'black' : 'gray'}
-        />
-      );
-    };
-    const renderTabBar = ({ routeName, selectedTab, navigate }) => {
-      return (
-        <TouchableOpacity
-          onPress={() => navigate(routeName)}
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          {_renderIcon(routeName, selectedTab)}
-        </TouchableOpacity>
-      );
-    };
+export default function App() {
+  const _renderIcon = (routeName, selectedTab) => {
+    let icon = '';
+
+    switch (routeName) {
+      case 'title1':
+        icon = 'ios-home-outline';
+        break;
+      case 'title2':
+        icon = 'settings-outline';
+        break;
+    }
 
     return (
-      <View style={{ flex: 1 }}>
-        <NavigationContainer>
-          <CurvedBottomBar.Navigator
-            type="UP"
-            style={styles.bottomBar}
-            height={55}
-            circleWidth={50}
-            bgColor="white"
-            initialRouteName="title1"
-            borderTopLeftRight
-            renderCircle={({ selectedTab, navigate }) => (
-              <Animated.View style={styles.btnCircleUp}>
-                <TouchableOpacity
-                  style={{
-                    flex: 1,
-                    justifyContent: 'center',
-                  }}
-                  onPress={() => Alert.alert('Click Action')}>
-                  <Ionicons name={'apps-sharp'} color="gray" size={25} />
-                </TouchableOpacity>
-              </Animated.View>
-            )}
-            tabBar={renderTabBar}>
-            <CurvedBottomBar.Screen
-              name="title1"
-              position="LEFT"
-              component={() => (
-                <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />
-              )}
-            />
-            <CurvedBottomBar.Screen
-              name="title2"
-              component={() => (
-                <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />
-              )}
-              position="RIGHT"
-            />
-          </CurvedBottomBar.Navigator>
-        </NavigationContainer>
-      </View>
+      <Ionicons
+        name={icon}
+        size={25}
+        color={routeName === selectedTab ? 'black' : 'gray'}
+      />
+    );
+  };
+  const renderTabBar = ({ routeName, selectedTab, navigate }) => {
+    return (
+      <TouchableOpacity
+        onPress={() => navigate(routeName)}
+        style={styles.tabbarItem}
+      >
+        {_renderIcon(routeName, selectedTab)}
+      </TouchableOpacity>
     );
   };
 
-  export const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      padding: 20,
+  return (
+    <NavigationContainer>
+      <CurvedBottomBar.Navigator
+        type="UP"
+        style={styles.bottomBar}
+        shadowStyle={styles.shawdow}
+        height={55}
+        circleWidth={50}
+        bgColor="white"
+        initialRouteName="title1"
+        borderTopLeftRight
+        renderCircle={({ selectedTab, navigate }) => (
+          <Animated.View style={styles.btnCircleUp}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => Alert.alert('Click Action')}
+            >
+              <Ionicons name={'apps-sharp'} color="gray" size={25} />
+            </TouchableOpacity>
+          </Animated.View>
+        )}
+        tabBar={renderTabBar}
+      >
+        <CurvedBottomBar.Screen
+          name="title1"
+          position="LEFT"
+          component={() => <Screen1 />}
+        />
+        <CurvedBottomBar.Screen
+          name="title2"
+          component={() => <Screen2 />}
+          position="RIGHT"
+        />
+      </CurvedBottomBar.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+  shawdow: {
+    shadowColor: '#DDDDDD',
+    shadowOffset: {
+      width: 0,
+      height: 0,
     },
-    button: {
-      marginVertical: 5,
+    shadowOpacity: 1,
+    shadowRadius: 5,
+  },
+  button: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  bottomBar: {},
+  btnCircleUp: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#E8E8E8',
+    bottom: 18,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
     },
-    bottomBar: {},
-    btnCircleUp: {
-      width: 60,
-      height: 60,
-      borderRadius: 30,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: '#E8E8E8',
-      bottom: 18,
-      shadowColor: '#000',
-      shadowOffset: {
-        width: 0,
-        height: 1,
-      },
-      shadowOpacity: 0.2,
-      shadowRadius: 1.41,
-      elevation: 1,
-    },
-    imgCircle: {
-      width: 30,
-      height: 30,
-      tintColor: 'gray',
-    },
-    img: {
-      width: 30,
-      height: 30,
-    },
-  });
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 1,
+  },
+  imgCircle: {
+    width: 30,
+    height: 30,
+    tintColor: 'gray',
+  },
+  tabbarItem: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  img: {
+    width: 30,
+    height: 30,
+  },
+  screen1: {
+    flex: 1,
+    backgroundColor: '#BFEFFF',
+  },
+  screen2: {
+    flex: 1,
+    backgroundColor: '#FFEBCD',
+  },
+});
+
 ```
 <br />
 <br />
