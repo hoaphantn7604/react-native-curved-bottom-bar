@@ -68,7 +68,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { CurvedBottomBar } from 'react-native-curved-bottom-bar';
+import { CurvedBottomBarExpo } from 'react-native-curved-bottom-bar';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -114,7 +114,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <CurvedBottomBar.Navigator
+      <CurvedBottomBarExpo.Navigator
         type="DOWN"
         style={styles.bottomBar}
         shadowStyle={styles.shawdow}
@@ -135,17 +135,17 @@ export default function App() {
         )}
         tabBar={renderTabBar}
       >
-        <CurvedBottomBar.Screen
+        <CurvedBottomBarExpo.Screen
           name="title1"
           position="LEFT"
           component={() => <Screen1 />}
         />
-        <CurvedBottomBar.Screen
+        <CurvedBottomBarExpo.Screen
           name="title2"
           component={() => <Screen2 />}
           position="RIGHT"
         />
-      </CurvedBottomBar.Navigator>
+      </CurvedBottomBarExpo.Navigator>
     </NavigationContainer>
   );
 }
@@ -366,7 +366,6 @@ export const styles = StyleSheet.create({
 });
 
 ```
-<br />
 <br />
 
 [<img src="https://github.com/hoaphantn7604/file-upload/blob/master/document/profile/hoa_phan_dev_banner.png">](https://www.youtube.com/channel/UCemCdKGzUgbfsLeGFOvbVEw?sub_confirmation=1)
