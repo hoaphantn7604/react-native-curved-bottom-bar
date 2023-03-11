@@ -23,11 +23,12 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 
 ## Demo
 
-![<a href="https://youtu.be/uauWt3UNJtI" target="_blank" rel="noopener" />](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bat-thumbnail.jpg)
+[<img src="https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bat-thumbnail.jpg">](https://youtu.be/uauWt3UNJtI)
+
 
 <br />
 
-![<img src="https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar.gif">](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar.gif)
+![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar.gif)
 
 
 ### CurvedBottomBar.Navigator
@@ -372,4 +373,4 @@ export const styles = StyleSheet.create({
 ```
 <br />
 
-![<img src="https://github.com/hoaphantn7604/file-upload/blob/master/document/profile/hoa_phan_dev_banner.png">](https://github.com/hoaphantn7604)
+[<img src="https://github.com/hoaphantn7604/file-upload/blob/master/document/profile/hoa_phan_dev_banner.png">](https://github.com/hoaphantn7604)
