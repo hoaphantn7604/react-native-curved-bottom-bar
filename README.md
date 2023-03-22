@@ -9,7 +9,6 @@ If you love this library, give us a star, you will be a ray of sunshine in our l
 ```
 
 ### Free React Native Boilerplate
-### Free React Native Boilerplate
 [React Native Template](https://github.com/hoaphantn7604/react-native-template-components) with a beautiful UI.
 ## Getting started
 ```js
