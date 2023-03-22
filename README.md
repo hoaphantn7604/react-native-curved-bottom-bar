@@ -23,7 +23,7 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 
 ## Demo
 
-[<img src="https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bat-thumbnail.jpg">](https://youtu.be/uauWt3UNJtI)
+[<img src="https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bat-thumbnail.jpg">](https://youtube.com/shorts/u5d2shmGyTQ?feature=share)
 
 
 <br />
