@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React, {
   JSXElementConstructor,
   ReactElement,
+  useCallback,
   useEffect,
   useImperativeHandle,
   useMemo,
@@ -62,22 +63,25 @@ const BottomBarComponent: (
       }
     }, [orientation, width]);
 
-    const _renderButtonCenter = (focusedTab: string, navigate: any) => {
-      const getTab = children.filter(
-        (e: any) =>
-          e?.props?.position === 'CIRCLE' || e?.props?.position === 'CENTER'
-      )[0]?.props?.name;
+    const _renderButtonCenter = useCallback(
+      (focusedTab: string, navigate: any) => {
+        const getTab = children.filter(
+          (e: any) =>
+            e?.props?.position === 'CIRCLE' || e?.props?.position === 'CENTER'
+        )[0]?.props?.name;
 
-      return renderCircle({
-        routeName: getTab,
-        selectedTab: focusedTab,
-        navigate: (selectTab: string) => {
-          if (selectTab) {
-            navigate(selectTab);
-          }
-        },
-      });
-    };
+        return renderCircle({
+          routeName: getTab,
+          selectedTab: focusedTab,
+          navigate: (selectTab: string) => {
+            if (selectTab) {
+              navigate(selectTab);
+            }
+          },
+        });
+      },
+      [children, renderCircle]
+    );
 
     useEffect(() => {
       const arrLeft: any = children.filter(
@@ -99,8 +103,8 @@ const BottomBarComponent: (
       return height < 50 ? 50 : height > 90 ? 90 : height;
     }, [height]);
 
-    const d =
-      type === 'DOWN'
+    const d = useMemo(() => {
+      return type === 'DOWN'
         ? getPathDown(
             maxWidth,
             getTabbarHeight,
@@ -115,6 +119,14 @@ const BottomBarComponent: (
             borderTopLeftRight,
             circlePosition
           );
+    }, [
+      borderTopLeftRight,
+      circlePosition,
+      getCircleWidth,
+      getTabbarHeight,
+      maxWidth,
+      type,
+    ]);
 
     const renderItem = ({ color, routeName, navigate }: any) => {
       return (
@@ -128,101 +140,113 @@ const BottomBarComponent: (
       );
     };
 
-    const _renderTabIcon = (
-      arr: any[],
-      focusedTab: string,
-      navigation: any
-    ) => {
-      return (
-        <View style={[styles.rowLeft, { height: scale(getTabbarHeight) }]}>
-          {arr.map((item: any, index) => {
-            const routeName: string = item?.props?.name;
+    const _renderTabIcon = useCallback(
+      (arr: any[], focusedTab: string, navigation: any) => {
+        return (
+          <View style={[styles.rowLeft, { height: scale(getTabbarHeight) }]}>
+            {arr.map((item: any, index) => {
+              const routeName: string = item?.props?.name;
 
-            if (tabBar === undefined) {
-              return renderItem({
-                routeName,
-                color: focusedTab === routeName ? 'blue' : 'gray',
-                navigate: navigation.navigate,
-              });
-            }
-
-            return (
-              <View style={styles.flex1} key={index.toString()}>
-                {tabBar({
+              if (tabBar === undefined) {
+                return renderItem({
                   routeName,
-                  selectedTab: focusedTab,
-                  navigate: (selectTab: string) => {
-                    if (selectTab !== focusedTab) {
-                      navigation.navigate({
-                        name: routeName,
-                        merge: true,
-                      });
-                    }
-                  },
-                })}
+                  color: focusedTab === routeName ? 'blue' : 'gray',
+                  navigate: navigation.navigate,
+                });
+              }
+
+              return (
+                <View style={styles.flex1} key={index.toString()}>
+                  {tabBar({
+                    routeName,
+                    selectedTab: focusedTab,
+                    navigate: (selectTab: string) => {
+                      if (selectTab !== focusedTab) {
+                        navigation.navigate({
+                          name: routeName,
+                          merge: true,
+                        });
+                      }
+                    },
+                  })}
+                </View>
+              );
+            })}
+          </View>
+        );
+      },
+      [getTabbarHeight, tabBar]
+    );
+
+    const renderPosition = useCallback(
+      (props: any) => {
+        const { state, navigation } = props;
+        const focusedTab = state?.routes[state.index].name;
+
+        if (circlePosition === 'LEFT') {
+          return (
+            <>
+              <View style={{ marginLeft: scale(getCircleWidth) / 2 }}>
+                {_renderButtonCenter(focusedTab, navigation.navigate)}
               </View>
-            );
-          })}
-        </View>
-      );
-    };
+              {_renderTabIcon(
+                [...itemLeft, ...itemRight],
+                focusedTab,
+                navigation
+              )}
+            </>
+          );
+        }
 
-    const renderPosition = (props: any) => {
-      const { state, navigation } = props;
-      const focusedTab = state?.routes[state.index].name;
+        if (circlePosition === 'RIGHT') {
+          return (
+            <>
+              {_renderTabIcon(
+                [...itemLeft, ...itemRight],
+                focusedTab,
+                navigation
+              )}
+              <View style={{ marginRight: scale(getCircleWidth) / 2 }}>
+                {_renderButtonCenter(focusedTab, navigation.navigate)}
+              </View>
+            </>
+          );
+        }
 
-      if (circlePosition === 'LEFT') {
         return (
           <>
-            <View style={{ marginLeft: scale(getCircleWidth) / 2 }}>
-              {_renderButtonCenter(focusedTab, navigation.navigate)}
-            </View>
-            {_renderTabIcon(
-              [...itemLeft, ...itemRight],
-              focusedTab,
-              navigation
-            )}
+            {_renderTabIcon(itemLeft, focusedTab, navigation)}
+            {_renderButtonCenter(focusedTab, navigation.navigate)}
+            {_renderTabIcon(itemRight, focusedTab, navigation)}
           </>
         );
-      }
+      },
+      [
+        _renderButtonCenter,
+        _renderTabIcon,
+        circlePosition,
+        getCircleWidth,
+        itemLeft,
+        itemRight,
+      ]
+    );
 
-      if (circlePosition === 'RIGHT') {
+    const _renderTabContainer = useCallback(
+      (props: any) => {
         return (
-          <>
-            {_renderTabIcon(
-              [...itemLeft, ...itemRight],
-              focusedTab,
-              navigation
-            )}
-            <View style={{ marginRight: scale(getCircleWidth) / 2 }}>
-              {_renderButtonCenter(focusedTab, navigation.navigate)}
-            </View>
-          </>
+          <View
+            style={[
+              styles.main,
+              { width: maxWidth },
+              type === 'UP' && styles.top30,
+            ]}
+          >
+            {renderPosition(props)}
+          </View>
         );
-      }
-
-      return (
-        <>
-          {_renderTabIcon(itemLeft, focusedTab, navigation)}
-          {_renderButtonCenter(focusedTab, navigation.navigate)}
-          {_renderTabIcon(itemRight, focusedTab, navigation)}
-        </>
-      );
-    };
-
-    const _renderTabContainer = (props: any) => {
-      return (
-        <View
-          style={[
-            styles.main,
-            { width: maxWidth },
-            type === 'UP' && styles.top30,
-          ]}
-        >
-          {renderPosition(props)}
-        </View>
-      );
-    };
+      },
+      [maxWidth, renderPosition, type]
+    );
 
     const MyTabBar = (props: any) => {
       if (!isShow) {

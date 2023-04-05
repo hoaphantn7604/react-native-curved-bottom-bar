@@ -3,7 +3,7 @@ import { Path, Svg } from 'react-native-svg';
 import { CurvedBottomBarView } from '../ShadowView';
 import { CurvedView } from './model';
 
-export const CurvedViewComponent: CurvedView = (props) => {
+const CurvedContainer: CurvedView = (props) => {
   const { style, width, height, bgColor, path } = props;
 
   return (
@@ -14,3 +14,5 @@ export const CurvedViewComponent: CurvedView = (props) => {
     </CurvedBottomBarView>
   );
 };
+
+export const CurvedViewComponent = React.memo(CurvedContainer);
