@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { Path, Svg } from 'react-native-svg';
 import { CurvedView } from './model';
 
-export const CurvedContainer: CurvedView = (props) => {
+const CurvedContainer: CurvedView = (props) => {
   const { style, width, height, bgColor, path } = props;
 
   return (
@@ -15,4 +15,4 @@ export const CurvedContainer: CurvedView = (props) => {
   );
 };
 
-export const CurvedViewComponent = React.memo(CurvedContainer);
+export const CurvedViewExpoComponent = React.memo(CurvedContainer);
