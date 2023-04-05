@@ -15,4 +15,4 @@ const CurvedContainer: CurvedView = (props) => {
   );
 };
 
-export const CurvedViewExpoComponent = React.memo(CurvedContainer);
+export const CurvedViewExpoComponent: CurvedView = React.memo(CurvedContainer);
