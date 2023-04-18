@@ -1,6 +1,5 @@
-/* eslint-disable react/no-unstable-nested-components */
 import { NavigationContainer } from '@react-navigation/native';
-import React, { useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { StatusBar, Text, TouchableOpacity, View } from 'react-native';
 import {
   CurvedBottomBar,
@@ -94,111 +93,115 @@ const ThemeScreen = () => {
     setposition('RIGHT');
   };
 
-  return (
-    <View style={styles.container}>
-      <CurvedBottomBar.Navigator
-        shadowStyle={styles.shawdow}
-        ref={ref}
-        type={type}
-        circlePosition={position}
-        height={55}
-        circleWidth={50}
-        bgColor="white"
-        borderTopLeftRight
-        initialRouteName="title1"
-        renderCircle={({ routeName, selectedTab, navigate }) => (
-          <TouchableOpacity
-            style={[type === 'DOWN' ? styles.btnCircle : styles.btnCircleUp]}
-            onPress={() => {
-              navigate(routeName);
-            }}
-          >
-            <Ionicons
-              name="chatbubbles-outline"
-              size={23}
-              color={selectedTab === routeName ? 'red' : 'black'}
-            />
-          </TouchableOpacity>
-        )}
-        tabBar={({ routeName, selectedTab, navigate }) => {
-          return (
+  const main = useMemo(() => {
+    return (
+      <View style={styles.container}>
+        <CurvedBottomBar.Navigator
+          shadowStyle={styles.shawdow}
+          ref={ref}
+          type={type}
+          circlePosition={position}
+          height={55}
+          circleWidth={50}
+          bgColor="white"
+          borderTopLeftRight
+          initialRouteName="title1"
+          renderCircle={({ routeName, selectedTab, navigate }) => (
             <TouchableOpacity
-              onPress={() => navigate(routeName)}
-              style={styles.tabbarIcon}
+              style={[type === 'DOWN' ? styles.btnCircle : styles.btnCircleUp]}
+              onPress={() => {
+                navigate(routeName);
+              }}
             >
-              {_renderIcon(routeName, selectedTab)}
+              <Ionicons
+                name="chatbubbles-outline"
+                size={23}
+                color={selectedTab === routeName ? 'red' : 'black'}
+              />
             </TouchableOpacity>
-          );
-        }}
-      >
-        <CurvedBottomBar.Screen
-          name="Tab1"
-          position="LEFT"
-          component={() => (
-            <RenderScreen
-              onDown={onDown}
-              onUp={onUp}
-              onLeft={onLeft}
-              onCenter={onCenter}
-              onRight={onRight}
-            />
           )}
-        />
-        <CurvedBottomBar.Screen
-          name="Tab2"
-          component={() => (
-            <RenderScreen
-              onDown={onDown}
-              onUp={onUp}
-              onLeft={onLeft}
-              onCenter={onCenter}
-              onRight={onRight}
-            />
-          )}
-          position="LEFT"
-        />
-        <CurvedBottomBar.Screen
-          name="TabCenter"
-          component={() => (
-            <RenderScreen
-              onDown={onDown}
-              onUp={onUp}
-              onLeft={onLeft}
-              onCenter={onCenter}
-              onRight={onRight}
-            />
-          )}
-          position="CIRCLE"
-        />
-        <CurvedBottomBar.Screen
-          name="Tab3"
-          position="RIGHT"
-          component={() => (
-            <RenderScreen
-              onDown={onDown}
-              onUp={onUp}
-              onLeft={onLeft}
-              onCenter={onCenter}
-              onRight={onRight}
-            />
-          )}
-        />
-        <CurvedBottomBar.Screen
-          name="Tab4"
-          component={() => (
-            <RenderScreen
-              onDown={onDown}
-              onUp={onUp}
-              onLeft={onLeft}
-              onCenter={onCenter}
-              onRight={onRight}
-            />
-          )}
-          position="RIGHT"
-        />
-      </CurvedBottomBar.Navigator>
-    </View>
-  );
+          tabBar={({ routeName, selectedTab, navigate }) => {
+            return (
+              <TouchableOpacity
+                onPress={() => navigate(routeName)}
+                style={styles.tabbarIcon}
+              >
+                {_renderIcon(routeName, selectedTab)}
+              </TouchableOpacity>
+            );
+          }}
+        >
+          <CurvedBottomBar.Screen
+            name="Tab1"
+            position="LEFT"
+            component={() => (
+              <RenderScreen
+                onDown={onDown}
+                onUp={onUp}
+                onLeft={onLeft}
+                onCenter={onCenter}
+                onRight={onRight}
+              />
+            )}
+          />
+          <CurvedBottomBar.Screen
+            name="Tab2"
+            component={() => (
+              <RenderScreen
+                onDown={onDown}
+                onUp={onUp}
+                onLeft={onLeft}
+                onCenter={onCenter}
+                onRight={onRight}
+              />
+            )}
+            position="LEFT"
+          />
+          <CurvedBottomBar.Screen
+            name="TabCenter"
+            component={() => (
+              <RenderScreen
+                onDown={onDown}
+                onUp={onUp}
+                onLeft={onLeft}
+                onCenter={onCenter}
+                onRight={onRight}
+              />
+            )}
+            position="CIRCLE"
+          />
+          <CurvedBottomBar.Screen
+            name="Tab3"
+            position="RIGHT"
+            component={() => (
+              <RenderScreen
+                onDown={onDown}
+                onUp={onUp}
+                onLeft={onLeft}
+                onCenter={onCenter}
+                onRight={onRight}
+              />
+            )}
+          />
+          <CurvedBottomBar.Screen
+            name="Tab4"
+            component={() => (
+              <RenderScreen
+                onDown={onDown}
+                onUp={onUp}
+                onLeft={onLeft}
+                onCenter={onCenter}
+                onRight={onRight}
+              />
+            )}
+            position="RIGHT"
+          />
+        </CurvedBottomBar.Navigator>
+      </View>
+    );
+  }, [position, type]);
+
+  return main;
 };
 
 const MainScreen = () => {
