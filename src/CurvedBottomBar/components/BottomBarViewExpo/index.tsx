@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable @typescript-eslint/no-shadow */
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React, {
@@ -248,38 +247,57 @@ const BottomBarComponent: (
       [maxWidth, renderPosition, type]
     );
 
-    const MyTabBar = (props: any) => {
-      if (!isShow) {
-        return null;
-      }
+    const MyTabBar = useCallback(
+      (props: any) => {
+        if (!isShow) {
+          return null;
+        }
 
-      return (
-        <View style={[styles.container, style]}>
-          <CurvedViewExpoComponent
-            style={shadowStyle}
-            width={maxWidth}
-            height={scale(getTabbarHeight) + (type === 'DOWN' ? 0 : scale(30))}
-            bgColor={bgColor}
-            path={d}
-          />
-          {_renderTabContainer(props)}
-        </View>
-      );
-    };
-
-    return (
-      <Tab.Navigator {...props} tabBar={MyTabBar}>
-        {children?.map((e: any) => {
-          const Component = e?.props?.component;
-
-          return (
-            <Tab.Screen key={e?.props?.name} name={e?.props?.name}>
-              {(props) => <Component {...props} />}
-            </Tab.Screen>
-          );
-        })}
-      </Tab.Navigator>
+        return (
+          <View style={[styles.container, style]}>
+            <CurvedViewExpoComponent
+              style={shadowStyle}
+              width={maxWidth}
+              height={
+                scale(getTabbarHeight) + (type === 'DOWN' ? 0 : scale(30))
+              }
+              bgColor={bgColor}
+              path={d}
+            />
+            {_renderTabContainer(props)}
+          </View>
+        );
+      },
+      [
+        _renderTabContainer,
+        bgColor,
+        d,
+        getTabbarHeight,
+        isShow,
+        maxWidth,
+        shadowStyle,
+        style,
+        type,
+      ]
     );
+
+    const main = useMemo(() => {
+      return (
+        <Tab.Navigator {...props} tabBar={MyTabBar}>
+          {children?.map((e: any) => {
+            const Component = e?.props?.component;
+
+            return (
+              <Tab.Screen key={e?.props?.name} name={e?.props?.name}>
+                {(props) => <Component {...props} />}
+              </Tab.Screen>
+            );
+          })}
+        </Tab.Navigator>
+      );
+    }, [MyTabBar, children, props]);
+
+    return main;
   });
 
 export default BottomBarComponent;
