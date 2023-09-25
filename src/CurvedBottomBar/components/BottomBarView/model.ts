@@ -40,7 +40,7 @@ interface Props {
   width?: number;
   height?: Range<50, 91>;
   borderTopLeftRight?: boolean;
-  circleWidth?: Range<50, 61>;
+  circleWidth?: Range<0, 100>;
   bgColor?: string;
   initialRouteName: string;
   defaultScreenOptions?: unknown;
