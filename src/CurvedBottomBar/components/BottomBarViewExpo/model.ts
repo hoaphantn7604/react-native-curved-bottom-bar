@@ -10,6 +10,8 @@ import {
 } from '@react-navigation/native';
 import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
+import { getPathDown } from '../../utils/pathDown';
+import { getPathUp } from '../../utils/pathUp';
 
 type Enumerate<
   N extends number,
@@ -62,6 +64,8 @@ interface Props {
     selectedTab: string;
     navigate: (selectedTab: string) => void;
   }) => JSX.Element;
+  getPathUp?: typeof getPathUp;
+  getPathDown?: typeof getPathDown;
 }
 
 export type NavigatorBottomBarProps = DefaultNavigatorOptions<
