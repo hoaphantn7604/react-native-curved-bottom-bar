@@ -19,6 +19,7 @@ const line = (width: number, height: number) => {
 };
 
 //** Path Line Border Left Right Down */
+//** modified by abdullah to give rounded corners on the bottom 01022024 (February 1st) */
 const lineBorder = (width: number, height: number) => {
   const border = (shape as any)
     .line()
@@ -26,20 +27,21 @@ const lineBorder = (width: number, height: number) => {
     .y((d: { y: any }) => d.y)
     .curve(shape.curveBasis)([
     // right
-    { x: width / 2, y: 0 },
     { x: width - scale(20), y: 0 },
     { x: width - scale(10), y: scale(2) },
     { x: width - scale(2), y: scale(10) },
-    { x: width, y: scale(20) },
-    { x: width, y: height },
-    { x: width, y: height },
+    { x: width, y: scale(30) },
+    { x: width - scale(2), y: scale(50) },
+    { x: width - scale(10), y: scale(58) },
+    { x: width - scale(20), y: 60 },
     // bottom
-    { x: width, y: height },
-    { x: 0, y: height },
+    { x: width / 2, y: height },
+    { x: width / 2, y: height },
     // left
-    { x: 0, y: height },
-    { x: 0, y: height },
-    { x: 0, y: scale(20) },
+    { x: 0 + scale(20), y: height },
+    { x: 0 + scale(10), y: height - scale(2) },
+    { x: 0 + scale(2), y: height - scale(10) },
+    { x: 0, y: scale(30) },
     { x: 0 + scale(2), y: scale(10) },
     { x: 0 + scale(10), y: scale(2) },
     { x: 0 + scale(20), y: 0 },
