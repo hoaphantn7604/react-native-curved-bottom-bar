@@ -97,7 +97,7 @@
   "engines": {
     "node": ">= 16.0.0"
   },
-  "packageManager": "yarn@4.0.2",
+  "packageManager": "yarn@1.22.15",
   "jest": {
     "preset": "react-native",
     "modulePathIgnorePatterns": [
