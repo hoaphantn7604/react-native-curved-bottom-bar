@@ -288,7 +288,11 @@ const BottomBarComponent: (
             const Component = e?.props?.component;
 
             return (
-              <Tab.Screen key={e?.props?.name} name={e?.props?.name}>
+              <Tab.Screen
+                options={e?.props?.options}
+                key={e?.props?.name}
+                name={e?.props?.name}
+              >
                 {(props) => <Component {...props} />}
               </Tab.Screen>
             );
