@@ -12,8 +12,8 @@ import React, {
 import { Dimensions, Text, TouchableOpacity, View } from 'react-native';
 import { scale } from 'react-native-size-scaling';
 import { useDeviceOrientation } from '../../../useDeviceOrientation';
-import { getPathDown } from '../../utils/pathDown';
-import { getPathUp } from '../../utils/pathUp';
+import { getPathDown as getPathDownDefault } from '../../utils/pathDown';
+import { getPathUp as getPathUpDefault } from '../../utils/pathUp';
 import { CurvedViewExpoComponent } from '../CurvedView/curvedViewExpo';
 import type { NavigatorBottomBarProps } from './model';
 import { styles } from './styles';
@@ -38,6 +38,8 @@ const BottomBarComponent: (
       renderCircle,
       borderTopLeftRight = false,
       shadowStyle,
+      getPathDown = getPathDownDefault,
+      getPathUp = getPathUpDefault,
     } = props;
 
     const [itemLeft, setItemLeft] = useState<any[]>([]);
