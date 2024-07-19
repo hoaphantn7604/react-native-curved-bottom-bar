@@ -4,12 +4,18 @@ import { CurvedBottomBarView } from '../ShadowView';
 import { CurvedView } from './model';
 
 const CurvedContainer: CurvedView = (props) => {
-  const { style, width, height, bgColor, path } = props;
+  const { style, width, height, bgColor, path, strokeColor, strokeWidth } =
+    props;
 
   return (
     <CurvedBottomBarView style={style}>
       <Svg width={width} height={height}>
-        <Path fill={bgColor} {...{ d: path }} />
+        <Path
+          fill={bgColor}
+          stroke={strokeColor}
+          strokeWidth={strokeWidth}
+          {...{ d: path }}
+        />
       </Svg>
     </CurvedBottomBarView>
   );

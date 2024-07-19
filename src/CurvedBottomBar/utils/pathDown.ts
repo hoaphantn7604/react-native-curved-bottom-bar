@@ -25,30 +25,30 @@ const lineBorder = (width: number, height: number) => {
     .line()
     .x((d: { x: any }) => d.x)
     .y((d: { y: any }) => d.y)
-        .curve(shape.curveBasis)([
-      // right
-      { x: width / 2, y: 0 },
-      { x: width - scale(20), y: 0 },
-      { x: width - scale(10), y: scale(2) },
-      { x: width - scale(2), y: scale(10) },
-      { x: width, y: height/2 },
-      { x: width - scale(2), y: scale(50) },
-      { x: width - scale(10), y: scale(58) },
-      { x: width - scale(20), y: height },
-      // bottom
-      { x: width /2, y: height },
-      { x: width /2, y: height },
-      // left
+    .curve(shape.curveBasis)([
+    // right
+    { x: width / 1.55, y: 1 },
+    { x: width - scale(20), y: 1 },
+    { x: width - scale(10), y: scale(2) },
+    { x: width - scale(2), y: scale(10) },
+    { x: width - 1, y: height / 2 },
+    { x: width - scale(2), y: scale(50) },
+    { x: width - scale(10), y: scale(58) },
+    { x: width - scale(20), y: height },
+    // bottom
+    { x: width / 2, y: height - 1 },
+    { x: width / 2, y: height - 1 },
+    // left
 
-      { x: 0+scale(20), y: height },
-      { x: 0+scale(10), y: scale(58) },
-      { x: 0 + scale(2), y: scale(50) },
-      { x: 0, y: height/2 },
-      { x: 0 + scale(2), y: scale(10) },
-      { x: +scale(10), y: scale(2) },
-      { x: 0 + scale(20), y: 0 },
-      { x: width / 2, y: 0 },
-    ]);
+    { x: 0 + scale(20), y: height },
+    { x: 0 + scale(10), y: scale(58) },
+    { x: 0 + scale(2), y: scale(50) },
+    { x: 1, y: height / 2 },
+    { x: 0 + scale(2), y: scale(10) },
+    { x: scale(10), y: scale(2) },
+    { x: 0 + scale(20), y: 1 },
+    { x: width / 2.9, y: 1 },
+  ]);
 
   return border;
 };
