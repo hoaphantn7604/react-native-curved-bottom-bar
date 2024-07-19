@@ -1,11 +1,15 @@
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar-demo.png)
 
-# react-native-curved-bottom-bar
+# react-native-curved-bottom-bar modded by deemyboy
+### Changed the hard-coded bottom path to give rounded corners bottom right and left as it looked odd when lifted from bottom edge.
+
+With rounded corners in symmetry with the top left and right corners the shape looks more natural.
+
 A high performance, beautiful and fully customizable curved bottom navigation bar for React Native.
 Implemented using [react-native-svg](https://github.com/react-native-svg/react-native-svg) and [@react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator).
 
 ```js
-If you love this library, give us a star, you will be a ray of sunshine in our lives :)
+  If you love this library, give us a star, you will be a ray of sunshine in our lives :)
 ```
 
 ### Free React Native Boilerplate

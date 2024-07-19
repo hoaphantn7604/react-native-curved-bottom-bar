@@ -33,6 +33,8 @@ const BottomBarComponent: (
       height = 65,
       circleWidth = 50,
       bgColor = 'gray',
+      strokeColor,
+      strokeWidth,
       initialRouteName,
       tabBar,
       renderCircle,
@@ -263,6 +265,8 @@ const BottomBarComponent: (
               }
               bgColor={bgColor}
               path={d}
+              strokeColor={strokeColor}
+              strokeWidth={strokeWidth}
             />
             {_renderTabContainer(props)}
           </View>
@@ -278,6 +282,8 @@ const BottomBarComponent: (
         shadowStyle,
         style,
         type,
+        strokeColor,
+        strokeWidth,
       ]
     );
 

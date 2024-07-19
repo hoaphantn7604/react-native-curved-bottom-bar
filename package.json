@@ -44,13 +44,13 @@
     "tab-bar",
     "tabbar"
   ],
-  "repository": "https://github.com/hoaphantn7604/react-native-curved-bottom-bar",
-  "author": "Hoa Phan <hoaphantn7604@gmail.com> (https://github.com/hoaphantn7604)",
+  "repository": "https://github.com/deemyboy/react-native-curved-bottom-bar",
+  "author": "Hoa Phan <deemyboy2@gmail.com> (https://github.com/deemyboy)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hoaphantn7604/react-native-curved-bottom-bar/issues"
+    "url": "https://github.com/deemyboy/react-native-curved-bottom-bar/issues"
   },
-  "homepage": "https://github.com/hoaphantn7604/react-native-curved-bottom-bar#readme",
+  "homepage": "https://github.com/deemyboy/react-native-curved-bottom-bar#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -97,7 +97,7 @@
   "engines": {
     "node": ">= 16.0.0"
   },
-  "packageManager": "^yarn@1.22.15",
+  "packageManager": "yarn@1.22.15",
   "jest": {
     "preset": "react-native",
     "modulePathIgnorePatterns": [
