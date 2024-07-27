@@ -104,6 +104,8 @@ const ThemeScreen = () => {
           height={55}
           circleWidth={50}
           bgColor="white"
+          borderColor="gray"
+          borderWidth={0.5}
           borderTopLeftRight
           initialRouteName="title1"
           renderCircle={({ routeName, selectedTab, navigate }) => (
@@ -302,5 +304,6 @@ const styles = StyleSheet.create({
   },
   titleButton: {
     fontWeight: 'bold',
+    color: 'black',
   },
 });
