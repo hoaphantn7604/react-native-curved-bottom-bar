@@ -38,6 +38,8 @@ const BottomBarComponent: (
       renderCircle,
       borderTopLeftRight = false,
       shadowStyle,
+      borderColor = 'gray',
+      borderWidth = 0,
     } = props;
 
     const [itemLeft, setItemLeft] = useState<any[]>([]);
@@ -263,6 +265,8 @@ const BottomBarComponent: (
               }
               bgColor={bgColor}
               path={d}
+              borderColor={borderColor}
+              borderWidth={borderWidth}
             />
             {_renderTabContainer(props)}
           </View>
@@ -278,6 +282,8 @@ const BottomBarComponent: (
         shadowStyle,
         style,
         type,
+        borderColor,
+        borderWidth,
       ]
     );
 

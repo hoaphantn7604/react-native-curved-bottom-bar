@@ -7,6 +7,8 @@ interface ICurvedView {
   height: number;
   bgColor: string;
   path: any;
+  borderColor?: string;
+  borderWidth?: number;
 }
 
 export type CurvedView = React.FC<ICurvedView>;

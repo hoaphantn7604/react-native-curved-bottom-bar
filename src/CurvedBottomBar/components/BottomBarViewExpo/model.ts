@@ -42,6 +42,8 @@ interface Props {
   borderTopLeftRight?: boolean;
   circleWidth?: Range<50, 61>;
   bgColor?: string;
+  borderColor?: string;
+  borderWidth?: number;
   initialRouteName: string;
   defaultScreenOptions?: unknown;
   renderCircle: ({

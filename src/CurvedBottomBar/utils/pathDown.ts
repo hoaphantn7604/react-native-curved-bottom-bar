@@ -2,31 +2,63 @@ import * as shape from 'd3-shape';
 import { scale } from 'react-native-size-scaling';
 
 //** Path Line */
-const line = (width: number, height: number) => {
+const line = (width: number, height: number, centerWidth: number) => {
   const path = (shape as any)
     .line()
     .x((d: { x: any }) => d.x)
     .y((d: { y: any }) => d.y)([
-    { x: width / 2, y: 0 },
+    { x: width / 2 + scale(centerWidth), y: 0 },
     { x: width, y: 0 },
     { x: width, y: height },
     { x: 0, y: height },
     { x: 0, y: 0 },
-    { x: width / 2, y: 0 },
+    { x: width / 2 - scale(centerWidth), y: 0 },
+  ]);
+
+  return path;
+};
+
+//** Path Line Left*/
+const lineLeft = (width: number, height: number, centerWidth: number) => {
+  const path = (shape as any)
+    .line()
+    .x((d: { x: any }) => d.x)
+    .y((d: { y: any }) => d.y)([
+    { x: scale(centerWidth * 1.9) + scale(10), y: 0 },
+    { x: width, y: 0 },
+    { x: width, y: height },
+    { x: 0, y: height },
+    { x: 0, y: 0 },
+  ]);
+
+  return path;
+};
+
+//** Path Line Right*/
+const lineRight = (width: number, height: number, centerWidth: number) => {
+  const path = (shape as any)
+    .line()
+    .x((d: { x: any }) => d.x)
+    .y((d: { y: any }) => d.y)([
+    { x: width, y: 0 },
+    { x: width, y: height },
+    { x: 0, y: height },
+    { x: 0, y: 0 },
+    { x: width - scale(centerWidth * 1.9) - scale(10), y: 0 },
   ]);
 
   return path;
 };
 
 //** Path Line Border Left Right Down */
-const lineBorder = (width: number, height: number) => {
+const lineBorder = (width: number, height: number, centerWidth: number) => {
   const border = (shape as any)
     .line()
     .x((d: { x: any }) => d.x)
     .y((d: { y: any }) => d.y)
     .curve(shape.curveBasis)([
     // right
-    { x: width / 2, y: 0 },
+    { x: width / 2 + scale(centerWidth), y: 0 },
     { x: width - scale(20), y: 0 },
     { x: width - scale(10), y: scale(2) },
     { x: width - scale(2), y: scale(10) },
@@ -43,14 +75,18 @@ const lineBorder = (width: number, height: number) => {
     { x: 0 + scale(2), y: scale(10) },
     { x: 0 + scale(10), y: scale(2) },
     { x: 0 + scale(20), y: 0 },
-    { x: width / 2, y: 0 },
+    { x: width / 2 - scale(centerWidth), y: 0 },
   ]);
 
   return border;
 };
 
 //** Path Line Border Left Right Down */
-const lineBorderLeft = (width: number, height: number) => {
+const lineBorderRight = (
+  width: number,
+  height: number,
+  centerWidth: number
+) => {
   const border = (shape as any)
     .line()
     .x((d: { x: any }) => d.x)
@@ -70,21 +106,21 @@ const lineBorderLeft = (width: number, height: number) => {
     { x: 0 + scale(2), y: scale(10) },
     { x: 0 + scale(10), y: scale(2) },
     { x: 0 + scale(20), y: 0 },
-    { x: width / 2, y: 0 },
+    { x: width - scale(centerWidth * 1.9) - scale(10), y: 0 },
   ]);
 
   return border;
 };
 
 //** Path Line Border Left Right Down */
-const lineBorderRight = (width: number, height: number) => {
+const lineBorderLeft = (width: number, height: number, centerWidth: number) => {
   const border = (shape as any)
     .line()
     .x((d: { x: any }) => d.x)
     .y((d: { y: any }) => d.y)
     .curve(shape.curveBasis)([
     // right
-    { x: width / 2, y: 0 },
+    { x: scale(centerWidth * 1.9) + scale(10), y: 0 },
     { x: width - scale(20), y: 0 },
     { x: width - scale(10), y: scale(2) },
     { x: width - scale(2), y: scale(10) },
@@ -95,6 +131,7 @@ const lineBorderRight = (width: number, height: number) => {
     { x: width, y: height },
     { x: 0, y: height },
     // left
+    { x: 0, y: height },
     { x: 0, y: height },
     { x: 0, y: 0 },
   ]);
@@ -144,7 +181,7 @@ export const getPathDown = (
   const circleWidth = scale(centerWidth) + scale(16);
 
   if (borderTopLeftRight && position === 'LEFT') {
-    return `${lineBorderRight(width, height)} ${lineCurved(
+    return `${lineBorderLeft(width, height, centerWidth)} ${lineCurved(
       circleWidth / 3,
       height,
       circleWidth
@@ -152,7 +189,7 @@ export const getPathDown = (
   }
 
   if (borderTopLeftRight && position === 'RIGHT') {
-    return `${lineBorderLeft(width, height)} ${lineCurved(
+    return `${lineBorderRight(width, height, centerWidth)} ${lineCurved(
       width - circleWidth * 1.33,
       height,
       circleWidth
@@ -160,7 +197,7 @@ export const getPathDown = (
   }
 
   if (borderTopLeftRight && position === 'CENTER') {
-    return `${lineBorder(width, height)} ${lineCurved(
+    return `${lineBorder(width, height, centerWidth)} ${lineCurved(
       width / 2 - circleWidth / 2,
       height,
       circleWidth
@@ -168,7 +205,7 @@ export const getPathDown = (
   }
 
   if (position === 'LEFT') {
-    return `${line(width, height)} ${lineCurved(
+    return `${lineLeft(width, height, centerWidth)} ${lineCurved(
       circleWidth / 3,
       height,
       circleWidth
@@ -176,14 +213,14 @@ export const getPathDown = (
   }
 
   if (position === 'RIGHT') {
-    return `${line(width, height)} ${lineCurved(
+    return `${lineRight(width, height, centerWidth)} ${lineCurved(
       width - circleWidth * 1.33,
       height,
       circleWidth
     )}`;
   }
 
-  return `${line(width, height)} ${lineCurved(
+  return `${line(width, height, centerWidth)} ${lineCurved(
     width / 2 - circleWidth / 2,
     height,
     circleWidth

@@ -45,6 +45,8 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 | width              | Number                                                | No        | Customize width for container view                                |
 | height             | Number                                                | No        | Customize height for container view, Minimum is 50px and Maximum is 90px |
 | borderTopLeftRight | Boolean                                               | No        | Border radius top left and top right of container view            |
+| borderColor        | String                                                | No        | Border color                                                      |
+| borderWidth        | Number                                                | No        | Border width                                                      |
 | bgColor            | String                                                | No        | Background color of container view                                |
 
 
