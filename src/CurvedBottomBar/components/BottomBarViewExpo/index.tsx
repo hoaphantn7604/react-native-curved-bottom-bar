@@ -9,7 +9,13 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { Dimensions, Text, TouchableOpacity, View } from 'react-native';
+import {
+  Dimensions,
+  Text,
+  TouchableOpacity,
+  View,
+  I18nManager,
+} from 'react-native';
 import { scale } from 'react-native-size-scaling';
 import { useDeviceOrientation } from '../../../useDeviceOrientation';
 import { getPathDown } from '../../utils/pathDown';
@@ -111,14 +117,26 @@ const BottomBarComponent: (
             getTabbarHeight,
             getCircleWidth,
             borderTopLeftRight,
-            circlePosition
+            !I18nManager.isRTL
+              ? circlePosition
+              : circlePosition === 'LEFT'
+              ? 'RIGHT'
+              : circlePosition === 'RIGHT'
+              ? 'LEFT'
+              : 'CENTER'
           )
         : getPathUp(
             maxWidth,
             getTabbarHeight + 30,
             getCircleWidth,
             borderTopLeftRight,
-            circlePosition
+            !I18nManager.isRTL
+              ? circlePosition
+              : circlePosition === 'LEFT'
+              ? 'RIGHT'
+              : circlePosition === 'RIGHT'
+              ? 'LEFT'
+              : 'CENTER'
           );
     }, [
       borderTopLeftRight,
