@@ -1,7 +1,7 @@
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar-demo.png)
 
 # react-native-curved-bottom-bar
-一个美观，高性能且可以自定义定制的 React Native 底部导航栏。
+一个美观，高性能且可以自定义的 React Native 底部导航栏。
 使用 [react-native-svg](https://github.com/react-native-svg/react-native-svg) 和 [@react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator).
 
 ```js
