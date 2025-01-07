@@ -32,34 +32,34 @@ yarn add react-native-curved-bottom-bar
 
 ### CurvedBottomBar.Navigator
 
-| Props              | Params                                                | isRequire | Description                                                       |
+| 名称              | 参数                                                | 是否必须 | 描述                                                       |
 |--------------------|-------------------------------------------------------| --------- |-------------------------------------------------------------------|
-| type               | 'DOWN' or 'UP'                                        | Yes       | 中间选项卡项目的类型，向下曲线或向上曲线       |
-| circlePosition     | 'CENTER' or 'LEFT' or 'RIGHT'                         | No        | 圆圈按钮位置                                         |
-| initialRouteName   | String                                                | Yes       | 首次加载导航器时要渲染的路由的名称    |
-| tabBar             | ({ routeName, selectedTab, navigate }) => JSX.Element | Yes       | 返回 React 元素以显示为选项卡栏的函数   |
-| renderCircle       | ({ routeName, selectedTab, navigate }) => JSX.Element | Yes       | 返回 React 元素以显示为中心选项卡项的函数 |
-| circleWidth        | Number                                                | No        | 自定义中心选项卡项的宽度。最小为 50 像素，最大为 60 像素 |
-| style              | ViewStyle                                             | No        | 容器的样式                                       |
-| shadowStyle        | ViewStyle                                             | No        | 阴影的样式                                   |
-| width              | Number                                                | No        | 自定义容器的宽度                              |
-| height             | Number                                                | No        |自定义容器的高度，最小值为 50 像素，最大值为 90 像素 |
-| borderTopLeftRight | Boolean                                               | No        | 容器左上角和右上角的边框半径            |
-| borderColor        | String                                                | No        | 边框颜色                                                     |
-| borderWidth        | Number                                                | No        | 边框宽度                                                 |
-| bgColor            | String                                                | No        | 容器的背景色                               |
+| type               | 'DOWN' or 'UP'                                        | 是       | 中间选项卡项目的类型，向下曲线或向上曲线       |
+| circlePosition     | 'CENTER' or 'LEFT' or 'RIGHT'                         | 否        | 圆圈按钮位置                                         |
+| initialRouteName   | String                                                | 是       | 首次加载导航器时要渲染的路由的名称    |
+| tabBar             | ({ routeName, selectedTab, navigate }) => JSX.Element | 是       | 返回 React 元素以显示为选项卡栏的函数   |
+| renderCircle       | ({ routeName, selectedTab, navigate }) => JSX.Element | 是       | 返回 React 元素以显示为中心选项卡项的函数 |
+| circleWidth        | Number                                                | 否        | 自定义中心选项卡项的宽度。最小为 50 像素，最大为 60 像素 |
+| style              | ViewStyle                                             | 否        | 容器的样式                                       |
+| shadowStyle        | ViewStyle                                             | 否        | 阴影的样式                                   |
+| width              | Number                                                | 否        | 自定义容器的宽度                              |
+| height             | Number                                                | 否        |自定义容器的高度，最小值为 50 像素，最大值为 90 像素 |
+| borderTopLeftRight | Boolean                                               | 否        | 容器左上角和右上角的边框半径            |
+| borderColor        | String                                                | 否        | 边框颜色                                                     |
+| borderWidth        | Number                                                | 否        | 边框宽度                                                 |
+| bgColor            | String                                                | 否        | 容器的背景色                               |
 
 
 ### CurvedBottomBar.Screen（弯曲底部栏）
 
-| Props              | Params                        | isRequire | Description                                                                               |
+| 名称              | 参数                                                | 是否必须 | 描述                                                                                  |
 | ------------------ | ----------------------------- | --------- | ----------------------------------------------------------------------------------------- |
-| name               | String                        | Yes       | 要跳转到的路由名称                                                              |
-| position           | 'LEFT' or 'RIGHT' or 'CIRCLE' | Yes       | 将tabbar图标的位置设置为圆圈按钮的左侧或右侧。仅当您希望圆圈按钮是选项卡视图时，才使用类型 “CIRCLE” |
-| component          | (props) => JSX.Element        | Yes       | 筛选要合并到目标路由中的参数                                         |
+| name               | String                        | 是       | 要跳转到的路由名称                                                              |
+| position           | 'LEFT' or 'RIGHT' or 'CIRCLE' | 是       | 将tabbar图标的位置设置为圆圈按钮的左侧或右侧。仅当您希望圆圈按钮是选项卡视图时，才使用类型 “CIRCLE” |
+| component          | (props) => JSX.Element        | 是       | 筛选要合并到目标路由中的参数                                         |
 
 ### API
-| Function           | Params                        | Description                                                                               |
+| 函数           | 参数                        | 描述                                                                               |
 | ------------------ | ----------------------------- | ----------------------------------------------------------------------------------------- |
 | setVisible         | Boolean                       | 用于隐藏/显示标签栏。例如：ref.current.setVisible（false）                        |
 
