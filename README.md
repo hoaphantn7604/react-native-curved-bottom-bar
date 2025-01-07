@@ -7,6 +7,7 @@ Implemented using [react-native-svg](https://github.com/react-native-svg/react-n
 ```js
 If you love this library, give us a star, you will be a ray of sunshine in our lives :)
 ```
+[中文文档](READMEN_CN.md)
 
 ### Free React Native Boilerplate
 [React Native Template](https://github.com/hoaphantn7604/react-native-template-components) with a beautiful UI.
