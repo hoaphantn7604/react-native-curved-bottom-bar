@@ -10,7 +10,6 @@
   "files": [
     "src",
     "lib",
-    "android",
     "cpp",
     "*.podspec",
     "!lib/typescript/example",
@@ -33,7 +32,7 @@
     "release": "release-it",
     "example": "yarn --cwd example",
     "bootstrap": "yarn example && yarn install",
-    "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build"
+    "clean": "example/android/build example/android/app/build example/ios/build"
   },
   "keywords": [
     "react-native",
