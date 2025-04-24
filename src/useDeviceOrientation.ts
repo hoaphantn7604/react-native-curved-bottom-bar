@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-shadow */
 import { useWindowDimensions } from 'react-native';
 
 export function useDeviceOrientation() {
