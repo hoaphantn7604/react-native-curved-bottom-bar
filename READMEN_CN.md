@@ -1,27 +1,26 @@
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar-demo.png)
 
 # react-native-curved-bottom-bar
-A high performance, beautiful and fully customizable curved bottom navigation bar for React Native.
-Implemented using [react-native-svg](https://github.com/react-native-svg/react-native-svg) and [@react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator).
+一个美观，高性能且可以自定义的 React Native 底部导航栏。
+使用 [react-native-svg](https://github.com/react-native-svg/react-native-svg) 和 [@react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator).
 
 ```js
-If you love this library, give us a star, you will be a ray of sunshine in our lives :)
+如果你喜欢这个库，请给我们一颗Star，你会成为我们生活中的一缕阳光:) 
 ```
-[中文文档](READMEN_CN.md)
 
-### Free React Native Boilerplate
-[React Native Template](https://github.com/hoaphantn7604/react-native-template-components) with a beautiful UI.
-## Getting started
+### 免费的 React Native 模板
+一个好看的[React Native 模板](https://github.com/hoaphantn7604/react-native-template-components).
+## 开始
 ```js
 npm install react-native-curved-bottom-bar --save
 ```
-or
+或
 ```js
 yarn add react-native-curved-bottom-bar
 ```
-Now we need to install [react-native-svg](https://github.com/react-native-svg/react-native-svg) and [@react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator).
+然后需要安装 [react-native-svg](https://github.com/react-native-svg/react-native-svg) 和 [@react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator).
 
-## Demo
+## 示例
 
 [<img src="https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bat-thumbnail.jpg">](https://youtu.be/FIuhT2QYie8)
 
@@ -33,38 +32,38 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 
 ### CurvedBottomBar.Navigator
 
-| Props              | Params                                                | isRequire | Description                                                       |
+| 名称              | 参数                                                | 是否必须 | 描述                                                       |
 |--------------------|-------------------------------------------------------| --------- |-------------------------------------------------------------------|
-| type               | 'DOWN' or 'UP'                                        | Yes       | Type of the center tab item, downward curve or upward curve       |
-| circlePosition     | 'CENTER' or 'LEFT' or 'RIGHT'                         | No        | Position of circle button                                         |
-| initialRouteName   | String                                                | Yes       | The name of the route to render on first load of the navigator    |
-| tabBar             | ({ routeName, selectedTab, navigate }) => JSX.Element | Yes       | Function that returns a React element to display as the tab bar   |
-| renderCircle       | ({ routeName, selectedTab, navigate }) => JSX.Element | Yes       | Function that returns a React element to display as the center tab item |
-| circleWidth        | Number                                                | No        | Customize width of the center tab item. Minimum is 50px and Maximum is 60px 
-| style              | ViewStyle                                             | No        | Styling for container view                                        |
-| shadowStyle        | ViewStyle                                             | No        | Styling for shadow view.                                          |
-| width              | Number                                                | No        | Customize width for container view                                |
-| height             | Number                                                | No        | Customize height for container view, Minimum is 50px and Maximum is 90px |
-| borderTopLeftRight | Boolean                                               | No        | Border radius top left and top right of container view            |
-| borderColor        | String                                                | No        | Border color                                                      |
-| borderWidth        | Number                                                | No        | Border width                                                      |
-| bgColor            | String                                                | No        | Background color of container view                                |
+| type               | 'DOWN' or 'UP'                                        | 是       | 中间选项卡项目的类型，向下曲线或向上曲线       |
+| circlePosition     | 'CENTER' or 'LEFT' or 'RIGHT'                         | 否        | 圆圈按钮位置                                         |
+| initialRouteName   | String                                                | 是       | 首次加载导航器时要渲染的路由的名称    |
+| tabBar             | ({ routeName, selectedTab, navigate }) => JSX.Element | 是       | 返回 React 元素以显示为选项卡栏的函数   |
+| renderCircle       | ({ routeName, selectedTab, navigate }) => JSX.Element | 是       | 返回 React 元素以显示为中心选项卡项的函数 |
+| circleWidth        | Number                                                | 否        | 自定义中心选项卡项的宽度。最小为 50 像素，最大为 60 像素 |
+| style              | ViewStyle                                             | 否        | 容器的样式                                       |
+| shadowStyle        | ViewStyle                                             | 否        | 阴影的样式                                   |
+| width              | Number                                                | 否        | 自定义容器的宽度                              |
+| height             | Number                                                | 否        |自定义容器的高度，最小值为 50 像素，最大值为 90 像素 |
+| borderTopLeftRight | Boolean                                               | 否        | 容器左上角和右上角的边框半径            |
+| borderColor        | String                                                | 否        | 边框颜色                                                     |
+| borderWidth        | Number                                                | 否        | 边框宽度                                                 |
+| bgColor            | String                                                | 否        | 容器的背景色                               |
 
 
-### CurvedBottomBar.Screen
+### CurvedBottomBar.Screen（弯曲底部栏）
 
-| Props              | Params                        | isRequire | Description                                                                               |
+| 名称              | 参数                                                | 是否必须 | 描述                                                                                  |
 | ------------------ | ----------------------------- | --------- | ----------------------------------------------------------------------------------------- |
-| name               | String                        | Yes       | Name of the route to jump to                                                              |
-| position           | 'LEFT' or 'RIGHT' or 'CIRCLE' | Yes       | Set position of tabbar icon to the left or right of the circle button. Use type "CIRCLE" only when you want the circle button is a tabview |
-| component          | (props) => JSX.Element        | Yes       | Screen params to merge into the destination route                                         |
+| name               | String                        | 是       | 要跳转到的路由名称                                                              |
+| position           | 'LEFT' or 'RIGHT' or 'CIRCLE' | 是       | 将tabbar图标的位置设置为圆圈按钮的左侧或右侧。仅当您希望圆圈按钮是选项卡视图时，才使用类型 “CIRCLE” |
+| component          | (props) => JSX.Element        | 是       | 筛选要合并到目标路由中的参数                                         |
 
 ### API
-| Function           | Params                        | Description                                                                               |
+| 函数           | 参数                        | 描述                                                                               |
 | ------------------ | ----------------------------- | ----------------------------------------------------------------------------------------- |
-| setVisible         | Boolean                       | Used to hide/show the tab bar. Ex: ref.current.setVisible(false)                          |
+| setVisible         | Boolean                       | 用于隐藏/显示标签栏。例如：ref.current.setVisible（false）                        |
 
-### Use in Expo
+### 在Expo中使用
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar-1.png)
 ```js
 import React from 'react';
@@ -219,7 +218,7 @@ export const styles = StyleSheet.create({
 
 ```
 
-### Use in RN CLI
+### 在RN中使用
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar-2.png)
 ```js
 import React from 'react';
